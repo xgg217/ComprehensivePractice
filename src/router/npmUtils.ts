@@ -187,6 +187,245 @@ const list: RouteRecordRaw[] = [
           },
         ],
       },
+      {
+        path: "Animejs",
+        name: "NpmUtilsAnimejs",
+        // component: aa,
+        component: layout,
+        meta: {
+          title: "animejs动画",
+          imgSrc: "",
+          remark: "animejs动画",
+        },
+        children: [
+          {
+            path: "index",
+            name: "AnimejsIndex",
+            component: () => import("@/views/NpmUtils/Animejs/index.vue"),
+            meta: {
+              title: "占位图",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "movingLetters",
+            name: "MovingLetters",
+            component: () => import("@/views/NpmUtils/Animejs/MovingLetters/index.vue"),
+            meta: {
+              title: "移动的字母",
+              imgSrc: "MovingLetters/MovingLetters.gif",
+            },
+          },
+          {
+            path: "oneTargetAndAttribute",
+            name: "OneTargetAndAttribute",
+            component: () => import("@/views/NpmUtils/Animejs/OneTargetAndAttribute/index.vue"),
+            meta: {
+              title: "第一部分 目标与属性",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "oneAnimationAttribute",
+            name: "oneAnimationAttribute",
+            component: () => import("@/views/NpmUtils/Animejs/OneAnimationAttribute/index.vue"),
+            meta: {
+              title: "第一部分 动画属性",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "twoAttributeParameter",
+            name: "twoAttributeParameter",
+            component: () => import("@/views/NpmUtils/Animejs/TwoAttributeParameter/index.vue"),
+            meta: {
+              title: "第二部分 属性参数",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "twoParametersBasedOnFunctions",
+            name: "TwoParametersBasedOnFunctions",
+            component: () =>
+              import("@/views/NpmUtils/Animejs/TwoParametersBasedOnFunctions/index.vue"),
+            meta: {
+              title: "第二部分 基于函数的参数",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "three",
+            name: "Three",
+            component: () => import("@/views/NpmUtils/Animejs/Three/index.vue"),
+            meta: {
+              title: "第三部分 值、时间轴和播放",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "custom",
+            name: "Custom",
+            component: () => import("@/views/NpmUtils/Animejs/Custom/index.vue"),
+            meta: {
+              title: "自定义",
+              imgSrc: "",
+            },
+          },
+        ],
+      },
+      {
+        path: "GSAP",
+        name: "NpmUtilsGSAP",
+        // component: aa,
+        component: layout,
+        // redirect: "/GSAP/index",
+        meta: {
+          title: "GSAP",
+          imgSrc: "",
+          remark: "GSAP",
+        },
+        children: [
+          {
+            path: "index",
+            name: "GSAPIndex",
+            component: () => import("@/views/NpmUtils/GSAP/index.vue"),
+            meta: {
+              title: "占位图",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "apiDemo",
+            name: "GSAPApiDemo",
+            component: () => import("@/views/NpmUtils/GSAP/ApiDemo/index.vue"),
+            meta: {
+              title: "api熟悉",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "timelineDemo",
+            name: "GSAPTimelineDemo",
+            component: () => import("@/views/NpmUtils/GSAP/Timeline/index.vue"),
+            meta: {
+              title: "时间线",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "StaggerDemo",
+            name: "GSAPStaggerDemo",
+            component: () => import("@/views/NpmUtils/GSAP/Stagger/index.vue"),
+            meta: {
+              title: "stagger 交错",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "GSDevTools",
+            name: "GSDevTools",
+            component: () => import("@/views/NpmUtils/GSAP/RegisterPlugin/GSDevTools.vue"),
+            meta: {
+              title: "插件之GSDevTools",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "ScrollTrigger",
+            name: "ScrollTrigger",
+            component: () => import("@/views/NpmUtils/GSAP/RegisterPlugin/ScrollTrigger.vue"),
+            meta: {
+              title: "插件之ScrollTrigger",
+              imgSrc: "",
+            },
+          },
+        ],
+      },
+      {
+        path: "ECharts",
+        name: "NpmUtilsECharts",
+        // component: aa,
+        component: layout,
+        meta: {
+          title: "ECharts",
+          imgSrc: "",
+          remark: "图表",
+        },
+        children: [
+          {
+            path: "index",
+            name: "EChartsIndex",
+            component: () => import("@/views/NpmUtils/ECharts/index.vue"),
+            meta: {
+              title: "占位图",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "setOption",
+            name: "EChartsSetOption",
+            component: () => import("@/views/NpmUtils/ECharts/SetOption/index.vue"),
+            meta: {
+              title: "setOption 示例",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "setOptionAxis",
+            name: "EChartsSetOptionAxis",
+            component: () => import("@/views/NpmUtils/ECharts/SetOptionAxis/index.vue"),
+            meta: {
+              title: "setOption 轴体",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "setOptionDataZoom",
+            name: "SetOptionDataZoom",
+            component: () => import("@/views/NpmUtils/ECharts/SetOptionDataZoom/index.vue"),
+            meta: {
+              title: "DataZoom 区域缩放",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "setOptionTooltiop",
+            name: "SetOptionTooltiop",
+            component: () => import("@/views/NpmUtils/ECharts/SetOptionTooltiop/index.vue"),
+            meta: {
+              title: "tooltiop 提示框",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "dataset",
+            name: "Dataset",
+            component: () => import("@/views/NpmUtils/ECharts/Dataset/index.vue"),
+            meta: {
+              title: "dataset 数据集",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "visualMap",
+            name: "visualMap",
+            component: () => import("@/views/NpmUtils/ECharts/visualMap/index.vue"),
+            meta: {
+              title: "视觉映射组件",
+              imgSrc: "",
+            },
+          },
+          {
+            path: "line",
+            name: "line",
+            component: () => import("@/views/NpmUtils/ECharts/line/index.vue"),
+            meta: {
+              title: "折线图",
+              imgSrc: "",
+            },
+          },
+        ],
+      },
     ],
   },
 ];

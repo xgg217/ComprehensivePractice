@@ -3,6 +3,7 @@ import HomeView from "@/views/HomeView.vue";
 import vue3 from "./vue3";
 import threejs from "./threejs";
 import npmUtils from "./npmUtils";
+import custom from "./custom";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,6 +22,9 @@ const router = createRouter({
 
     // 第三方插件
     ...npmUtils,
+
+    // 小项目
+    ...custom,
 
     {
       path: "/404",

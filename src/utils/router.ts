@@ -2,11 +2,8 @@ import routerObj from "@/router/index";
 import type { ICardItem } from "@/types/index";
 import type { RouteRecordRaw } from "vue-router";
 
-// const allRoutes = router.getRoutes();
-// console.log(routerObj.options.routes);
-
 // 获取全部路由
-export const getAllRoutes = (whitePathlist: string[]) => {
+export const getAllRoutes = () => {
   // const allRoutes = routerObj.getRoutes();
 
   const arr = routerObj.options.routes.filter(item => {
@@ -26,7 +23,7 @@ export const getAllRoutes = (whitePathlist: string[]) => {
  * @param whitePathlist 要过滤的白名单路径
  */
 export const getRoutes = (paths: string, whitePathlist: string[]) => {
-  console.log(paths, whitePathlist, routerObj.options.routes);
+  // console.log(paths, whitePathlist, routerObj.options.routes);
 
   // const allRoutes = routerObj.getRoutes();
 
@@ -34,7 +31,7 @@ export const getRoutes = (paths: string, whitePathlist: string[]) => {
   const row = routerObj.options.routes.find(item => {
     return paths === item.path;
   });
-  console.log(row);
+  // console.log(row);
 
   if (!row || !row.children) {
     return [];
@@ -44,41 +41,9 @@ export const getRoutes = (paths: string, whitePathlist: string[]) => {
     // 过滤掉白名单的路由
     return !whitePathlist.includes(item.path);
   });
-  console.log(arr);
-
-  return getItem(arr);
-
-  // .filter(item => {
-  //   // 过滤掉白名单的路由
-  //   return !whitePathlist.includes(item.path);
-  // });
-
-  // const arr = routerObj.options.routes
-  //   .filter(item => {
-  //     // 过滤出要显示的指定路由
-  //     // 获取全部路由
-  //     if (paths.length === 0) {
-  //       return true;
-  //     }
-  //     return paths.includes(item.path);
-  //   })
-  //   .filter(item => {
-  //     // 过滤掉白名单的路由
-  //     return !whitePathlist.includes(item.path);
-  //   });
-  // .map(item => {
-  //   const { meta, name, path } = item;
-  //   const obj: ICardItem = {
-  //     title: (meta.title || "") as string,
-  //     name: (name as string) || "",
-  //     remark: (meta.remark || "") as string,
-  //     path,
-  //   };
-  //   return obj;
-  // });
   // console.log(arr);
 
-  // return getItem(arr[0].children);
+  return getItem(arr);
 };
 
 const getItem = (arr: RouteRecordRaw[]) => {
