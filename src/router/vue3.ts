@@ -1,6 +1,6 @@
 import type { RouteRecordRaw } from "vue-router";
 
-const vue3: RouteRecordRaw = {
+const list: RouteRecordRaw = {
   path: "/vue3",
   name: "Vue3",
   component: () => import("@/views/Vue3/index.vue"),
@@ -11,4 +11,4 @@ const vue3: RouteRecordRaw = {
   // redirect: "/animejs/index",
 };
 
-export default vue3;
+export default list;
