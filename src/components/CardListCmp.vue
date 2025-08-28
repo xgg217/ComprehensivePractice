@@ -6,7 +6,6 @@ const props = defineProps<{
   list: ICardItem[];
 }>();
 
-const route = useRoute();
 const router = useRouter();
 
 // 路由跳转
@@ -41,23 +40,29 @@ const onPage = (name: ICardItem["name"]) => {
 </script>
 
 <template>
-  <div>
+  <div class="list">
     <template v-for="item of props.list" :key="item.path">
       <el-card class="card">
         <template #header>
           <div class="card-header">
-            <span>{{ item.name }}</span>
+            <span>{{ item.title }}</span>
 
             <el-button type="primary" @click="() => onPage(item.name)">查看</el-button>
           </div>
         </template>
-        {{ item.remark }}
+        {{ item.remark }}{{ item }}
       </el-card>
     </template>
   </div>
 </template>
 
 <style scoped>
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  gap: 20px;
+}
 .card {
   width: 400px;
   height: 300px;

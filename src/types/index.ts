@@ -6,4 +6,5 @@ export type ICardItem = {
   name: string; // 路由名称 便于查看路由是否存在
   remark: string; // 备注
   path: string; // 路由链接
+  imgSrc?: string; // 图片
 };

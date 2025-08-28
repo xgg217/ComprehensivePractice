@@ -10,9 +10,11 @@ declare module 'vue' {
   export interface GlobalComponents {
     CardCmp: typeof import('./src/components/CardCmp.vue')['default']
     CardListCmp: typeof import('./src/components/CardListCmp.vue')['default']
+    copy: typeof import('./src/components/CardListCmp copy.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TwoViewCmp: typeof import('./src/components/TwoViewCmp.vue')['default']
   }
 }

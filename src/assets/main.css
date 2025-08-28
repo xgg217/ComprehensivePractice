@@ -1,6 +1,7 @@
 :root {
   --nav: 330px;
   --view-height: 100vh;
+  --textColor: #049ef4;
 }
 
 * {
