@@ -1,6 +1,5 @@
 import type { RouteRecordRaw } from "vue-router";
 import layout from "@/layout/index.vue";
-// import aa from "@/views/ThreeJS/Examples/aa.vue";
 
 const list: RouteRecordRaw[] = [
   {
@@ -41,15 +40,6 @@ const list: RouteRecordRaw[] = [
             path: "index",
             name: "ThreejsExamplesIndex",
             component: () => import("@/views/ThreeJS/Examples/index.vue"),
-            meta: {
-              title: "占位图",
-              imgSrc: "",
-            },
-          },
-          {
-            path: "index2",
-            name: "ThreejsExamplesIndex2",
-            component: () => import("@/views/ThreeJS/Examples/index2.vue"),
             meta: {
               title: "占位图",
               imgSrc: "",
