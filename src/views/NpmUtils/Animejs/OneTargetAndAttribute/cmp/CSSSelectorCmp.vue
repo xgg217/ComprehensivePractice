@@ -3,7 +3,16 @@
     <h3>CSS选择器</h3>
 
     <ul>
-      <li v-for="i in 9" :key="i"></li>
+      <!-- <li v-for="i in 9" :key="i" :class="'a' + i"></li> -->
+      <li class="a1"></li>
+      <li class="a2"></li>
+      <li class="a3"></li>
+      <li class="a4"></li>
+      <li class="a5"></li>
+      <li class="a6"></li>
+      <li class="a7"></li>
+      <li class="a8"></li>
+      <li class="a9"></li>
     </ul>
 
     <div class="but">
@@ -17,37 +26,40 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
-import type { TAnimeInstance } from "@/views/Animejs/types";
+import { animate, JSAnimation } from "animejs";
 
-const animeRow: TAnimeInstance = {
-  blue: null,
-  blueRed: null,
-  even: null,
-  notRed: null,
-};
+let blue: JSAnimation;
+let blueRed: JSAnimation;
+let even: JSAnimation;
+let notRed: JSAnimation;
 
 const init = () => {
-  animeRow.blue = anime({
-    targets: ".box1 li:nth-child(3n + 1)",
+  console.log(document.querySelector(".box1 li.a1"));
+
+  blue = animate(".box1 li.a1", {
+    // targets:
+    translateY: 400,
+    autoplay: false,
+  });
+  // console.log(1);
+
+  blueRed = animate(
+    [".box1 li.a1", ".box1 li.a2", ".box1 li.a4", ".box1 li.a5", ".box1 li.a7", ".box1 li.a8"],
+    {
+      // targets:
+      translateY: 400,
+      autoplay: false,
+    },
+  );
+
+  even = animate(".box1 li:nth-child(even)", {
+    // targets:
     translateY: 400,
     autoplay: false,
   });
 
-  animeRow.blueRed = anime({
-    targets: [".box1 li:nth-child(3n + 1)", ".box1 li:nth-child(3n + 2)"],
-    translateY: 400,
-    autoplay: false,
-  });
-
-  animeRow.even = anime({
-    targets: ".box1 li:nth-child(even)",
-    translateY: 400,
-    autoplay: false,
-  });
-
-  animeRow.notRed = anime({
-    targets: ".box1 li:not(.box1 li:nth-child(3n + 2))",
+  notRed = animate(".box1 li:not(.box1 li:nth-child(3n + 2))", {
+    // targets:
     translateY: 400,
     autoplay: false,
   });
@@ -55,27 +67,29 @@ const init = () => {
 
 // 蓝色下落
 const onBlue = () => {
-  animeRow.blue?.restart();
+  // console.log(animeRow.blue?.restart());
+
+  blue?.restart();
 };
 
 // 蓝色红色下落
 const onBlueRed = () => {
-  animeRow.blueRed?.restart();
+  blueRed?.restart();
 };
 
 // 偶数行下落
 const onEven = () => {
-  animeRow.even?.restart();
+  even?.restart();
 };
 
 // 非红色
 const onNotRed = () => {
-  animeRow.notRed?.restart();
+  notRed?.restart();
 };
 
 // 重置
 const onReset = () => {
-  Object.values(animeRow).forEach(item => item?.seek(0));
+  Object.values([blue, blueRed, even, notRed]).forEach(item => item.seek(0));
 };
 
 onMounted(() => {
@@ -83,10 +97,10 @@ onMounted(() => {
 });
 </script>
 
-<style scoped src="@/views/Animejs/style.css"></style>
+<style scoped src="@/views/NpmUtils/Animejs/style.css"></style>
 <style scoped>
 .box1 {
-  /* border: 1px solid red; */
+  border: 1px solid red;
   width: 100%;
   height: 100%;
   position: relative;
@@ -120,6 +134,10 @@ onMounted(() => {
   li:nth-child(3n + 3) {
     background: black;
   }
+}
+
+.box1 .a1 {
+  border: 1px solid red;
 }
 
 .box1 .but {

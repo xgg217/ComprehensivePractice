@@ -14,7 +14,8 @@
 </template>
 
 <script setup lang="ts">
-import { getRandomIntInclusive, getRandomColor } from "@/utils/index";
+import { randomInt } from "es-toolkit";
+import { getRandomColor } from "@/utils/index";
 import { Tween, Easing, Group } from "@tweenjs/tween.js";
 
 type IItem = {
@@ -35,8 +36,8 @@ const { init } = (() => {
   const initArr = () => {
     let index = 0;
     for (let i = 0; i < MAX; i++) {
-      const startValue = getRandomIntInclusive(0, 100);
-      const endValue = getRandomIntInclusive(200, 400);
+      const startValue = randomInt(0, 100);
+      const endValue = randomInt(200, 400);
       const obj: IItem = {
         index,
         bgc: getRandomColor(),

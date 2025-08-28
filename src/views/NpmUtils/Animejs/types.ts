@@ -1,5 +1,5 @@
-import anime from "animejs";
+import { JSAnimation } from "animejs";
 
 export type TAnimeInstance = {
-  [key: string]: anime.AnimeInstance | null;
+  [key: string]: JSAnimation | null;
 };

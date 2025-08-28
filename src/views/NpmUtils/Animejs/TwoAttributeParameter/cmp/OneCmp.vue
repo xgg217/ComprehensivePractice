@@ -15,9 +15,7 @@
       <el-button type="primary" @click="onTwo">运动时间600</el-button>
       <el-button type="primary" @click="onThree">延迟800</el-button>
       <el-button type="primary" @click="onFour">easing：linear</el-button>
-      <el-button type="primary" @click="onFive"
-        >运动时间1200 + easing:easeInOutCubic</el-button
-      >
+      <el-button type="primary" @click="onFive">运动时间1200 + easing:easeInOutCubic</el-button>
       <el-button type="primary" @click="onReset">重置</el-button>
     </div>
   </div>
@@ -25,7 +23,7 @@
 
 <script setup lang="ts">
 import anime from "animejs";
-import type { TAnimeInstance } from "@/views/Animejs/types";
+import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
 const animeRow: TAnimeInstance = {
   one: null,
@@ -115,7 +113,7 @@ onMounted(() => {
 });
 </script>
 
-<style scoped src="@/views/Animejs/style.css"></style>
+<style scoped src="@/views/NpmUtils/Animejs/style.css"></style>
 <style scoped>
 .box1 {
   position: relative;

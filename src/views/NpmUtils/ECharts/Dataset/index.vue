@@ -12,4 +12,4 @@ import Test2Cmp from "./components/Test2Cmp.vue";
 import Test3Cmp from "./components/Test3Cmp.vue";
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

@@ -22,4 +22,4 @@ import Legend2Cmp from "./components/Legend2Cmp.vue";
 // import GridCmp from "./components/GridCmp.vue";
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

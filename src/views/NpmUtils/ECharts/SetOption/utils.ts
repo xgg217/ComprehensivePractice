@@ -1,11 +1,14 @@
-import { random, sampleSize } from "es-toolkit";
+import { randomInt, sampleSize } from "es-toolkit";
 import { nameArr } from "./consts";
+// import { randomInt } from "crypto";
 
 // 百家姓
 export const { setNameStr } = (() => {
   // 随机生成数组
   const randomArr = () => {
-    const val = random(2, 6);
+    const val = randomInt(2, 6);
+    console.log(sampleSize(nameArr, val));
+
     return sampleSize(nameArr, val).join("");
   };
 
@@ -13,7 +16,7 @@ export const { setNameStr } = (() => {
   const setVal = (arr: string[]) => {
     return arr.map(item => {
       return {
-        value: random(100, 10000),
+        value: randomInt(100, 10000),
         name: item,
       };
     });

@@ -10,4 +10,4 @@
 import InsideCmp from "./components/InsideCmp.vue";
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

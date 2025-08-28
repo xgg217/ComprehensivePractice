@@ -1,35 +1,43 @@
 <template>
   <div class="box">
     <!-- <div class="centen">圆</div> -->
-    <BoxListCmp :arr="myComponentsList"></BoxListCmp>
+    <!-- <BoxListCmp :arr="myComponentsList"></BoxListCmp> -->
     <!-- <div class="border">运动圆</div> -->
+    <RectangleCmp></RectangleCmp>
+    <SphereCmp></SphereCmp>
+    <SphereCSSCmp></SphereCSSCmp>
   </div>
 </template>
 
 <script setup lang="ts">
+import RectangleCmp from "./cmp/RectangleCmp.vue";
+import SphereCmp from "./cmp/SphereCmp.vue";
+import SphereCSSCmp from "./cmp/SphereCSSCmp.vue";
 /**
  * 动态添加元素
  * 圆周运动
  * 鼠标点击跟随运动
  */
-import BoxListCmp from "@/views/NpmUtils/Animejs/cmp/BoxListCmp.vue";
+// import BoxListCmp from "@/views/NpmUtils/Animejs/cmp/BoxListCmp.vue";
 
-const myComponentsList = shallowRef<any[]>([]);
-const init = () => {
-  // 导入当前所有子组件
-  const modules = import.meta.glob("./cmp/*.vue", {
-    eager: true,
-  });
+// const myComponentsList = shallowRef<any[]>([]);
+// const init = () => {
+//   // 导入当前所有子组件
+//   const modules = import.meta.glob("./cmp/*.vue", {
+//     eager: true,
+//   });
 
-  myComponentsList.value = Object.values(modules).map(item => {
-    // @ts-ignore
-    return item.default;
-  });
-};
+//   myComponentsList.value = Object.values(modules).map(item => {
+//     // @ts-ignore
+//     return item.default;
+//   });
+// };
 
-onMounted(() => {
-  init();
-});
+// onMounted(() => {
+//   init();
+// });
+
+// NpmUtils/Animejs/index
 </script>
 
 <style scoped></style>

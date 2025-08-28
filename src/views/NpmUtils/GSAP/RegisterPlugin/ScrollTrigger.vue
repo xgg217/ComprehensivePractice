@@ -126,7 +126,7 @@ onMounted(() => {
 });
 </script>
 
-<style src="@/views/GSAP/style.css" scoped></style>
+<style src="@/views/NpmUtils/GSAP/style.css" scoped></style>
 <style scoped>
 .red,
 .green,

@@ -12,4 +12,4 @@ import XAxis2Cmp from "./components/XAxis2Cmp.vue";
 import PolarCmp from "./components/PolarCmp.vue";
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

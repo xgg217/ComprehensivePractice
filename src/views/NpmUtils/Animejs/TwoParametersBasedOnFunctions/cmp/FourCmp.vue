@@ -12,12 +12,8 @@
     <div class="but">
       <el-button type="primary" @click="onOne">延迟200</el-button>
       <el-button type="primary" @click="onTwo">从右到左延迟200</el-button>
-      <el-button type="primary" @click="onThree"
-        >第一个运动时间800ms，后续叠加</el-button
-      >
-      <el-button type="primary" @click="onFour"
-        >从右到左第一个运动时间800ms，后续叠加</el-button
-      >
+      <el-button type="primary" @click="onThree">第一个运动时间800ms，后续叠加</el-button>
+      <el-button type="primary" @click="onFour">从右到左第一个运动时间800ms，后续叠加</el-button>
       <el-button type="primary" @click="onReset">重置</el-button>
     </div>
   </div>
@@ -25,7 +21,7 @@
 
 <script setup lang="ts">
 import anime from "animejs";
-import type { TAnimeInstance } from "@/views/Animejs/types";
+import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
 const animeRow: TAnimeInstance = {
   one: null,
@@ -95,7 +91,7 @@ onMounted(() => {
 });
 </script>
 
-<style scoped src="@/views/Animejs/style.css"></style>
+<style scoped src="@/views/NpmUtils/Animejs/style.css"></style>
 <style scoped>
 .box4 {
   position: relative;

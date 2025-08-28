@@ -22,22 +22,22 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
-import type { TAnimeInstance } from "@/views/Animejs/types";
+import { animate } from "animejs";
+import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
 const animeRow: TAnimeInstance = {
   notBlack: null,
 };
 
 const init = () => {
-  animeRow.notBlack = anime({
-    targets: [
-      document.querySelectorAll(".box4 .blue"),
-      ".box4 .red, #box4special",
-    ],
-    translateY: 400,
-    autoplay: false,
-  });
+  animeRow.notBlack = animate(
+    [document.querySelectorAll(".box4 .blue"), ".box4 .red, #box4special"],
+    {
+      // targets:
+      translateY: 400,
+      autoplay: false,
+    },
+  );
 };
 
 // 非黑色下落下落
@@ -55,10 +55,10 @@ onMounted(() => {
 });
 </script>
 
-<style scoped src="@/views/Animejs/style.css"></style>
+<style scoped src="@/views/NpmUtils/Animejs/style.css"></style>
 <style scoped>
 .box4 {
-  /* border: 1px solid red; */
+  border: 1px solid red;
   width: 100%;
   height: 100%;
   position: relative;

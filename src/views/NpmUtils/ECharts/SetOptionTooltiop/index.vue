@@ -8,4 +8,4 @@
 import Cmp from "./components/cmp.vue";
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

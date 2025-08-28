@@ -39,9 +39,7 @@ onMounted(() => {
   }
 
   // 基于准备好的dom，初始化echarts实例
-  const myChart = echarts.init(
-    document.querySelector(".title")! as HTMLElement,
-  );
+  const myChart = echarts.init(document.querySelector(".title")! as HTMLElement);
 
   myChart.setOption({
     legend: {},
@@ -84,7 +82,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .title {
   width: 100%;
   height: 500px;

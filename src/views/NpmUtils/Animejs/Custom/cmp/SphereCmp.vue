@@ -13,11 +13,14 @@
 
 <script setup lang="ts">
 // import anime from "animejs";
+import { createTimeline, Timeline } from "animejs";
 import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
-const animeRow: TAnimeInstance = {
-  sphere: null,
-};
+// const animeRow: TAnimeInstance = {
+//   sphere: null,
+// };
+
+let timeline: Timeline;
 
 // 中心点
 const centerX = ref(0);
@@ -44,7 +47,7 @@ const init = () => {
   const rect = sphereDom.getBoundingClientRect();
   const elementLeft = rect.left - box2.offsetLeft;
   const elementTop = rect.top;
-  console.log(elementLeft, elementTop);
+  // console.log(elementLeft, elementTop);
 
   // box1.addEventListener("click", (e: MouseEvent) => {
   //   const { clientX, clientY } = e;
@@ -87,20 +90,20 @@ const init = () => {
 
 // 开始
 const onStart = () => {
-  animeRow.sphere?.restart();
+  // animeRow.sphere?.restart();
 };
 
 // 重置
 const onReset = () => {
-  Object.values(animeRow).forEach(item => item?.seek(0));
+  // Object.values(animeRow).forEach(item => item?.seek(0));
 };
 
-onMounted(() => {
-  init();
-});
+// onMounted(() => {
+//   init();
+// });
 </script>
 
-<style scoped src="@/views/Animejs/style.css"></style>
+<style scoped src="@/views/NpmUtils/Animejs/style.css"></style>
 <style scoped>
 .box2 {
   /* border: 1px solid red; */

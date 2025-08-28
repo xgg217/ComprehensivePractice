@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
+import { animate, JSAnimation } from "animejs";
 
 const endObj = reactive({
   filesScanned: 0,
@@ -26,11 +26,11 @@ const endObj = reactive({
 });
 
 const startObj = { filesScanned: 0, infectedFiles: 0 };
-const animeRow = ref<anime.AnimeInstance | null>(null);
+const animeRow = ref<JSAnimation | null>(null);
 
 const init = () => {
-  animeRow.value = anime({
-    targets: startObj,
+  animeRow.value = animate(startObj, {
+    // targets:
     filesScanned: 1000,
     infectedFiles: 8,
     autoplay: false,
@@ -58,10 +58,10 @@ onMounted(() => {
 });
 </script>
 
-<style scoped src="@/views/Animejs/style.css"></style>
+<style scoped src="@/views/NpmUtils/Animejs/style.css"></style>
 <style scoped>
 .box3 {
-  /* border: 1px solid red; */
+  border: 1px solid red;
   width: 100%;
   height: 100%;
   position: relative;

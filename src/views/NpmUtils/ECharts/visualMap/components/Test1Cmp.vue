@@ -98,7 +98,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .title1 {
   width: 100%;
   height: 800px;

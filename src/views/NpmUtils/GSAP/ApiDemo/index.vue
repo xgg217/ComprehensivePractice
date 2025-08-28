@@ -41,7 +41,7 @@ import StaggerObjectCmp from "./components/StaggerObjectCmp.vue";
 import Function1Cmp from "./components/Function1Cmp.vue";
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 ul {
   display: flex;
 }

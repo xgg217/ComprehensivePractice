@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import anime from "animejs";
-import type { TAnimeInstance } from "@/views/Animejs/types";
+import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
 const easeInValues = [
   "easeInQuad",
@@ -95,7 +95,7 @@ onMounted(() => {
 });
 </script>
 
-<style scoped src="@/views/Animejs/style.css"></style>
+<style scoped src="@/views/NpmUtils/Animejs/style.css"></style>
 <style scoped>
 .box2 {
   position: relative;

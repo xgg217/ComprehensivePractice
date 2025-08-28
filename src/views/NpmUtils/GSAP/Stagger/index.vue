@@ -47,7 +47,7 @@ import Stagger5Cmp from "./components/Stagger5Cmp.vue";
 import Stagger6Cmp from "./components/Stagger6Cmp.vue";
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 ul {
   display: flex;
   flex-wrap: wrap;

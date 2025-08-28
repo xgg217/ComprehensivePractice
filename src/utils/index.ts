@@ -23,8 +23,8 @@ export const getRandomColor = () => {
 };
 
 // 得到一个两数之间的随机整数，包括两个数在内
-export function getRandomIntInclusive(min: number, max: number) {
-  const minVal = Math.ceil(min);
-  const maxVal = Math.floor(max);
-  return Math.floor(Math.random() * (maxVal - minVal + 1)) + minVal; //含最大值，含最小值
-}
+// export function getRandomIntInclusive(min: number, max: number) {
+//   const minVal = Math.ceil(min);
+//   const maxVal = Math.floor(max);
+//   return Math.floor(Math.random() * (maxVal - minVal + 1)) + minVal; //含最大值，含最小值
+// }

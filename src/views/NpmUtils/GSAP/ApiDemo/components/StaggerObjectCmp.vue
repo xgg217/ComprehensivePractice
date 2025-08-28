@@ -17,20 +17,17 @@
 import { gsap } from "gsap";
 
 onMounted(() => {
-  gsap.to(
-    [".card-content2 .red", ".card-content2 .green", ".card-content2 .blue"],
-    {
-      x: 400, // any properties (not limited to CSS)
-      duration: 1, // seconds
-      stagger: {
-        each: 0.1, // 类似于 stagger: 0.1
-        repeat: -1, // 同时针对整体
-        yoyo: true, // 同时针对整体
-      },
+  gsap.to([".card-content2 .red", ".card-content2 .green", ".card-content2 .blue"], {
+    x: 400, // any properties (not limited to CSS)
+    duration: 1, // seconds
+    stagger: {
+      each: 0.1, // 类似于 stagger: 0.1
+      repeat: -1, // 同时针对整体
+      yoyo: true, // 同时针对整体
     },
-  );
+  });
 });
 </script>
 
-<style src="@/views/GSAP/style.css" scoped></style>
+<style src="@/views/NpmUtils/GSAP/style.css" scoped></style>
 <style scoped></style>

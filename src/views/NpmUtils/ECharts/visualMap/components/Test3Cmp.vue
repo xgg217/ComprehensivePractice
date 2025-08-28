@@ -67,14 +67,7 @@ onMounted(() => {
           严重污染: false,
           重度污染: false,
         },
-        categories: [
-          "严重污染",
-          "重度污染",
-          "中度污染",
-          "轻度污染",
-          "良",
-          "优",
-        ],
+        categories: ["严重污染", "重度污染", "中度污染", "轻度污染", "良", "优"],
         inRange: {
           symbolSize: 30,
           symbol: {
@@ -128,7 +121,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .title3 {
   width: 100%;
   height: 800px;

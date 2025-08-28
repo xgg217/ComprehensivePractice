@@ -23,8 +23,8 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
-import type { TAnimeInstance } from "@/views/Animejs/types";
+import { animate } from "animejs";
+import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
 const animeRow: TAnimeInstance = {
   orange: null,
@@ -35,14 +35,14 @@ const animeRow: TAnimeInstance = {
 };
 
 const init = () => {
-  animeRow.orange = anime({
-    targets: document.querySelectorAll(".box2 li.orange"),
+  animeRow.orange = animate(document.querySelectorAll(".box2 li.orange"), {
+    // targets:
     translateY: 400,
     autoplay: false,
   });
 
-  animeRow.first = anime({
-    targets: document.querySelectorAll(".box2 li")[0],
+  animeRow.first = animate(document.querySelectorAll(".box2 li")[0], {
+    // targets:
     translateY: 400,
     autoplay: false,
   });
@@ -68,10 +68,10 @@ onMounted(() => {
 });
 </script>
 
-<style scoped src="@/views/Animejs/style.css"></style>
+<style scoped src="@/views/NpmUtils/Animejs/style.css"></style>
 <style scoped>
 .box2 {
-  /* border: 1px solid red; */
+  border: 1px solid red;
   width: 100%;
   height: 100%;
   position: relative;

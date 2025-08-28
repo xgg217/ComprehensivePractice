@@ -17,12 +17,13 @@
 
 <script setup lang="ts">
 // import anime from "animejs";
-import { createTimeline } from "animejs";
-import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
+import { createTimeline, Timeline } from "animejs";
 
-const animeRow: TAnimeInstance = {
-  start: null,
-};
+let timeline: Timeline;
+
+// const animeRow: TAnimeInstance = {
+//   start: null,
+// };
 
 const row = reactive({
   x: 0,
@@ -31,39 +32,40 @@ const row = reactive({
 });
 
 const init = () => {
-  animeRow.start = createTimeline({
-    targets: row,
+  timeline = createTimeline({
+    // targets: row,
     autoplay: false,
-    easing: "linear",
-    delay: 0,
-    duration: 1000,
-    round: 1,
-    // direction: "alternate",
-    loop: true,
-    // update: function () {
-    //   console.log(row);
-
-    //   x.value = row.x;
-    //   y.value = row.y;
-    // },
+    defaults: {
+      ease: "inOutExpo",
+      //   delay: 0,
+      //   duration: 1000,
+      //   // round: 1,
+      //   // direction: "alternate",
+      // loop: true,
+      // },
+      // update: function () {
+      //   console.log(row);
+      //   x.value = row.x;
+      //   y.value = row.y;
+    },
   })
-    .add({
+    .add(row, {
       x: 0,
       y: 0,
     })
-    .add({
+    .add(row, {
       x: 100,
       y: 0,
     })
-    .add({
+    .add(row, {
       x: 100,
       y: 100,
     })
-    .add({
+    .add(row, {
       x: 0,
       y: 100,
     })
-    .add({
+    .add(row, {
       x: 0,
       y: 0,
     });
@@ -78,12 +80,14 @@ const init = () => {
 
 // 开始
 const onStart = () => {
-  animeRow.start?.restart();
+  timeline?.restart();
 };
 
 // 重置
 const onReset = () => {
-  Object.values(animeRow).forEach(item => item?.seek(0));
+  // Object.values(timeline).forEach(item => item?.seek(0));
+  timeline.seek(0);
+  // console.log();
 };
 
 onMounted(() => {
@@ -91,7 +95,7 @@ onMounted(() => {
 });
 </script>
 
-<style scoped src="@/views/Animejs/style.css"></style>
+<style scoped src="@/views/NpmUtils/Animejs/style.css"></style>
 <style scoped>
 .box3 {
   position: relative;

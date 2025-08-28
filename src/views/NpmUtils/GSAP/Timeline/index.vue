@@ -29,7 +29,7 @@ import PositionParameter1Cmp from "./components/PositionParameter1Cmp.vue";
 import PositionParameter2Cmp from "./components/PositionParameter2Cmp.vue";
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 ul {
   display: flex;
 }
