@@ -1,30 +1,54 @@
 <template>
   <ul class="moving">
-    <li v-for="item in myComponentsList" :key="item">
+    <!-- <li v-for="item in myComponentsList" :key="item">
       <component :is="item" />
+    </li> -->
+    <li>
+      <ThursdayCmp></ThursdayCmp>
+    </li>
+    <li>
+      <SunnyMorningsCmp></SunnyMorningsCmp>
+    </li>
+    <li>
+      <SignalNoiseCmp></SignalNoiseCmp>
+    </li>
+    <li>
+      <ReadySetGOCmp></ReadySetGOCmp>
+    </li>
+    <li>
+      <GreatThinkersCmp></GreatThinkersCmp>
+    </li>
+    <li>
+      <BeautifulQuestionsCmp></BeautifulQuestionsCmp>
     </li>
   </ul>
 </template>
 
 <script setup lang="ts">
-const myComponentsList = shallowRef<any[]>([]);
+import ThursdayCmp from "./cmp/ThursdayCmp.vue";
+import SunnyMorningsCmp from "./cmp/SunnyMorningsCmp.vue";
+import SignalNoiseCmp from "./cmp/SignalNoiseCmp.vue";
+import ReadySetGOCmp from "./cmp/ReadySetGOCmp.vue";
+import GreatThinkersCmp from "./cmp/GreatThinkersCmp.vue";
+import BeautifulQuestionsCmp from "./cmp/BeautifulQuestionsCmp.vue";
+// const myComponentsList = shallowRef<any[]>([]);
 
-const init = () => {
-  // 导入当前所有子组件
-  const modules = import.meta.glob("@/views/Animejs/MovingLetters/cmp/*.vue", {
-    eager: true,
-  });
-  // console.log(modules);
+// const init = () => {
+//   // 导入当前所有子组件
+//   const modules = import.meta.glob("@/views/Animejs/MovingLetters/cmp/*.vue", {
+//     eager: true,
+//   });
+//   // console.log(modules);
 
-  myComponentsList.value = Object.values(modules).map(item => {
-    // @ts-ignore
-    return item.default;
-  });
-};
+//   myComponentsList.value = Object.values(modules).map(item => {
+//     // @ts-ignore
+//     return item.default;
+//   });
+// };
 
-onMounted(() => {
-  init();
-});
+// onMounted(() => {
+//   init();
+// });
 </script>
 
 <style scoped>

@@ -10,7 +10,7 @@ onMounted(() => {
   // getRouter();
 
   // console.log(getRoutes([], ["/", "/404"]));
-  routeList.value = getAllRoutes(["/", "/404"]);
+  routeList.value = getAllRoutes();
 });
 </script>
 

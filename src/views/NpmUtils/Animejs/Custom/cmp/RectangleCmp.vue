@@ -16,8 +16,9 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
-import type { TAnimeInstance } from "@/views/Animejs/types";
+// import anime from "animejs";
+import { createTimeline } from "animejs";
+import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
 const animeRow: TAnimeInstance = {
   start: null,
@@ -30,23 +31,22 @@ const row = reactive({
 });
 
 const init = () => {
-  animeRow.start = anime
-    .timeline({
-      targets: row,
-      autoplay: false,
-      easing: "linear",
-      delay: 0,
-      duration: 1000,
-      round: 1,
-      // direction: "alternate",
-      loop: true,
-      // update: function () {
-      //   console.log(row);
+  animeRow.start = createTimeline({
+    targets: row,
+    autoplay: false,
+    easing: "linear",
+    delay: 0,
+    duration: 1000,
+    round: 1,
+    // direction: "alternate",
+    loop: true,
+    // update: function () {
+    //   console.log(row);
 
-      //   x.value = row.x;
-      //   y.value = row.y;
-      // },
-    })
+    //   x.value = row.x;
+    //   y.value = row.y;
+    // },
+  })
     .add({
       x: 0,
       y: 0,

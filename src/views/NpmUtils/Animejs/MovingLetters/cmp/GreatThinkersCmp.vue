@@ -9,13 +9,12 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
+import { createTimeline } from "animejs";
 
 const init = () => {
-  anime
-    .timeline({ loop: true })
-    .add({
-      targets: ".ml3 .letter",
+  createTimeline({ loop: true })
+    .add(".ml3 .letter", {
+      // targets:
       // scale: [0, 1],
       opacity: [0, 1],
       // translateZ: 0,
@@ -23,8 +22,8 @@ const init = () => {
       duration: 2250,
       delay: (el, i) => 150 * (i + 1),
     })
-    .add({
-      targets: ".ml3",
+    .add(".ml3", {
+      // targets:
       opacity: 0,
       duration: 1000,
       easing: "easeOutExpo",

@@ -16,13 +16,12 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
+import { createTimeline } from "animejs";
 
 const init = () => {
-  anime
-    .timeline({ loop: true })
-    .add({
-      targets: ".ml1 .letter",
+  createTimeline({ loop: true })
+    .add(".ml1 .letter", {
+      // targets: ,
       scale: [0.3, 1],
       opacity: [0, 1],
       translateZ: 0,
@@ -30,8 +29,8 @@ const init = () => {
       duration: 600,
       delay: (el, i) => 70 * (i + 1),
     })
-    .add({
-      targets: ".ml1 .line",
+    .add(".ml1 .line", {
+      // targets: ,
       scaleX: [0, 1],
       opacity: [0.5, 1],
       easing: "easeOutExpo",
@@ -39,8 +38,8 @@ const init = () => {
       offset: "-=875",
       delay: (el, i, l) => 80 * (l - i),
     })
-    .add({
-      targets: ".ml1",
+    .add(".ml1", {
+      // targets: ,
       opacity: 0,
       duration: 1000,
       easing: "easeOutExpo",

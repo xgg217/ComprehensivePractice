@@ -11,21 +11,20 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
+import { createTimeline } from "animejs";
 
 const init = () => {
-  anime
-    .timeline({ loop: true })
-    .add({
-      targets: ".ml5 .line",
+  createTimeline({ loop: true })
+    .add(".ml5 .line", {
+      // targets:
       opacity: 1,
       width: [0, 500],
       translateX: "-50%",
       easing: "easeInOutExpo",
       duration: 700,
     })
-    .add({
-      targets: ".ml5 .line",
+    .add(".ml5 .line", {
+      // targets:
       easing: "easeOutExpo",
       duration: 500,
       // @ts-ignore
@@ -33,16 +32,16 @@ const init = () => {
         return i === 0 ? -40 : 40;
       },
     })
-    .add({
-      targets: ".ml5 .ampersand",
+    .add(".ml5 .ampersand", {
+      // targets:
       easing: "easeOutExpo",
       opacity: [0, 1],
       // scaleY: [0.5, 1],
       duration: 600,
       // offset: "-=600",
     })
-    .add({
-      targets: ".ml5 .letters-text",
+    .add(".ml5 .letters-text", {
+      // targets:
       easing: "easeOutExpo",
       opacity: [0, 1],
       // left: [0, -150],
@@ -50,8 +49,8 @@ const init = () => {
       // @ts-ignore
       left: (el, i) => (i === 0 ? 150 : -150),
     })
-    .add({
-      targets: ".ml4",
+    .add(".ml4", {
+      // targets:
       opacity: 0,
       duration: 500,
       delay: 500,

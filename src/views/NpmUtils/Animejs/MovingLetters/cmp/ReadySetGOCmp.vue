@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
+import { createTimeline } from "animejs";
 
 const ml4 = {
   opacityIn: [0, 1],
@@ -21,52 +21,51 @@ const ml4 = {
 };
 
 const init = () => {
-  anime
-    .timeline({ loop: true })
-    .add({
-      targets: ".ml4 .letters-1",
+  createTimeline({ loop: true })
+    .add(".ml4 .letters-1", {
+      // targets:
       opacity: ml4.opacityIn,
       scale: ml4.scaleIn,
       duration: ml4.durationOut, //
     })
-    .add({
-      targets: ".ml4 .letters-1",
+    .add(".ml4 .letters-1", {
+      // targets:
       opacity: 0,
       scale: ml4.scaleOut,
       duration: ml4.durationOut,
       easing: "easeInExpo",
       delay: ml4.delay,
     })
-    .add({
-      targets: ".ml4 .letters-2",
+    .add(".ml4 .letters-2", {
+      // targets:
       opacity: ml4.opacityIn,
       scale: ml4.scaleIn,
       duration: ml4.durationOut, //
     })
-    .add({
-      targets: ".ml4 .letters-2",
+    .add(".ml4 .letters-2", {
+      // targets:
       opacity: 0,
       scale: ml4.scaleOut,
       duration: ml4.durationOut,
       easing: "easeInExpo",
       delay: ml4.delay,
     })
-    .add({
-      targets: ".ml4 .letters-3",
+    .add(".ml4 .letters-3", {
+      // targets:
       opacity: ml4.opacityIn,
       scale: ml4.scaleIn,
       duration: ml4.durationOut, //
     })
-    .add({
-      targets: ".ml4 .letters-3",
+    .add(".ml4 .letters-3", {
+      // targets:
       opacity: 0,
       scale: ml4.scaleOut,
       duration: ml4.durationOut,
       easing: "easeInExpo",
       delay: ml4.delay,
     })
-    .add({
-      targets: ".ml4",
+    .add(".ml4", {
+      // targets:
       opacity: 0,
       duration: 500,
       delay: 500,

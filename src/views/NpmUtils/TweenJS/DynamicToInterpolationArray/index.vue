@@ -24,9 +24,9 @@
 </template>
 
 <script setup lang="ts">
-import CardCmp from "@/views/TweenJS/DynamicToObject/components/CardCmp.vue";
+import CardCmp from "@/views/NpmUtils/TweenJS/DynamicToObject/components/CardCmp.vue";
 import { cloneDeep } from "es-toolkit";
-import type { TBox } from "@/views/TweenJS/DynamicToObject/types";
+import type { TBox } from "@/views/NpmUtils/TweenJS/DynamicToObject/types";
 import { Tween, Easing, Group, Interpolation } from "@tweenjs/tween.js";
 
 const tempArr: TBox[] = [

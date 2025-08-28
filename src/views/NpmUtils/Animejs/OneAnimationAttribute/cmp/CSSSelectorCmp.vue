@@ -14,8 +14,8 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
-import type { TAnimeInstance } from "@/views/Animejs/types";
+import { animate } from "animejs";
+import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
 const animeRow: TAnimeInstance = {
   left: null,
@@ -31,23 +31,23 @@ const row = {
 };
 
 const init = () => {
-  animeRow.left = anime({
-    targets: ".box1 .square",
+  animeRow.left = animate(".box1 .square", {
+    // targets:
     translateX: row.translateX,
     autoplay: false,
   });
-  animeRow.bgcOrange = anime({
-    targets: ".box1 .square",
+  animeRow.bgcOrange = animate(".box1 .square", {
+    // targets:
     backgroundColor: row.backgroundColor,
     autoplay: false,
   });
-  animeRow.radius = anime({
-    targets: ".box1 .square",
+  animeRow.radius = animate(".box1 .square", {
+    // targets:
     borderRadius: row.borderRadius,
     autoplay: false,
   });
-  animeRow.all = anime({
-    targets: ".box1 .square",
+  animeRow.all = animate(".box1 .square", {
+    // targets:
     ...row,
     autoplay: false,
   });
