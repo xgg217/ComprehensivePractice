@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
+import { animate } from "animejs";
 import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
 const animeRow: TAnimeInstance = {
@@ -24,8 +24,8 @@ const animeRow: TAnimeInstance = {
 const val = ref(0);
 
 const init = () => {
-  animeRow.all = anime({
-    targets: ".box3 progress",
+  animeRow.all = animate(".box3 progress", {
+    // targets:
     value: 100,
     easing: "linear",
     autoplay: false,
@@ -46,4 +46,8 @@ onMounted(() => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.box3 {
+  border: 1px solid #000;
+}
+</style>

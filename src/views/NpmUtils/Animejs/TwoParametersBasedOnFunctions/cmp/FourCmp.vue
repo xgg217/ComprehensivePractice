@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
+import { animate, stagger } from "animejs";
 import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
 const animeRow: TAnimeInstance = {
@@ -32,32 +32,32 @@ const animeRow: TAnimeInstance = {
 };
 
 const init = () => {
-  animeRow.one = anime({
-    targets: ".box4 ul li",
+  animeRow.one = animate(".box4 ul li", {
+    // targets: ".box4 ul li",
     translateY: 250,
     autoplay: false,
-    delay: anime.stagger(200),
+    delay: stagger(200),
   });
 
-  animeRow.two = anime({
-    targets: ".box4 ul li",
+  animeRow.two = animate(".box4 ul li", {
+    // targets: ".box4 ul li",
     translateY: 250,
     autoplay: false,
-    delay: anime.stagger(200, { direction: "reverse" }),
+    delay: stagger(200, { direction: "reverse" }),
   });
 
-  animeRow.three = anime({
-    targets: ".box4 ul li",
+  animeRow.three = animate(".box4 ul li", {
+    // targets:
     translateY: 250,
     autoplay: false,
-    duration: anime.stagger(1000, { start: 800 }),
+    duration: stagger(1000, { start: 800 }),
   });
 
-  animeRow.four = anime({
-    targets: ".box4 ul li",
+  animeRow.four = animate(".box4 ul li", {
+    // targets:
     translateY: 250,
     autoplay: false,
-    duration: anime.stagger(1000, { start: 800, direction: "reverse" }),
+    duration: stagger(1000, { start: 800, direction: "reverse" }),
   });
 };
 
@@ -101,6 +101,7 @@ onMounted(() => {
   height: 100%;
   padding: 50px 0 0 50px;
   box-sizing: border-box;
+  border: 1px solid #000;
 
   ul {
     position: absolute;

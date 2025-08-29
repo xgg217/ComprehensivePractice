@@ -10,18 +10,11 @@ const { whitePathlist = [], path } = defineProps<{
   path: string;
 }>();
 
-const route = useRoute();
-// console.log(route);
-
 // 要显示的路由
 const routeList = shallowRef<ICardItem[]>([]);
 
 onMounted(() => {
-  console.log(123);
   routeList.value = getRoutes(path, whitePathlist);
-  // getRouter();
-  // console.log(getRoutes([], ["/", "/404"]));
-  // routeList.value = getAllRoutes(["/", "/404"]);
 });
 </script>
 

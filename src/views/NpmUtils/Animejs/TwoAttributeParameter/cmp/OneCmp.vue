@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
+import { animate } from "animejs";
 import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
 const animeRow: TAnimeInstance = {
@@ -41,36 +41,36 @@ const row = {
 };
 
 const init = () => {
-  animeRow.one = anime({
-    targets: ".box1 ul li",
+  animeRow.one = animate(".box1 ul li", {
+    // targets:
     ...row,
     duration: 4000,
     autoplay: false,
   });
 
-  animeRow.two = anime({
-    targets: ".box1 ul li",
+  animeRow.two = animate(".box1 ul li", {
+    // targets:
     ...row,
     duration: 600,
     autoplay: false,
   });
 
-  animeRow.three = anime({
-    targets: ".box1 ul li",
+  animeRow.three = animate(".box1 ul li", {
+    // targets:
     ...row,
     delay: 800,
     autoplay: false,
   });
 
-  animeRow.four = anime({
-    targets: ".box1 ul li",
+  animeRow.four = animate(".box1 ul li", {
+    // targets:
     ...row,
     easing: "linear",
     autoplay: false,
   });
 
-  animeRow.five = anime({
-    targets: ".box1 ul li",
+  animeRow.five = animate(".box1 ul li", {
+    // targets:
     ...row,
     duration: 1200,
     easing: "easeInOutCubic",
@@ -123,6 +123,7 @@ onMounted(() => {
   height: 100%;
   padding: 50px 0 0 50px;
   box-sizing: border-box;
+  border: 1px solid #000;
 
   ul {
     position: absolute;

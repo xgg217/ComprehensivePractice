@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
+import { animate } from "animejs";
 import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
 const animeRow: TAnimeInstance = {
@@ -26,8 +26,8 @@ const animeRow: TAnimeInstance = {
 };
 
 const init = () => {
-  animeRow.start = anime({
-    targets: ".box2 ul li",
+  animeRow.start = animate(".box2 ul li", {
+    // targets:
     translateY: {
       value: 250,
     },
@@ -69,6 +69,7 @@ onMounted(() => {
   height: 100%;
   padding: 50px 0 0 50px;
   box-sizing: border-box;
+  border: 1px solid #000;
 
   ul {
     position: absolute;

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { CameraSetScissorTest } from "./utils";
-import RemarkCmp from "@/components/RemarkCmp/index.vue";
+// import RemarkCmp from "@/components/RemarkCmp/index.vue";
 
 const url = new URL("./Tips/README.md", import.meta.url).href;
 
@@ -25,7 +25,7 @@ onBeforeUnmount(() => {
       <div id="view1" tabindex="1"></div>
       <div id="view2" tabindex="2"></div>
     </div>
-    <RemarkCmp :url="url" />
+    <!-- <RemarkCmp :url="url" /> -->
   </div>
 </template>
 

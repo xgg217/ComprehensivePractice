@@ -5,6 +5,7 @@ import type { RouteRecordRaw } from "vue-router";
 // 获取全部路由
 export const getAllRoutes = () => {
   // const allRoutes = routerObj.getRoutes();
+  console.log(routerObj.options.routes);
 
   const arr = routerObj.options.routes.filter(item => {
     // 过滤掉白名单的路由
@@ -13,7 +14,17 @@ export const getAllRoutes = () => {
   });
 
   // 遍历需要处理的路由
-  return getItem(arr);
+  // return getItem(arr);
+  return arr.map(item => {
+    const { meta, name, path } = item;
+    const obj: ICardItem = {
+      title: meta!.title,
+      name: meta!.pathName as string,
+      remark: (meta?.remark || "") as string,
+      path,
+    };
+    return obj;
+  });
 };
 
 /**
@@ -23,7 +34,7 @@ export const getAllRoutes = () => {
  * @param whitePathlist 要过滤的白名单路径
  */
 export const getRoutes = (paths: string, whitePathlist: string[]) => {
-  // console.log(paths, whitePathlist, routerObj.options.routes);
+  console.log(paths, whitePathlist, routerObj.options.routes);
 
   // const allRoutes = routerObj.getRoutes();
 
@@ -37,10 +48,16 @@ export const getRoutes = (paths: string, whitePathlist: string[]) => {
     return [];
   }
 
-  const arr = row.children.filter(item => {
-    // 过滤掉白名单的路由
-    return !whitePathlist.includes(item.path);
-  });
+  console.log(row);
+
+  const arr = row.children
+    .filter(item => {
+      return item.path !== "";
+    })
+    .filter(item => {
+      // 过滤掉白名单的路由
+      return !whitePathlist.includes(item.path);
+    });
   // console.log(arr);
 
   return getItem(arr);

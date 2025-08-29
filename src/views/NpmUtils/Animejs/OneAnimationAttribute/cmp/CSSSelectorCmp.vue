@@ -85,6 +85,7 @@ onMounted(() => {
 
 <style scoped>
 .box1 {
+  border: 1px solid #000;
   position: relative;
   top: 0;
   left: 0;

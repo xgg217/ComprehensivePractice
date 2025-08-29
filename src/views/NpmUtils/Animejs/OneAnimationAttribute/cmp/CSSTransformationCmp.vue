@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
+import { animate } from "animejs";
 import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
 const animeRow: TAnimeInstance = {
@@ -32,26 +32,26 @@ const row = {
 };
 
 const init = () => {
-  animeRow.scale = anime({
-    targets: ".box2 .square",
+  animeRow.scale = animate(".box2 .square", {
+    // targets:
     scale: row.scale,
     autoplay: false,
   });
 
-  animeRow.translateX = anime({
-    targets: ".box2 .square",
+  animeRow.translateX = animate(".box2 .square", {
+    // targets:
     translateX: row.translateX,
     autoplay: false,
   });
 
-  animeRow.rotate = anime({
-    targets: ".box2 .square",
+  animeRow.rotate = animate(".box2 .square", {
+    // targets:
     rotate: row.rotate,
     autoplay: false,
   });
 
-  animeRow.all = anime({
-    targets: ".box2 .square",
+  animeRow.all = animate(".box2 .square", {
+    // targets: "
     ...row,
     autoplay: false,
   });
@@ -89,6 +89,7 @@ onMounted(() => {
 
 <style scoped>
 .box2 {
+  border: 1px solid #000;
   position: relative;
   top: 0;
   left: 0;

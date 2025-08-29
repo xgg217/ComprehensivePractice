@@ -18,13 +18,13 @@ const router = createRouter({
     vue3,
 
     // threejs
-    ...threejs,
+    threejs,
 
     // 第三方插件
-    ...npmUtils,
+    npmUtils,
 
     // 小项目
-    ...custom,
+    custom,
 
     {
       path: "/404",

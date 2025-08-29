@@ -33,9 +33,6 @@ const onPage = (name: ICardItem["name"]) => {
   }
 
   router.push({ name });
-
-  // console.error("当前路由不存在");
-  // router.push("/404");
 };
 </script>
 

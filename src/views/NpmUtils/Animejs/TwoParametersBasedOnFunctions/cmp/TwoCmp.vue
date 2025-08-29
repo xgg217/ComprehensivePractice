@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
+import { animate } from "animejs";
 import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
 const easeInValues = [
@@ -52,8 +52,8 @@ const animeRow: TAnimeInstance = {
 };
 
 const init = () => {
-  animeRow.one = anime({
-    targets: ".box2 ul li",
+  animeRow.one = animate(".box2 ul li", {
+    // targets: "
     translateY: 250,
     duration: 2000,
     //@ts-ignore
@@ -63,8 +63,8 @@ const init = () => {
     autoplay: false,
   });
 
-  animeRow.two = anime({
-    targets: ".box2 ul li",
+  animeRow.two = animate(".box2 ul li", {
+    // targets:
     translateY: 250,
     duration: 2000,
     //@ts-ignore
@@ -105,6 +105,7 @@ onMounted(() => {
   height: 100%;
   padding: 50px 0 0 50px;
   box-sizing: border-box;
+  border: 1px solid #000;
 
   ul {
     position: absolute;

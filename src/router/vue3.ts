@@ -8,7 +8,6 @@ const list: RouteRecordRaw = {
     title: "vue3综合练习",
     remark: "vue3综合练习",
   },
-  // redirect: "/animejs/index",
 };
 
 export default list;

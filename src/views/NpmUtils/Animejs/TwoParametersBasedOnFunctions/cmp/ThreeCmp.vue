@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
+import { animate } from "animejs";
 import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
 const animeRow: TAnimeInstance = {
@@ -30,13 +30,13 @@ const animeRow: TAnimeInstance = {
 };
 
 const init = () => {
-  animeRow.one = anime({
-    targets: ".box3 ul li",
+  animeRow.one = animate(".box3 ul li", {
+    // targets:
     translateY: 250,
     autoplay: false,
     loop: 4,
     easing: "easeInSine",
-    delay: function (target, index) {
+    delay: function (_, index) {
       return index * 200;
     },
   });
@@ -53,8 +53,8 @@ const init = () => {
   //   autoplay: false,
   // });
 
-  animeRow.three = anime({
-    targets: ".box3 ul li",
+  animeRow.three = animate(".box3 ul li", {
+    // targets:
     translateY: 250,
     delay: function (target, index) {
       return index * 200;
@@ -101,6 +101,7 @@ onMounted(() => {
   height: 100%;
   padding: 50px 0 0 50px;
   box-sizing: border-box;
+  border: 1px solid #000;
 
   ul {
     position: absolute;

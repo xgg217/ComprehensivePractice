@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
+import { animate } from "animejs";
 import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 // import type { Arrayable } from "element-plus";
 
@@ -36,8 +36,8 @@ const animeRow: TAnimeInstance = {
 const value1 = ref(0);
 
 const init = () => {
-  animeRow.one = anime({
-    targets: ".box5 ul li",
+  animeRow.one = animate(".box5 ul li", {
+    // targets:
     translateY: 250,
     borderRadius: "50%",
     duration: 4000,
@@ -78,10 +78,11 @@ onMounted(() => {
   position: relative;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   padding: 50px 0 0 50px;
   box-sizing: border-box;
+  border: 1px solid #000;
 
   ul {
     position: absolute;

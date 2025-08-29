@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
+import { createTimeline } from "animejs";
 import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
 const animeRow: TAnimeInstance = {
@@ -28,23 +28,23 @@ const animeRow: TAnimeInstance = {
 const init = () => {
   // 第一个按钮
   {
-    const basicTimeline = anime.timeline({
+    const basicTimeline = createTimeline({
       direction: "alternate",
       loop: 2,
       autoplay: false,
     });
 
     basicTimeline
-      .add({
-        targets: ".box4 ul li",
+      .add(".box4 ul li", {
+        // targets:
         translateY: 200,
       })
-      .add({
-        targets: ".box4 ul .red",
+      .add(".box4 ul .red", {
+        // targets:
         translateY: 100,
       })
-      .add({
-        targets: ".box4 ul .blue",
+      .add(".box4 ul .blue", {
+        // targets:
         translateY: 0,
       });
 
@@ -52,24 +52,24 @@ const init = () => {
   }
 
   {
-    const offsetTimeline = anime.timeline({
+    const offsetTimeline = createTimeline({
       direction: "alternate",
       loop: 2,
       autoplay: false,
     });
 
     offsetTimeline
-      .add({
-        targets: ".box4 ul li",
+      .add(".box4 ul li", {
+        // targets:
         translateY: 200,
       })
-      .add({
-        targets: ".box4 ul .red",
+      .add(".box4 ul .red", {
+        // targets:
         offset: "+=1000",
         translateY: 100,
       })
-      .add({
-        targets: ".box4 ul .blue",
+      .add(".box4 ul .blue", {
+        // targets:
         offset: "*=2",
         translateY: 0,
       });
@@ -116,10 +116,11 @@ onMounted(() => {
   position: relative;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   padding: 50px 0 0 50px;
   box-sizing: border-box;
+  border: 1px solid #000;
 
   ul {
     position: absolute;

@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
+import { animate } from "animejs";
 import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
 const animeRow: TAnimeInstance = {
@@ -53,34 +53,35 @@ const obj = {
     { value: 50, duration: 1000, delay: 1000 },
     { value: 25, duration: 500, delay: 1000 },
   ],
-} as const;
+};
 
 const init = () => {
-  animeRow.one = anime({
-    targets: ".box3 ul li",
+  animeRow.one = animate(".box3 ul li", {
+    // targets:
     translateY: obj.translateY,
     autoplay: false,
   });
 
-  animeRow.two = anime({
-    targets: ".box3 ul li",
+  animeRow.two = animate(".box3 ul li", {
+    // targets:
     scale: obj.scale,
     autoplay: false,
   });
 
-  animeRow.three = anime({
-    targets: ".box3 ul li",
+  animeRow.three = animate(".box3 ul li", {
+    // targets:
     rotate: obj.rotate,
     autoplay: false,
   });
 
-  animeRow.four = anime({
-    targets: ".box3 ul li",
+  animeRow.four = animate(".box3 ul li", {
+    // targets:
     borderRadius: obj.borderRadius,
     autoplay: false,
   });
-  animeRow.all = anime({
-    targets: ".box3 ul li",
+
+  animeRow.all = animate(".box3 ul li", {
+    // targets:
     translateY: obj.translateY,
     scale: obj.scale,
     rotate: obj.rotate,
@@ -130,10 +131,11 @@ onMounted(() => {
   position: relative;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   padding: 50px 0 0 50px;
   box-sizing: border-box;
+  border: 1px solid #000;
 
   ul {
     position: absolute;

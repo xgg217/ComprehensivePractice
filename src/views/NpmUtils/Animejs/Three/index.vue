@@ -1,28 +1,25 @@
 <template>
   <div class="box">
-    <BoxListCmp :arr="myComponentsList"></BoxListCmp>
+    <OneCmp></OneCmp>
+    <TwoCmp></TwoCmp>
+    <ThreeCmp></ThreeCmp>
+    <FourCmp></FourCmp>
+    <FiveCmp></FiveCmp>
   </div>
 </template>
 
 <script setup lang="ts">
-import BoxListCmp from "@/views/NpmUtils/Animejs/cmp/BoxListCmp.vue";
-
-const myComponentsList = shallowRef<any[]>([]);
-const init = () => {
-  // 导入当前所有子组件
-  const modules = import.meta.glob("./cmp/*.vue", {
-    eager: true,
-  });
-
-  myComponentsList.value = Object.values(modules).map(item => {
-    // @ts-ignore
-    return item.default;
-  });
-};
-
-onMounted(() => {
-  init();
-});
+import OneCmp from "./cmp/OneCmp.vue";
+import TwoCmp from "./cmp/TwoCmp.vue";
+import ThreeCmp from "./cmp/ThreeCmp.vue";
+import FourCmp from "./cmp/FourCmp.vue";
+import FiveCmp from "./cmp/FiveCmp.vue";
 </script>
 
-<style scoped></style>
+<style scoped>
+.box {
+  border: 1px solid #000;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+}
+</style>

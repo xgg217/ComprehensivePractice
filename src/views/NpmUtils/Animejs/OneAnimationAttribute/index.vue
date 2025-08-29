@@ -1,28 +1,19 @@
 <template>
   <div class="box">
-    <BoxListCmp :arr="myComponentsList"></BoxListCmp>
+    <!-- <BoxListCmp :arr="myComponentsList"></BoxListCmp> -->
+    <CSSSelectorCmp></CSSSelectorCmp>
+    <CSSTransformationCmp></CSSTransformationCmp>
+    <DOMAttributeCmp></DOMAttributeCmp>
+    <DynamicElementSelectionCmp></DynamicElementSelectionCmp>
   </div>
 </template>
 
 <script setup lang="ts">
-import BoxListCmp from "@/views/NpmUtils/Animejs/cmp/BoxListCmp.vue";
-
-const myComponentsList = shallowRef<any[]>([]);
-const init = () => {
-  // 导入当前所有子组件
-  const modules = import.meta.glob("./cmp/*.vue", {
-    eager: true,
-  });
-
-  myComponentsList.value = Object.values(modules).map(item => {
-    // @ts-ignore
-    return item.default;
-  });
-};
-
-onMounted(() => {
-  init();
-});
+// import BoxListCmp from "@/views/NpmUtils/Animejs/cmp/BoxListCmp.vue";
+import CSSSelectorCmp from "./cmp/CSSSelectorCmp.vue";
+import CSSTransformationCmp from "./cmp/CSSTransformationCmp.vue";
+import DOMAttributeCmp from "./cmp/DOMAttributeCmp.vue";
+import DynamicElementSelectionCmp from "./cmp/DynamicElementSelectionCmp.vue";
 </script>
 
 <style scoped></style>

@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import anime from "animejs";
+import { animate, stagger } from "animejs";
 import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
 const animeRow: TAnimeInstance = {
@@ -21,12 +21,12 @@ const animeRow: TAnimeInstance = {
 const content = ref("Have a Great Day Ahead");
 
 const init = () => {
-  animeRow.all = anime({
-    targets: ".box4 .title span",
+  animeRow.all = animate(".box4 .title span", {
+    // targets:
     opacity: 1,
     color: "#000",
     translateY: 100,
-    delay: anime.stagger(1000),
+    delay: stagger(1000),
     // autoplay: false,
   });
 };
@@ -52,7 +52,7 @@ onMounted(() => {
   height: 100%;
   padding: 50px 0 0 50px;
   box-sizing: border-box;
-  /* border: 1px solid red; */
+  border: 1px solid red;
 
   .title {
     text-transform: uppercase;
