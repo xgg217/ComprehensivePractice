@@ -17,19 +17,22 @@
 </template>
 
 <script setup lang="ts">
-import { createTimeline } from "animejs";
+import { createTimeline, type Timeline } from "animejs";
 import type { TAnimeInstance } from "@/views/NpmUtils/Animejs/types";
 
-const animeRow: TAnimeInstance = {
-  one: null,
-  two: null,
-};
+// const animeRow: TAnimeInstance = {
+//   one: null,
+//   two: null,
+// };
+let animeRowOne: Timeline;
+let animeRowTwo: Timeline;
 
 const init = () => {
   // 第一个按钮
   {
     const basicTimeline = createTimeline({
-      direction: "alternate",
+      // direction: "alternate",
+      alternate: true,
       loop: 2,
       autoplay: false,
     });
@@ -48,12 +51,13 @@ const init = () => {
         translateY: 0,
       });
 
-    animeRow.one = basicTimeline;
+    animeRowOne = basicTimeline;
   }
 
   {
     const offsetTimeline = createTimeline({
-      direction: "alternate",
+      // direction: "alternate",
+      alternate: true,
       loop: 2,
       autoplay: false,
     });
@@ -74,7 +78,8 @@ const init = () => {
         translateY: 0,
       });
 
-    animeRow.two = offsetTimeline;
+    // animeRow.two = offsetTimeline;
+    animeRowTwo = offsetTimeline;
   }
 
   // animeRow.one = anime({
@@ -92,17 +97,19 @@ const init = () => {
 
 // 延迟升序
 const onOne = () => {
-  animeRow.one?.restart();
+  animeRowOne.restart();
 };
 
 // 延迟降序
 const onTwo = () => {
-  animeRow.two?.restart();
+  animeRowTwo.restart();
 };
 
 // 重置
 const onReset = () => {
-  Object.values(animeRow).forEach(item => item?.seek(0));
+  // Object.values(animeRow).forEach(item => item?.seek(0));
+  animeRowOne.seek(0);
+  animeRowTwo.seek(0);
 };
 
 onMounted(() => {

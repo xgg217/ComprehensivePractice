@@ -123,7 +123,7 @@ const init = () => {
       if (intersects.length > 0) {
         const color = getRandomColor();
 
-        // 选中模型的第一个模型，设置为红色
+        // @ts-ignore 选中模型的第一个模型，设置为红色
         intersects[0].object.material.color.set(color);
       }
     });

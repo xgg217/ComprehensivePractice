@@ -29,16 +29,16 @@ const init = () => {
   animeRow.start = animate(".box2 ul li", {
     // targets:
     translateY: {
-      value: 250,
+      to: 250,
     },
     rotate: {
-      value: "2.125turn",
+      to: "2.125turn",
     },
     backgroundColor: {
-      value: "rgb(255,0,0)",
+      to: "rgb(255,0,0)",
       duration: 400,
       delay: 1500,
-      easing: "linear",
+      ease: "linear",
     },
     autoplay: false,
     duration: 1500,

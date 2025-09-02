@@ -43,7 +43,7 @@ const init = () => {
     // targets: ".box4 ul li",
     translateY: 250,
     autoplay: false,
-    delay: stagger(200, { direction: "reverse" }),
+    delay: stagger(200, { reversed: true }),
   });
 
   animeRow.three = animate(".box4 ul li", {
@@ -57,7 +57,7 @@ const init = () => {
     // targets:
     translateY: 250,
     autoplay: false,
-    duration: stagger(1000, { start: 800, direction: "reverse" }),
+    duration: stagger(1000, { start: 800, reversed: true }),
   });
 };
 
