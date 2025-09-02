@@ -173,10 +173,6 @@ export default class SolarSystem {
 
   // 运动
   animate() {
-    // console.log(tiem);
-
-    // this.tween.update();
-    // this.mesh.rotateY(0.01);
     this.renderer.render(this.scene, this.camera);
     this.stats.update();
   }

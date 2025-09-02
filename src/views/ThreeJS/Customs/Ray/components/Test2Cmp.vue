@@ -100,7 +100,6 @@ const init = () => {
   // 物体
   scene.add(mesh);
 
-  // console.log(mesh);
   // 射线选中改变物体颜色
   {
     renderer.domElement.addEventListener("click", e => {

@@ -47,7 +47,7 @@ const onPage = (name: ICardItem["name"]) => {
             <el-button type="primary" @click="() => onPage(item.name)">查看</el-button>
           </div>
         </template>
-        {{ item.remark }}{{ item }}
+        {{ item.remark }}
       </el-card>
     </template>
   </div>

@@ -1,68 +1,106 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { getRandomColor } from "@/utils/index";
 
 const WIDTH_VAL = 100; // 三角形所在的范围
 const HEIGHT_VAL = 100; // 三角形所在范围
 const DEPTH_VAL = 100; // 三角形所在范围
+const STEP = 10; // 间距
 
-const { getTriangle } = (() => {
-  type TTriangle = {
-    a: THREE.Vector3;
-    b: THREE.Vector3;
-    c: THREE.Vector3;
-  };
-
+const { setTriangles, setColors } = (() => {
   const len = 5; // 三角形的边长
 
   const y = Math.sin((60 * Math.PI) / 180) * len; // y点长度
 
-  /**
-   * 1.设置等边三角形的初始坐标
-   *    点a：起点为0,0,0
-   *    点b：一条边与x轴重叠，0,len,0
-   *    点c：垂直于x轴
-   */
-  const triangle: TTriangle = {
-    a: new THREE.Vector3(0, 0, 0),
-    b: new THREE.Vector3(0, len, 0),
-    c: new THREE.Vector3(len / 2, y, 0),
-  };
-
   // 2.移动到指定坐标，随机选择角度
-  const getTriangle = (positionVal: THREE.Vector3) => {
-    // 新的三角形
-    const newTriangle: TTriangle = {
-      a: triangle.a.clone(),
-      b: triangle.b.clone(),
-      c: triangle.c.clone(),
-    };
+  const setTriangle = (positionVal: THREE.Vector3) => {
+    /**
+     * 1.设置等边三角形的初始坐标
+     *    点a：起点为0,0,0
+     *    点b：一条边与x轴重叠，0,len,0
+     *    点c：垂直于x轴
+     */
+    const a = new THREE.Vector3(0, 0, 0);
+    const b = new THREE.Vector3(len, 0, 0);
+    const c = new THREE.Vector3(len / 2, y, 0);
 
     // 移动到指定坐标
-    newTriangle.a.add(positionVal);
-    newTriangle.b.add(positionVal);
-    newTriangle.c.add(positionVal);
+    a.add(positionVal);
+    b.add(positionVal);
+    c.add(positionVal);
+
+    const triangle = new THREE.Triangle(a, b, c);
 
     // 随机旋转
-    newTriangle.a.applyAxisAngle(new THREE.Vector3(1, 0, 0), Math.random() * Math.PI * 2);
-    newTriangle.b.applyAxisAngle(new THREE.Vector3(0, 1, 0), Math.random() * Math.PI * 2);
-    newTriangle.c.applyAxisAngle(new THREE.Vector3(0, 0, 1), Math.random() * Math.PI * 2);
+    {
+      const centen = new THREE.Vector3(0, 0, 0);
+      triangle.getMidpoint(centen); // 三角形的中点
+      centen.normalize();
+
+      const v = Math.random() * Math.PI * 2;
+
+      a.applyAxisAngle(centen, v);
+      b.applyAxisAngle(centen, v);
+      c.applyAxisAngle(centen, v);
+    }
+
+    return triangle;
   };
 
-  // 根据宽高批量生成三角形
-  const getTriangles = (widthVal: number, heightVal: number, depthVal: number) => {
+  /**
+   * 根据宽高批量生成三角形
+   * @param widthVal
+   * @param heightVal
+   * @param depthVal
+   * @param step 三角形的间距
+   */
+  const setTriangles = (width: number, height: number, depth: number, step: number) => {
     // const triangles: TTriangle[] = [];
+    const widthVal = Math.floor(width / step);
+    const heightVal = Math.floor(height / step);
+    const depthVal = Math.floor(depth / step);
+    const arr: number[] = []; //
 
-    for (let i = 1; i < widthVal - 1; i++) {
-      for (let j = 1; j < heightVal - 1; j++) {
-        //     const positionVal = new THREE.Vector3(i, j, 0);
-        //     getTriangle(positionVal);
-        //     triangles.push(newTriangle);
+    for (let z = 1; z < depthVal; z++) {
+      for (let y = 1; y < heightVal; y++) {
+        for (let x = 1; x < widthVal; x++) {
+          const val = new THREE.Vector3(x * step, y * step, z * step);
+          const v = setTriangle(val);
+          // v.a
+          arr.push(v.a.x, v.a.y, v.a.z);
+          arr.push(v.b.x, v.b.y, v.b.z);
+          arr.push(v.c.x, v.c.y, v.c.z);
+        }
       }
     }
+
+    return arr;
+  };
+
+  // 随机颜色
+  const setColor = () => {
+    const c = new THREE.Color();
+    const c1 = new THREE.Color(getRandomColor());
+    const c2 = new THREE.Color(getRandomColor());
+    // color1.clone.lerp(color2,)
+    c.lerpColors(c1, c2, 0.5);
+    return [c.r, c.g, c.b];
+  };
+
+  // 批量设置颜色
+  const setColors = (arr: number[]) => {
+    // const
+    // const list: number[] = [];
+    // for (let i = 0; i < length; i++) {
+    //   const arr = setColor();
+    //   list.push(...arr);
+    // }
+    // return list;
   };
 
   return {
-    getTriangle,
+    setTriangles,
+    setColors,
   };
 })();
 
@@ -116,25 +154,73 @@ export class Test1 {
     new OrbitControls(this.camera, this.renderer.domElement);
 
     // 物体
-    this.cereateMesh();
+    const mesh = this.cereateMesh();
+    // this.group.add(mesh);
+    this.group.add(mesh);
 
     this.scene.add(this.group);
   }
 
   // 创建物体
   cereateMesh() {
-    // 创建一个他们透明的正方形便于观察
+    // 创建线模型对象
+    const group = new THREE.Group();
+
+    // 1. 辅助创建一个他们透明的正方形便于观察
     {
       const geometry = new THREE.BoxGeometry(WIDTH_VAL, HEIGHT_VAL, DEPTH_VAL);
       const material = new THREE.MeshBasicMaterial({
         color: 0xffffff,
         transparent: true,
-        opacity: 0.5,
+        opacity: 0.2,
       });
       const mesh = new THREE.Mesh(geometry, material);
       mesh.position.set(50, 50, 50);
-      this.group.add(mesh);
+      group.add(mesh);
     }
+
+    // 2. 批量生成三角形 所需的点位
+    const arr = setTriangles(WIDTH_VAL, HEIGHT_VAL, DEPTH_VAL, STEP);
+
+    // 3. 创建三角形
+    {
+      //创建一个空的几何体对象
+      const geometry = new THREE.BufferGeometry();
+
+      //类型化数组创建顶点数据
+      const vertices = new Uint16Array(arr);
+
+      // 创建属性缓冲区对象
+      //3个为一组，表示一个顶点的xyz坐标
+      const attribue = new THREE.BufferAttribute(vertices, 3);
+
+      // 设置几何体attributes属性的位置属性
+      geometry.attributes.position = attribue;
+
+      // 自定义颜色（渐变颜色）
+      {
+        // const list = setColors(arr);
+        // const colors = new Uint16Array(list);
+        // geometry.attributes.color = new THREE.BufferAttribute(colors, 3);
+      }
+
+      // 材质
+      const metr = new THREE.MeshBasicMaterial({
+        color: 0xff0000,
+        // vertexColors: true,
+        side: THREE.DoubleSide, //两面可见
+      });
+
+      // mesh.geometry = geometry;
+      // mesh.material = metr;
+
+      // const group = new THREE.Group();
+      // 创建线模型对象
+      const mesh = new THREE.Mesh(geometry, metr);
+      group.add(mesh);
+    }
+
+    return group;
   }
 
   animate() {

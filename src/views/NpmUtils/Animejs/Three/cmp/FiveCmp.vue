@@ -58,7 +58,6 @@ const onTwo = () => {
 
 // 控制动画进度
 const onSlider = (val: any) => {
-  // console.log(val);
   animeRow.one?.seek(((val as number) / 100) * animeRow.one?.duration);
 };
 

@@ -10,7 +10,6 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  // console.log("销毁组件");
   ShadowMapsPointLightClass.value?.destroy();
 });
 </script>

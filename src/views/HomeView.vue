@@ -7,9 +7,6 @@ import { getAllRoutes } from "@/utils/router";
 const routeList = shallowRef<ICardItem[]>([]);
 
 onMounted(() => {
-  // getRouter();
-
-  // console.log(getRoutes([], ["/", "/404"]));
   routeList.value = getAllRoutes();
 });
 </script>

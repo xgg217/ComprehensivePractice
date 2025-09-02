@@ -12,7 +12,6 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  // console.log("销毁组件");
   Fog1Class.value?.destroy();
 });
 </script>

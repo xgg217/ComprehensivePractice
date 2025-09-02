@@ -15,7 +15,6 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  // console.log("销毁组件");
   boxClass.value?.destroy();
 });
 </script>

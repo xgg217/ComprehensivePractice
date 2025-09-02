@@ -7,14 +7,12 @@ const url = new URL("./Tips/README.md", import.meta.url).href;
 const CameraSetScissorTestClass = ref<CameraSetScissorTest>();
 
 onMounted(() => {
-  // console.log(1111);
   setTimeout(() => {
     CameraSetScissorTestClass.value = new CameraSetScissorTest();
   }, 1000);
 });
 
 onBeforeUnmount(() => {
-  // console.log("销毁组件");
   CameraSetScissorTestClass.value?.destroy();
 });
 </script>

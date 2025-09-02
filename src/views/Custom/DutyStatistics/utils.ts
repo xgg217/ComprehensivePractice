@@ -22,8 +22,6 @@ export const getDateLen = (arr1: IDate, arr2: IDate, arr3: IDate) => {
 // 计算两个区间的时长
 export const getLen = (arr: IDate) => {
   const [s, e] = arr;
-  // console.log(arr)
-  // return 0
 
   if (s && e) {
     const s1 = dayjs(`2020-01-01 ${s}:00`);
@@ -34,8 +32,6 @@ export const getLen = (arr: IDate) => {
     }
 
     const a = e1.diff(s1, "m");
-
-    // console.log(s1, e1, a)
 
     return Big(a).div(len).toNumber();
   }

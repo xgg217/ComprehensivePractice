@@ -74,7 +74,6 @@ const arr = (() => {
 
   return arr;
 })();
-console.log(arr);
 
 onMounted(() => {
   // @ts-ignore

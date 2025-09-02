@@ -67,12 +67,10 @@ group.add(mesh);
       .name("动作")
       .onChange(val => {
         let item = null;
-        console.log(Object.values(baseActions));
 
         for (const value of Object.values(baseActions)) {
           if (value.key === val) {
             item = value;
-            // console.log(value);
             break;
           }
         }
@@ -89,26 +87,6 @@ group.add(mesh);
       baseActions,
     };
   })();
-
-  // 姿态
-  // const {} = (() => {
-  //   // 对应动作的动作
-  //   const attitude = {
-  //     headShake: { name: '左右摇头', key: 'headShake', action: null },
-  //     sad_pose: { name: '点头', key: 'sad_pose', action: null },
-  //     sneak_pose: { name: '紧张', key: 'sneak_pose', action: null },
-  //   }
-
-  //   // folder2.add()
-
-  //   // 展示的动作
-  //   const baseActionsStr = {
-  //     // 左右摇头: baseActions['headShake'].key,
-  //     // 点头: baseActions['sad_pose'].key,
-  //     // 紧张: baseActions['sneak_pose'].key,
-  //   };
-
-  // })();
 
   loader.load(littlestTokyoUrl, function (gltf) {
     // console.log('控制台查看加载gltf文件返回的对象结构',gltf);
@@ -135,7 +113,6 @@ group.add(mesh);
 
         // @ts-ignore
         if (baseActions[name] && baseActions[name].action === null) {
-          // console.log(item);
           baseActions[name].action = item;
         }
       });

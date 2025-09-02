@@ -47,7 +47,6 @@ onMounted(() => {
       }
     });
   }
-  console.log(selectedObj);
 
   // const selectedObj = nameArr.map(item => {})
 

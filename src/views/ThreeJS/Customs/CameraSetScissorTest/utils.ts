@@ -21,10 +21,7 @@ export class CameraSetScissorTest {
     this.view1Elem = view1Elem;
     this.view2Elem = view2Elem;
 
-    // console.log(view1Elem, view2Elem);
-
     const { width, height } = getWAndH("box");
-    // console.log(width, height);
 
     const widthVal = width * window.devicePixelRatio;
     const heightVal = height * window.devicePixelRatio;
@@ -181,9 +178,6 @@ export class CameraSetScissorTest {
       this.renderer = renderer;
       renderer.shadowMap.enabled = true; // 允许光源阴影渲染
 
-      // const leftDom = document.querySelector(".box")!;
-      // console.log(JSON.stringify(boxDom), JSON.stringify(width), JSON.stringify(height));
-
       this.boxDom.appendChild(renderer.domElement);
     }
   }
@@ -219,7 +213,6 @@ export class CameraSetScissorTest {
     {
       // const camera = this.camera!;
       const aspect = this.setScissorForElement(this.view1Elem, "left");
-      // console.log();
 
       // adjust the camera for this aspect
       camera.aspect = aspect;

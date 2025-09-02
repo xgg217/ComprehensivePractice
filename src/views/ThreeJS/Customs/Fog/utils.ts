@@ -24,8 +24,6 @@ export class Fog1 {
     const widthVal = width * window.devicePixelRatio;
     const heightVal = height * window.devicePixelRatio;
     const ASPECT_RATIO = widthVal / heightVal;
-    // console.log(width, height);
-    // console.log(window.devicePixelRatio);
 
     this.clock = new THREE.Clock();
 
@@ -138,8 +136,6 @@ export class Fog1 {
 
   // 渲染器
   createRenderer(width: number, height: number) {
-    // console.log(width, height);
-
     const renderer = new THREE.WebGLRenderer({
       antialias: true, // 锯齿模糊
       logarithmicDepthBuffer: true,
@@ -159,7 +155,6 @@ export class Fog1 {
     gui.add(fog, "near", 1, 2);
     gui.add(fog, "far", 1, 2);
     gui.addColor({ color: new THREE.Color("lightblue") }, "color").onChange(color => {
-      // console.log(err);
       this.scene.background = new THREE.Color(color);
       fog.color = new THREE.Color(color);
     });

@@ -4,9 +4,6 @@ import type { RouteRecordRaw } from "vue-router";
 
 // 获取全部路由
 export const getAllRoutes = () => {
-  // const allRoutes = routerObj.getRoutes();
-  console.log(routerObj.options.routes);
-
   const arr = routerObj.options.routes.filter(item => {
     // 过滤掉白名单的路由
     // return !whitePathlist.includes(item.path);
@@ -34,21 +31,14 @@ export const getAllRoutes = () => {
  * @param whitePathlist 要过滤的白名单路径
  */
 export const getRoutes = (paths: string, whitePathlist: string[]) => {
-  console.log(paths, whitePathlist, routerObj.options.routes);
-
-  // const allRoutes = routerObj.getRoutes();
-
   // 找到符合要求的路由;
   const row = routerObj.options.routes.find(item => {
     return paths === item.path;
   });
-  // console.log(row);
 
   if (!row || !row.children) {
     return [];
   }
-
-  console.log(row);
 
   const arr = row.children
     .filter(item => {
@@ -58,7 +48,6 @@ export const getRoutes = (paths: string, whitePathlist: string[]) => {
       // 过滤掉白名单的路由
       return !whitePathlist.includes(item.path);
     });
-  // console.log(arr);
 
   return getItem(arr);
 };

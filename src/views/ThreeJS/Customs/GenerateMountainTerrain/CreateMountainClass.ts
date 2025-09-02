@@ -86,7 +86,6 @@ export class CreateMountain {
   animate() {
     // 山体起伏
     updatePosition();
-    // console.log(1);
     // 旋转镜头
     this.mesh.rotateZ(0.001);
 

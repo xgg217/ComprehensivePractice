@@ -24,7 +24,6 @@ const initMove = () => {
     .delay(100)
     .easing(Easing.Cubic.InOut)
     .onUpdate(function (rotations) {
-      console.log(rotations);
       val.value.x = rotations[0];
       val.value.y = rotations[1];
       val.value.z = rotations[2];

@@ -7,7 +7,6 @@ export const { setNameStr } = (() => {
   // 随机生成数组
   const randomArr = () => {
     const val = randomInt(2, 6);
-    console.log(sampleSize(nameArr, val));
 
     return sampleSize(nameArr, val).join("");
   };
@@ -28,7 +27,6 @@ export const { setNameStr } = (() => {
     const nameArr: string[] = Array.from({ length: 20 }, x => {
       return "";
     });
-    // console.log(nameArr);
 
     // 组合后的名字集合
     const newArr = nameArr.forEach((_, index) => {
@@ -36,8 +34,6 @@ export const { setNameStr } = (() => {
       // return randomArr();
       nameArr[index] = randomArr();
     });
-
-    // console.log(nameArr);
 
     // 填上数值
     const nameValArr = setVal(nameArr);

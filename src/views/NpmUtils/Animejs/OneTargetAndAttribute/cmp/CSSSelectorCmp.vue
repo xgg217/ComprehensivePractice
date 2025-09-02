@@ -34,14 +34,11 @@ let even: JSAnimation;
 let notRed: JSAnimation;
 
 const init = () => {
-  console.log(document.querySelector(".box1 li.a1"));
-
   blue = animate(".box1 li.a1", {
     // targets:
     translateY: 400,
     autoplay: false,
   });
-  // console.log(1);
 
   blueRed = animate(
     [".box1 li.a1", ".box1 li.a2", ".box1 li.a4", ".box1 li.a5", ".box1 li.a7", ".box1 li.a8"],
@@ -67,8 +64,6 @@ const init = () => {
 
 // 蓝色下落
 const onBlue = () => {
-  // console.log(animeRow.blue?.restart());
-
   blue?.restart();
 };
 

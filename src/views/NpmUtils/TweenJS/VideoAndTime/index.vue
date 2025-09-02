@@ -25,8 +25,6 @@ const initMove = () => {
     .to({ x: 400 }, durationVal.value)
     .easing(Easing.Linear.None)
     .onUpdate(obj => {
-      console.log(obj);
-
       val.value = Math.trunc(obj.x);
       // left.value = Math.trunc(obj.left);
     });
@@ -61,16 +59,8 @@ const onStop = () => {
 };
 
 onMounted(() => {
-  // console.log(videoRef.value?.duration);
-  // animate(performance.now());
-
-  // videoRef.value
-  // console.log(videoRef.value);
-
   videoRef.value!.addEventListener("loadedmetadata", () => {
     durationVal.value = videoRef.value!.duration * 1000;
-
-    // console.log(videoRef.value!.duration);
 
     initMove();
   });

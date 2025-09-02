@@ -92,7 +92,6 @@ const { boxTrueArr, dynamicTrue } = (() => {
   const dynamicTrue = () => {
     const group = dynamicFun(boxTrueArr, true);
     const animate = (time: number) => {
-      // console.log(1);
       requestAnimationFrame(animate);
       group.update(time);
       // stats.update();

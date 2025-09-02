@@ -7,8 +7,6 @@ import { Test1, getRandomTriangle } from "./test1";
 
 const Test1Ref = ref<Test1>();
 
-console.log(getRandomTriangle(1));
-
 onMounted(() => {
   setTimeout(() => {
     const boxDom = document.querySelector(".box1")! as HTMLElement;
@@ -17,7 +15,6 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  // console.log("销毁组件");
   Test1Ref.value?.destroy();
 });
 </script>

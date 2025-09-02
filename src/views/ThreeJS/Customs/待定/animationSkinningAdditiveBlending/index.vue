@@ -1,10 +1,20 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { Scene, Color, Fog, PerspectiveCamera, DirectionalLight, AmbientLight, WebGLRenderer, AxesHelper, CameraHelper } from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { getElmWidhtAndHeight } from '@/utils/index';
-import Stats from 'three/addons/libs/stats.module.js';
-import model from "./model"
+import { onMounted, ref } from "vue";
+import {
+  Scene,
+  Color,
+  Fog,
+  PerspectiveCamera,
+  DirectionalLight,
+  AmbientLight,
+  WebGLRenderer,
+  AxesHelper,
+  CameraHelper,
+} from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { getElmWidhtAndHeight } from "@/utils/index";
+import Stats from "three/addons/libs/stats.module.js";
+import model from "./model";
 
 const canRef = ref();
 const width = ref(0); // 高度
@@ -19,7 +29,7 @@ scene.add(model);
 const axesHelper = (() => {
   const axesHelper = new AxesHelper(100);
   scene.add(axesHelper);
-  return axesHelper
+  return axesHelper;
 })();
 
 scene.add(axesHelper);
@@ -30,7 +40,7 @@ scene.add(axesHelper);
   dirLight.position.set(3, 10, 10);
   dirLight.castShadow = true; //
   dirLight.shadow.camera.top = 2;
-  dirLight.shadow.camera.bottom = - 2;
+  dirLight.shadow.camera.bottom = -2;
   dirLight.shadow.camera.left = -1;
   dirLight.shadow.camera.right = 1;
   dirLight.shadow.camera.near = 0;
@@ -45,29 +55,24 @@ scene.add(axesHelper);
   // scene.add(cameraHelper);
 })();
 
-
 // 2.创建相机 - 正交相机
-const cameraFun = (() => {
+const cameraFun = () => {
   //渲染器和相机
-  console.log(width.value);
 
   const camera = new PerspectiveCamera(45, width.value / height.value, 1, 3000);
-  camera.position.set(-2, 4, 4);//根据渲染范围尺寸数量级设置相机位置
+  camera.position.set(-2, 4, 4); //根据渲染范围尺寸数量级设置相机位置
   camera.lookAt(0, 0, 0);
-  return camera
-});
-
-
+  return camera;
+};
 
 // WebGL渲染器设置
 const renderer = function renderer(camera: PerspectiveCamera): WebGLRenderer {
-
   const renderer = new WebGLRenderer({
     antialias: true, // 开启优化锯齿
   });
   renderer.setPixelRatio(window.devicePixelRatio); //防止输出模糊
   // 设置渲染的尺寸大小
-  renderer.setSize(width.value, height.value)
+  renderer.setSize(width.value, height.value);
   // 将webgl渲染的canvas内容添加到body
 
   // renderer.setClearColor(0xa0a0a0, 1); // 设置背景颜色
@@ -84,7 +89,7 @@ const renderer = function renderer(camera: PerspectiveCamera): WebGLRenderer {
   {
     // @ts-ignore
     const el = stats.domElement;
-    el.style.left = '300px';
+    el.style.left = "300px";
     // @ts-ignore
     canRef.value.appendChild(stats.domElement);
   }
@@ -93,22 +98,18 @@ const renderer = function renderer(camera: PerspectiveCamera): WebGLRenderer {
   // renderer.outputEncoding = THREE.sRGBEncoding;
   controls.target.set(0, 0, 0);
 
-  controls.addEventListener('change', function () {
+  controls.addEventListener("change", function () {
     renderer.render(scene, camera); //执行渲染操作
-  });//监听鼠标、键盘事件
-  return renderer
+  }); //监听鼠标、键盘事件
+  return renderer;
 };
 
-
 onMounted(() => {
-
   const { w, h } = getElmWidhtAndHeight(canRef.value);
   width.value = w;
   height.value = h;
-  // console.log(h);
 
   const camera = cameraFun();
-
 
   const rend = renderer(camera);
 
@@ -116,13 +117,10 @@ onMounted(() => {
     stats.update();
     rend.render(scene, camera);
     requestAnimationFrame(render);
-  }
+  };
 
   render();
-
-})
-
-
+});
 </script>
 
 <template>

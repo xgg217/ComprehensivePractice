@@ -74,7 +74,6 @@ export class BoxClass {
           const box3 = new THREE.Box3();
           box3.expandByObject(gltf.scene);
           box3.getSize(scale);
-          console.log(scale);
         }
 
         // 包围盒线框

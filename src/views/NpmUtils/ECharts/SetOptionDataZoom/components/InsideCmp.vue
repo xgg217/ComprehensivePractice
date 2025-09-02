@@ -35,7 +35,6 @@ onMounted(() => {
         data3.push([val1, val2, val3]);
       }
     }
-    // console.log(data1, data2, data3);
   }
 
   // 基于准备好的dom，初始化echarts实例

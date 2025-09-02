@@ -32,20 +32,8 @@ const { title, routeList, avcRouteName, getRouterArr, onPage } = (() => {
   // 获取所有路由
   const getRouterArr = () => {
     const list = router.options.routes; // 获取所有路由
-    console.log(list);
     // 父级路由
     const { path } = route.matched[0];
-    // let path = "";
-
-    // // 当前显示了三级
-    // if (route.matched.length > 2) {
-    //   path = route.matched[0].path;
-    // }
-    console.log(path);
-
-    // console.log(getRoutes(path, []));
-    console.log(route);
-    console.log(list);
 
     const row1 = list.find(item => {
       return item.path === path;
@@ -58,28 +46,16 @@ const { title, routeList, avcRouteName, getRouterArr, onPage } = (() => {
 
     // const matchedArr = route.matched;
     const twoRoute = getTwoRoute();
-    console.log(twoRoute);
 
     // 二级路由
     const row2 = row1.children.find(item => {
       return item.name === twoRoute!.name;
-      // if (matchedArr.length === 2) {
-      //   return item.name === route.name;
-      // }
-
-      // // 直接加入了三级
-      // if (matchedArr.length === 3) {
-      //   return item.name === matchedArr[1].name;
-      // }
-
-      // console.error("当前路由不存在");
     });
 
     if (!row2 || !row2.children) {
       return [];
     }
 
-    console.log(row2);
     title.value = (row2.meta?.title || "") as string;
 
     return row2.children.map(item => {
@@ -89,10 +65,8 @@ const { title, routeList, avcRouteName, getRouterArr, onPage } = (() => {
 
       if (meta && meta.imgSrc) {
         const src = `/src/views${twoRoute!.path}/${meta.imgSrc}`;
-        // console.log(src);
 
         imgSrc = new URL(src, import.meta.url).href;
-        // console.log(imgSrc);
       }
 
       const obj: ICardItem = {
@@ -132,10 +106,6 @@ const { title, routeList, avcRouteName, getRouterArr, onPage } = (() => {
 })();
 
 onMounted(() => {
-  console.log(route);
-
-  // console.log(getRouterArr());
-
   routeList.value = getRouterArr();
 });
 </script>

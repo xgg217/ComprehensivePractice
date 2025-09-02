@@ -15,7 +15,6 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  // console.log("销毁组件");
   createMountain.value?.destroy();
 });
 </script>

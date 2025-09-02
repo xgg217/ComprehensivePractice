@@ -9,17 +9,6 @@ const props = defineProps<{
 const emit = defineEmits<{
   click: [routeName: string];
 }>();
-
-// const placeholderURl = new URL("@/assets/占位图.svg", import.meta.url).href;
-
-// const url = computed(() => {
-//   console.log();
-
-//   if (props.row.imgSrc) {
-//     return props.row.imgSrc;
-//   }
-//   return placeholderURl;
-// });
 </script>
 
 <template>

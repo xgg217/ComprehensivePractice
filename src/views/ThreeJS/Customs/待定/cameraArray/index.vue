@@ -3,7 +3,6 @@ import { LeftCreate } from "./utils";
 
 onMounted(() => {
   const leftCreate = new LeftCreate();
-  console.log(leftCreate);
 });
 </script>
 

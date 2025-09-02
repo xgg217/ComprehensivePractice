@@ -86,8 +86,6 @@ const { init } = (() => {
 
   // 循环
   const animate = (time: number) => {
-    // console.log(1);
-
     requestAnimationFrame(animate);
 
     group.update(time);

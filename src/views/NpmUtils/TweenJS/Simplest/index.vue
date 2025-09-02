@@ -18,8 +18,6 @@ const initMove = () => {
     .to({ x: 200, left: 400 }, 2000)
     .easing(Easing.Elastic.InOut)
     .onUpdate(obj => {
-      console.log(obj);
-
       val.value = Math.trunc(obj.x);
       left.value = Math.trunc(obj.left);
     })

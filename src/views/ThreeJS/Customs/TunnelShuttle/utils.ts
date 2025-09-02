@@ -9,7 +9,6 @@ export class TunnelShuttleClass {
   onKeyDown: (e: KeyboardEvent) => void; // 键盘按下事件
   tubePointsIndex: number; // 路径点索引
   constructor(private dom: HTMLElement) {
-    // console.log("TunnelShuttleClass");
     this.tubePointsIndex = 0;
 
     // 获取宽高
@@ -88,7 +87,6 @@ export class TunnelShuttleClass {
     const geometry = new THREE.TubeGeometry(path, 100, 5, 30);
 
     const tubePoints = path.getSpacedPoints(1000); // 获取路径点
-    // console.log(tubePoints);
 
     // 加载纹理
     const loader = new THREE.TextureLoader();
@@ -130,12 +128,8 @@ export class TunnelShuttleClass {
 
   // 键盘事件
   keyDownClick(e: KeyboardEvent) {
-    console.log(e.code);
-
     // 鼠标按下 方向键 的 上
     if (e.code === "ArrowUp") {
-      console.log(this);
-
       this.tubePointsIndex = this.tubePointsIndex + 10;
     }
   }

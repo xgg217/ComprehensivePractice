@@ -41,9 +41,6 @@ const dynamicFun = (arr: Ref<TBox[]>, dynamic: boolean) => {
   new Tween(arr.value[1], group)
     .to({ x: 410, y: 250 }, 3000)
     .easing(Easing.Exponential.InOut)
-    .onUpdate(obj => {
-      // console.log(obj);
-    })
     .start();
 
   // 模块1
@@ -81,7 +78,6 @@ const { boxTrueArr, dynamicTrue } = (() => {
   const dynamicTrue = () => {
     const group = dynamicFun(boxTrueArr, true);
     const animate = (time: number) => {
-      // console.log(1);
       requestAnimationFrame(animate);
       group.update(time);
       // stats.update();

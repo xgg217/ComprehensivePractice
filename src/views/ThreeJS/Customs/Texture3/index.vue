@@ -33,7 +33,6 @@ onMounted(() => {
     // });
     Textures.createTextures(setLoadText)
       .then(res => {
-        console.log(res);
         texturesClass.value = res;
       })
       .catch(err => {

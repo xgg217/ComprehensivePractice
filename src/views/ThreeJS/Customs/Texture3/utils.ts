@@ -28,24 +28,11 @@ export class Textures {
     // 相机
     const camera = this.createCamera(ASPECT_RATIO);
     this.camera = camera;
-    console.log(1);
 
     // 物体
     const mesh = this.createMesh(materialsArr);
     this.mesh = mesh;
     scene.add(mesh);
-    // (async () => {
-    //   try {
-    //     this.mesh = await this.createMesh();
-    //     console.log(this.mesh);
-    //     console.log(3);
-
-    //     scene.add(this.mesh);
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // })();
-    // console.log(4);
 
     // 渲染器
     const renderer = this.createRenderer(width, height);
@@ -142,14 +129,6 @@ export class Textures {
 
       loadManager.onProgress = (urlOfLastItemLoaded, itemsLoaded, itemsTotal) => {
         cb(itemsLoaded, itemsTotal);
-        // console.log(urlOfLastItemLoaded, itemsLoaded, itemsTotal);
-        // val.value = itemsLoaded;
-        // size.value = itemsTotal;
-        // console.log(val);
-        // console.log(size);
-
-        // const progress = itemsLoaded / itemsTotal;
-        // progressBarElem.style.transform = `scaleX(${progress})`;
       };
 
       loadManager.onError = (url: string) => {

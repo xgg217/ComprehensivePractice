@@ -37,7 +37,6 @@ const init = () => {
   {
     centerX.value = box2.offsetLeft + box2.clientWidth / 2;
     centerY.value = box2.offsetTop + box2.clientHeight / 2;
-    console.log(centerX.value, centerY.value);
   }
 
   const sphereDom = document.querySelector(".sphere")! as HTMLElement;
@@ -47,45 +46,6 @@ const init = () => {
   const rect = sphereDom.getBoundingClientRect();
   const elementLeft = rect.left - box2.offsetLeft;
   const elementTop = rect.top;
-  // console.log(elementLeft, elementTop);
-
-  // box1.addEventListener("click", (e: MouseEvent) => {
-  //   const { clientX, clientY } = e;
-  //   // console.log(e);
-  // });
-
-  // box1.clientWidth
-  // console.log(box1.clientWidth, box1.clientHeight);
-
-  // console.log(sphereDom.offsetParent);
-  // console.log(sphereDom.offsetLeft, sphereDom.offsetTop);
-  // console.log(tipsDom.offsetLeft, tipsDom.offsetTop);
-
-  // // // 获取元素位置
-  // const rect = sphereDom.getBoundingClientRect();
-  // const elementLeft = rect.left;
-  // const elementTop = rect.top;
-  // console.log(elementLeft, elementTop);
-
-  // // 计算相对于元素左上角的偏移
-  // const offsetX = centerX - elementLeft;
-  // const offsetY = centerY - elementTop;
-
-  // const sphere = anime.timeline({
-  //   targets: ".box1 .sphere",
-  //   // translateX: 50,
-  //   // translateY: 50,
-  //   autoplay: false,
-  //   transformOrigin: `${offsetX}px ${offsetY}px`, // 设置旋转中心
-  //   rotate: "1turn", // 旋转360度
-  //   loop: true,
-  //   // rotateY: "360deg",
-  //   duration: 5000,
-  //   easing: "easeInOutSine",
-  //   // perspective: 1000,
-  // });
-
-  // animeRow.sphere = sphere;
 };
 
 // 开始
@@ -97,10 +57,6 @@ const onStart = () => {
 const onReset = () => {
   // Object.values(animeRow).forEach(item => item?.seek(0));
 };
-
-// onMounted(() => {
-//   init();
-// });
 </script>
 
 <style scoped src="@/views/NpmUtils/Animejs/style.css"></style>
