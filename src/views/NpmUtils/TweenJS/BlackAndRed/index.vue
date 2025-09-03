@@ -45,7 +45,6 @@ const { arr, init, animate } = (() => {
           .delay((0.001 * index + Math.random()) * 500)
           .easing(Easing.Elastic.InOut)
           .onUpdate(function (object) {
-
             const c = Math.floor(object.value * 0xff);
             object.bgc = "rgb(" + c + ", 0, 0)";
           });
@@ -93,7 +92,7 @@ onMounted(() => {
   init();
   animate(performance.now());
 });
-,
+
 // );
 </script>
 
