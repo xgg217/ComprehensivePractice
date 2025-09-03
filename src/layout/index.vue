@@ -3,7 +3,6 @@ import { getRoutes } from "@/utils/router";
 import type { ICardItem } from "@/types/index";
 import placeholderURl from "@/assets/占位图.svg";
 import NavItemCmp from "./NavItemCmp.vue";
-import type { RouteLocationMatched } from "vue-router";
 
 const route = useRoute();
 const router = useRouter();
@@ -26,7 +25,7 @@ const { title, routeList, avcRouteName, getRouterArr, onPage } = (() => {
       return matchedArr[1];
     }
 
-    console.error("当前路由不存在");
+    // console.error("当前路由不存在");
   };
 
   // 获取所有路由
@@ -89,6 +88,7 @@ const { title, routeList, avcRouteName, getRouterArr, onPage } = (() => {
     const isBool = router.hasRoute(name);
 
     if (isBool) {
+      avcRouteName.value = name;
       router.push({ name });
       return;
     }
