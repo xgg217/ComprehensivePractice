@@ -88,7 +88,16 @@ const { setTriangles, setColors } = (() => {
   };
 
   // 批量设置颜色
-  const setColors = (arr: number[]) => {
+  const setColors = (count: number) => {
+    // 计算每个顶点的颜色值
+    const colorsArr = [];
+    for (let i = 0; i < count; i++) {
+      const percent = i / count; //点索引值相对所有点数量的百分比
+      // 红色分量从0到1变化，蓝色分量从1到0变化
+      colorsArr.push(percent, 0, 1 - percent); //蓝色到红色渐变色
+    }
+    return colorsArr;
+
     // const
     // const list: number[] = [];
     // for (let i = 0; i < length; i++) {
@@ -172,11 +181,11 @@ export class Test1 {
       const material = new THREE.MeshBasicMaterial({
         color: 0xffffff,
         transparent: true,
-        opacity: 0.2,
+        opacity: 0.1,
       });
       const mesh = new THREE.Mesh(geometry, material);
       mesh.position.set(50, 50, 50);
-      group.add(mesh);
+      // group.add(mesh);
     }
 
     // 2. 批量生成三角形 所需的点位
@@ -199,15 +208,17 @@ export class Test1 {
 
       // 自定义颜色（渐变颜色）
       {
-        // const list = setColors(arr);
-        // const colors = new Uint16Array(list);
-        // geometry.attributes.color = new THREE.BufferAttribute(colors, 3);
+        // console.log(attribue.count);
+
+        const list = setColors(attribue.count);
+        const colors = new Uint16Array(list);
+        geometry.attributes.color = new THREE.BufferAttribute(colors, 3);
       }
 
       // 材质
       const metr = new THREE.MeshBasicMaterial({
-        color: 0xff0000,
-        // vertexColors: true,
+        // color: 0xff0000,
+        vertexColors: true,
         side: THREE.DoubleSide, //两面可见
       });
 
