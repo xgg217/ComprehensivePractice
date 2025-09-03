@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { getRandomColor } from "@/utils/index";
+import { round } from "es-toolkit";
 
 const WIDTH_VAL = 100; // 三角形所在的范围
 const HEIGHT_VAL = 100; // 三角形所在范围
@@ -94,7 +95,21 @@ const { setTriangles, setColors } = (() => {
     for (let i = 0; i < count; i++) {
       const percent = i / count; //点索引值相对所有点数量的百分比
       // 红色分量从0到1变化，蓝色分量从1到0变化
-      colorsArr.push(percent, 0, 1 - percent); //蓝色到红色渐变色
+      const v1 = round(Math.random());
+      const v2 = round(Math.random());
+      const v3 = round(Math.random());
+      colorsArr.push(v1, v2, v3, 0.1); //蓝色到红色渐变色
+      // console.log(percent, 0, 1 - percent);
+      // color.setRGB( vx, vy, vz );
+      // console.log(new THREE.Color());
+
+      // colorsArr.push(1, 0, 0); //蓝色到红色渐变色
+      // const vx = ( x / n ) + 0.5;
+      // const vy = ( y / n ) + 0.5;
+      // const vz = ( z / n ) + 0.5;
+      // colorsArr.push(1, 0, 0);
+      // colorsArr.push(0, 1, 0);
+      // colorsArr.push(0, 0, 1);
     }
     return colorsArr;
 
@@ -181,11 +196,11 @@ export class Test1 {
       const material = new THREE.MeshBasicMaterial({
         color: 0xffffff,
         transparent: true,
-        opacity: 0.1,
+        opacity: 0.2,
       });
       const mesh = new THREE.Mesh(geometry, material);
       mesh.position.set(50, 50, 50);
-      // group.add(mesh);
+      group.add(mesh);
     }
 
     // 2. 批量生成三角形 所需的点位
@@ -210,9 +225,10 @@ export class Test1 {
       {
         // console.log(attribue.count);
 
-        const list = setColors(attribue.count);
+        const list = setColors(arr.length);
+        // console.log(list);
         const colors = new Uint16Array(list);
-        geometry.attributes.color = new THREE.BufferAttribute(colors, 3);
+        geometry.attributes.color = new THREE.BufferAttribute(colors, 4);
       }
 
       // 材质

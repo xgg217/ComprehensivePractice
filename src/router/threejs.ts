@@ -183,11 +183,20 @@ const ROW: RouteRecordRaw = {
           },
         },
         {
-          path: "BufferGeometry",
-          name: "BufferGeometry",
-          component: () => import("@/views/ThreeJS/Customs/BufferGeometry/index.vue"),
+          path: "BufferGeometry1",
+          name: "BufferGeometry1",
+          component: () => import("@/views/ThreeJS/Customs/BufferGeometry1/index.vue"),
           meta: {
-            title: "缓冲模型 BufferGeometry",
+            title: "缓冲模型 BufferGeometry 1",
+            imgSrc: "BufferGeometry1/BufferGeometry1.png",
+          },
+        },
+        {
+          path: "BufferGeometry2",
+          name: "BufferGeometry2",
+          component: () => import("@/views/ThreeJS/Customs/BufferGeometry2/index.vue"),
+          meta: {
+            title: "缓冲模型 BufferGeometry之points点绘制",
             // imgSrc: "Box3/Box3.png",
           },
         },
