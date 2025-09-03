@@ -187,7 +187,7 @@ const ROW: RouteRecordRaw = {
           name: "BufferGeometry1",
           component: () => import("@/views/ThreeJS/Customs/BufferGeometry1/index.vue"),
           meta: {
-            title: "缓冲模型 BufferGeometry 1",
+            title: "缓冲模型 BufferGeometry之三角形绘制",
             imgSrc: "BufferGeometry1/BufferGeometry1.png",
           },
         },

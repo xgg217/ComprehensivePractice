@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { Test1, getRandomTriangle } from "./test1";
+import { Test1 } from "./test1";
 
 const Test1Ref = ref<Test1>();
 
