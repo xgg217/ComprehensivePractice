@@ -200,6 +200,15 @@ const ROW: RouteRecordRaw = {
             // imgSrc: "Box3/Box3.png",
           },
         },
+        {
+          path: "BufferGeometry3",
+          name: "BufferGeometry3",
+          component: () => import("@/views/ThreeJS/Customs/BufferGeometry3/index.vue"),
+          meta: {
+            title: "缓冲模型 BufferGeometry之自定义颜色",
+            // imgSrc: "Box3/Box3.png",
+          },
+        },
       ],
     },
   ],
