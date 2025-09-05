@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
-export class Test1 {
+export class Test2 {
   scene: THREE.Scene;
   camera: THREE.PerspectiveCamera;
   renderer: THREE.WebGLRenderer;
@@ -98,9 +98,8 @@ export class Test1 {
     const group = new THREE.Group();
 
     const geometry = new THREE.BufferGeometry();
-    const material = new THREE.PointsMaterial({
+    const material = new THREE.LineBasicMaterial({
       vertexColors: true,
-      size: 30,
     });
 
     // 坐标点
@@ -120,7 +119,7 @@ export class Test1 {
       geometry.attributes.color = new THREE.BufferAttribute(colors, 3);
     }
 
-    const points = new THREE.Points(geometry, material);
+    const points = new THREE.LineLoop(geometry, material);
 
     group.add(points);
 
