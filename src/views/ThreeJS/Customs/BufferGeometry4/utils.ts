@@ -1,7 +1,8 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { cereateScaleline, cereateBarChart } from "./meshs";
 
-export class Test3 {
+export class Test1 {
   scene: THREE.Scene;
   camera: THREE.PerspectiveCamera;
   renderer: THREE.WebGLRenderer;
@@ -40,7 +41,9 @@ export class Test3 {
 
     // 渲染器
     {
-      const renderer = new THREE.WebGLRenderer();
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true, // 抗锯齿
+      });
       renderer.setSize(width, height);
       renderer.setAnimationLoop(() => this.animate());
       dom.appendChild(renderer.domElement);
@@ -97,31 +100,13 @@ export class Test3 {
   cereateMesh() {
     const group = new THREE.Group();
 
-    const geometry = new THREE.BufferGeometry();
-    const material = new THREE.MeshBasicMaterial({
-      vertexColors: true,
-    });
+    // 创建坐标轴
+    const axesHelper = cereateScaleline(100, 100);
+    group.add(axesHelper);
 
-    // 坐标点
-    {
-      //类型化数组创建顶点数据
-      const vertices = new Uint16Array([0, 0, 0, 100, 0, 0, 0, 100, 0]);
-
-      const attribue = new THREE.BufferAttribute(vertices, 3);
-
-      // 设置几何体attributes属性的位置属性
-      geometry.attributes.position = attribue;
-    }
-
-    // 颜色
-    {
-      const colors = new Float32Array([1, 0, 0, 0, 1, 0, 0, 0, 1]);
-      geometry.attributes.color = new THREE.BufferAttribute(colors, 3);
-    }
-
-    const points = new THREE.Mesh(geometry, material);
-
-    group.add(points);
+    // 柱状图
+    const bar = cereateBarChart([70, 20, 80, 40, 50]);
+    group.add(bar);
 
     return group;
   }
