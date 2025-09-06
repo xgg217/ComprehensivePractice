@@ -112,7 +112,7 @@ export const { cereateScaleline } = (() => {
   return { cereateScaleline };
 })();
 
-// 柱状图
+// 柱状图1
 export const { cereateBarChart } = (() => {
   // 设置颜色
   const setColor = (len: number) => {
@@ -160,5 +160,56 @@ export const { cereateBarChart } = (() => {
 
   return {
     cereateBarChart,
+  };
+})();
+
+// 柱状图2
+export const { cereateBarChart2 } = (() => {
+  // 设置颜色
+  const setColor = (len: number) => {
+    const color1 = new THREE.Color("red");
+    const color2 = new THREE.Color("blue");
+    const colorsArr: number[] = [];
+    for (let i = 0; i < len; i++) {
+      const percent = i / len;
+      const c = color1.clone().lerp(color2, percent);
+      colorsArr.push(c.r, c.g, c.b);
+    }
+    return colorsArr;
+  };
+
+  /**
+   *
+   * @param arr 柱状图的高度
+   */
+  const cereateBarChart2 = (arr: number[]) => {
+    const bars = new THREE.Group();
+
+    arr.forEach((item, i) => {
+      const geometry = new THREE.PlaneGeometry(10, item);
+
+      // 设置颜色
+      {
+        const arr = setColor(geometry.attributes.position.count);
+        const colors = new Float32Array(arr);
+        geometry.attributes.color = new THREE.BufferAttribute(colors, 3);
+      }
+
+      const material = new THREE.MeshBasicMaterial({
+        // color: "orange",
+        vertexColors: true,
+      });
+
+      const bar = new THREE.Mesh(geometry, material);
+      bar.position.x = 10 + i * 20 + 5;
+      bar.position.y = item / 2;
+      bars.add(bar);
+    });
+
+    return bars;
+  };
+
+  return {
+    cereateBarChart2,
   };
 })();

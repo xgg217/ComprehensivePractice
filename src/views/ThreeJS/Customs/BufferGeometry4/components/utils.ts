@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { cereateScaleline, cereateBarChart } from "./meshs";
+import { cereateScaleline } from "./utils2";
+import type { TFun } from "./types";
 
 export class Test1 {
   scene: THREE.Scene;
@@ -8,7 +9,10 @@ export class Test1 {
   renderer: THREE.WebGLRenderer;
   group: THREE.Group;
 
-  constructor(private dom: HTMLElement) {
+  constructor(
+    private dom: HTMLElement,
+    func: TFun,
+  ) {
     // 获取宽高
     const width = this.dom.clientWidth;
     const height = this.dom.clientHeight;
@@ -54,7 +58,7 @@ export class Test1 {
     new OrbitControls(this.camera, this.renderer.domElement);
 
     // 物体
-    const mesh = this.cereateMesh();
+    const mesh = this.cereateMesh(func);
     // this.group.add(mesh);
     this.group.add(mesh);
 
@@ -97,7 +101,7 @@ export class Test1 {
     }
   }
 
-  cereateMesh() {
+  cereateMesh(func: TFun) {
     const group = new THREE.Group();
 
     // 创建坐标轴
@@ -105,7 +109,8 @@ export class Test1 {
     group.add(axesHelper);
 
     // 柱状图
-    const bar = cereateBarChart([70, 20, 80, 40, 50]);
+    // const bar = cereateBarChart([70, 20, 80, 40, 50]);
+    const bar = func([70, 20, 80, 40, 50]);
     group.add(bar);
 
     return group;

@@ -1,22 +1,21 @@
 <script setup lang="ts">
-import { Test1 } from "./utils";
-
-const Test1Ref = ref<Test1>();
-
-onMounted(() => {
-  setTimeout(() => {
-    const boxDom = document.querySelector(".box")! as HTMLElement;
-    Test1Ref.value = new Test1(boxDom);
-  }, 1000);
-});
-
-onBeforeUnmount(() => {
-  Test1Ref.value?.destroy();
-});
+import Test1Cmp from "./components/Test1Cmp.vue";
+import Test2Cmp from "./components/Test2Cmp.vue";
 </script>
 
 <template>
-  <div class="box"></div>
+  <div class="box">
+    <Test1Cmp />
+    <Test2Cmp />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  border: 1px solid #000;
+}
+</style>
