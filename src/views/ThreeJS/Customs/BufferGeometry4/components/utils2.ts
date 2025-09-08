@@ -166,14 +166,27 @@ export const { cereateBarChart } = (() => {
 // 柱状图2
 export const { cereateBarChart2 } = (() => {
   // 设置颜色
-  const setColor = (len: number) => {
-    const color1 = new THREE.Color("red");
+  const setColor = (position: THREE.BufferAttribute, item: number) => {
+    const color1 = new THREE.Color("green");
     const color2 = new THREE.Color("blue");
+    const color3 = new THREE.Color("red");
     const colorsArr: number[] = [];
-    for (let i = 0; i < len; i++) {
-      const percent = i / len;
-      const c = color1.clone().lerp(color2, percent);
-      colorsArr.push(c.r, c.g, c.b);
+    for (let i = 0; i < position.count; i++) {
+      const y = position.getY(i) + item / 2;
+
+      if (y <= 50) {
+        const percet = y / 50;
+        const c = color1.clone().lerp(color2, percet);
+        colorsArr.push(c.r, c.g, c.b);
+      } else {
+        const percet = (y - 50) / 50;
+        const c = color2.clone().lerp(color3, percet);
+        colorsArr.push(c.r, c.g, c.b);
+      }
+
+      // const percent = i / len;
+      // const c = color1.clone().lerp(color2, percent);
+      // colorsArr.push(c.r, c.g, c.b);
     }
     return colorsArr;
   };
@@ -186,11 +199,11 @@ export const { cereateBarChart2 } = (() => {
     const bars = new THREE.Group();
 
     arr.forEach((item, i) => {
-      const geometry = new THREE.PlaneGeometry(10, item);
+      const geometry = new THREE.PlaneGeometry(10, item, 1, 20);
 
       // 设置颜色
       {
-        const arr = setColor(geometry.attributes.position.count);
+        const arr = setColor(geometry.attributes.position as THREE.BufferAttribute, item);
         const colors = new Float32Array(arr);
         geometry.attributes.color = new THREE.BufferAttribute(colors, 3);
       }

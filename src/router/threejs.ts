@@ -218,6 +218,15 @@ const ROW: RouteRecordRaw = {
             imgSrc: "BufferGeometry4/BufferGeometry4.png",
           },
         },
+        {
+          path: "Normal",
+          name: "Normal",
+          component: () => import("@/views/ThreeJS/Customs/Normal/index.vue"),
+          meta: {
+            title: "法向量",
+            // imgSrc: "BufferGeometry4/BufferGeometry4.png",
+          },
+        },
       ],
     },
   ],

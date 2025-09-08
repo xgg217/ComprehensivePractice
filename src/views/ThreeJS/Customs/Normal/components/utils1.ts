@@ -1,7 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { cereateScaleline } from "./utils2";
-import type { TFun } from "./types";
+import { VertexNormalsHelper } from "three/addons/helpers/VertexNormalsHelper.js";
 
 export class Test1 {
   scene: THREE.Scene;
@@ -9,10 +8,7 @@ export class Test1 {
   renderer: THREE.WebGLRenderer;
   group: THREE.Group;
 
-  constructor(
-    private dom: HTMLElement,
-    func: TFun,
-  ) {
+  constructor(private dom: HTMLElement) {
     // 获取宽高
     const width = this.dom.clientWidth;
     const height = this.dom.clientHeight;
@@ -45,9 +41,7 @@ export class Test1 {
 
     // 渲染器
     {
-      const renderer = new THREE.WebGLRenderer({
-        antialias: true, // 抗锯齿
-      });
+      const renderer = new THREE.WebGLRenderer();
       renderer.setSize(width, height);
       renderer.setAnimationLoop(() => this.animate());
       dom.appendChild(renderer.domElement);
@@ -58,7 +52,7 @@ export class Test1 {
     new OrbitControls(this.camera, this.renderer.domElement);
 
     // 物体
-    const mesh = this.cereateMesh(func);
+    const mesh = this.cereateMesh();
     // this.group.add(mesh);
     this.group.add(mesh);
 
@@ -101,17 +95,84 @@ export class Test1 {
     }
   }
 
-  cereateMesh(func: TFun) {
+  cereateMesh() {
     const group = new THREE.Group();
 
-    // 创建坐标轴
-    const axesHelper = cereateScaleline(100, 100);
-    group.add(axesHelper);
+    const geometry = new THREE.BufferGeometry();
+    const material = new THREE.MeshBasicMaterial({
+      vertexColors: true,
+      // size: 5,
+      // side: THREE.DoubleSide, //两面可见
+    });
 
-    // 柱状图
-    // const bar = cereateBarChart([70, 20, 80, 40, 50]);
-    const bar = func([70, 20, 100, 40, 50]);
-    group.add(bar);
+    // 坐标点
+    {
+      //类型化数组创建顶点数据
+      const vertices = new Uint16Array([
+        0, 0, 0, 50, 0, 0, 0, 100, 0, 0, 0, 10, 0, 0, 100, 50, 0, 10,
+      ]);
+
+      const attribue = new THREE.BufferAttribute(vertices, 3);
+
+      // 设置几何体attributes属性的位置属性
+      geometry.attributes.position = attribue;
+    }
+
+    // 颜色
+    {
+      const colors = new Float32Array([
+        1,
+        0,
+        0, //顶点1颜色
+        0,
+        1,
+        0, //顶点2颜色
+        0,
+        0,
+        1, //顶点3颜色
+        1,
+        1,
+        0, //顶点4颜色
+        0,
+        1,
+        1, //顶点5颜色
+        1,
+        0,
+        1, //顶点6颜色
+      ]);
+      geometry.attributes.color = new THREE.BufferAttribute(colors, 3);
+    }
+
+    // 法线
+    {
+      const normals = new Float32Array([
+        0,
+        0,
+        1, //顶点1法向量
+        0,
+        0,
+        1, //顶点2法向量
+        0,
+        0,
+        1, //顶点3法向量
+        0,
+        1,
+        0, //顶点4法向量
+        0,
+        1,
+        0, //顶点5法向量
+        0,
+        1,
+        0, //顶点6法向量
+      ]);
+      geometry.attributes.normal = new THREE.BufferAttribute(normals, 3);
+    }
+
+    const points = new THREE.Mesh(geometry, material);
+
+    const helper = new VertexNormalsHelper(points, 8, 0x00ff00);
+    group.add(helper);
+    group.add(points);
 
     return group;
   }
