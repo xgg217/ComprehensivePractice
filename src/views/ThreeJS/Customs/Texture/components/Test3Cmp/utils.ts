@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { getWAndH } from "@/utils/index";
+import type { TSetLoadTextCb } from "./types";
 
 export class Textures {
   scene: THREE.Scene;
@@ -9,11 +10,11 @@ export class Textures {
   mesh: THREE.Mesh;
   clock: THREE.Clock; // 两帧渲染时间间隔
 
-  constructor() {
-    const boxDom = document.querySelector(".box")! as HTMLElement;
+  constructor(materialsArr: THREE.MeshBasicMaterial[]) {
+    const boxDom = document.querySelector(".box3")! as HTMLElement;
     this.boxDom = boxDom;
 
-    const { width, height } = getWAndH("box");
+    const { width, height } = getWAndH("box3");
     const widthVal = width * window.devicePixelRatio;
     const heightVal = height * window.devicePixelRatio;
     const ASPECT_RATIO = widthVal / heightVal;
@@ -29,7 +30,7 @@ export class Textures {
     this.camera = camera;
 
     // 物体
-    const mesh = this.createMesh();
+    const mesh = this.createMesh(materialsArr);
     this.mesh = mesh;
     scene.add(mesh);
 
@@ -60,33 +61,16 @@ export class Textures {
     return camera;
   }
 
-  // 物体
-  createMesh() {
-    const loader = new THREE.TextureLoader();
+  // 物体(含纹理)
+  createMesh(materialsArr: THREE.MeshBasicMaterial[]) {
+    // const loadManager = new THREE.LoadingManager();
+    // const loader = new THREE.TextureLoader(loadManager);
     const boxWidth = 1;
     const boxHeight = 1;
     const boxDepth = 1;
     const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
 
-    function loadColorTexture(path: string) {
-      const url = new URL(path, import.meta.url).href;
-
-      const texture = loader.load(url);
-      texture.colorSpace = THREE.SRGBColorSpace;
-      return texture;
-    }
-
-    const materials = [
-      new THREE.MeshBasicMaterial({ map: loadColorTexture("./flower-1.jpg") }),
-      new THREE.MeshBasicMaterial({ map: loadColorTexture("./flower-2.jpg") }),
-      new THREE.MeshBasicMaterial({ map: loadColorTexture("./flower-3.jpg") }),
-      new THREE.MeshBasicMaterial({ map: loadColorTexture("./flower-4.jpg") }),
-      new THREE.MeshBasicMaterial({ map: loadColorTexture("./flower-5.jpg") }),
-      new THREE.MeshBasicMaterial({ map: loadColorTexture("./flower-6.jpg") }),
-    ];
-
-    const cube = new THREE.Mesh(geometry, materials);
-
+    const cube = new THREE.Mesh(geometry, materialsArr);
     return cube;
   }
 
@@ -104,6 +88,53 @@ export class Textures {
     this.boxDom!.appendChild(renderer.domElement);
 
     return renderer;
+  }
+
+  // 创建前加载图片
+  static async createTextures(cb: TSetLoadTextCb): Promise<Textures> {
+    // await this.createMesh()
+    const loadManager = new THREE.LoadingManager();
+    const loader = new THREE.TextureLoader(loadManager);
+    const urlArr = [
+      new URL("./flower-1.jpg", import.meta.url).href,
+      new URL("./flower-2.jpg", import.meta.url).href,
+      new URL("./flower-3.jpg", import.meta.url).href,
+      new URL("./flower-4.jpg", import.meta.url).href,
+      new URL("./flower-5.jpg", import.meta.url).href,
+      new URL("./flower-6.jpg", import.meta.url).href,
+    ] as const;
+
+    function loadColorTexture(path: string) {
+      const texture = loader.load(path);
+      texture.colorSpace = THREE.SRGBColorSpace;
+      return texture;
+    }
+
+    const materials = [
+      new THREE.MeshBasicMaterial({ map: loadColorTexture(urlArr[0]) }),
+      new THREE.MeshBasicMaterial({ map: loadColorTexture(urlArr[1]) }),
+      new THREE.MeshBasicMaterial({ map: loadColorTexture(urlArr[2]) }),
+      new THREE.MeshBasicMaterial({ map: loadColorTexture(urlArr[3]) }),
+      new THREE.MeshBasicMaterial({ map: loadColorTexture(urlArr[4]) }),
+      new THREE.MeshBasicMaterial({ map: loadColorTexture(urlArr[5]) }),
+    ];
+
+    return new Promise((res, rej) => {
+      loadManager.onLoad = () => {
+        const textures = new Textures(materials);
+        // textures.colorSpace = THREE.SRGBColorSpace;
+
+        res(textures);
+      };
+
+      loadManager.onProgress = (urlOfLastItemLoaded, itemsLoaded, itemsTotal) => {
+        cb(itemsLoaded, itemsTotal);
+      };
+
+      loadManager.onError = (url: string) => {
+        rej(url);
+      };
+    });
   }
 
   animate() {
@@ -148,7 +179,7 @@ export class Textures {
         // @ts-ignore
         object.geometry.dispose();
         // @ts-ignore
-        object.material.dispose();
+        // object.material.dispose();
       }
     });
 

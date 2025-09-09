@@ -10,10 +10,10 @@ export class Textures {
   clock: THREE.Clock; // 两帧渲染时间间隔
 
   constructor() {
-    const boxDom = document.querySelector(".box")! as HTMLElement;
+    const boxDom = document.querySelector(".box1")! as HTMLElement;
     this.boxDom = boxDom;
 
-    const { width, height } = getWAndH("box");
+    const { width, height } = getWAndH("box1");
     const widthVal = width * window.devicePixelRatio;
     const heightVal = height * window.devicePixelRatio;
     const ASPECT_RATIO = widthVal / heightVal;

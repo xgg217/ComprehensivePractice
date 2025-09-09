@@ -57,11 +57,8 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="box" v-loading="loading"></div>
+  <div class="box3" v-loading="loading"></div>
 </template>
 
-<style scoped>
-.box {
-  border: 1px solid red;
-}
-</style>
+<style scoped src="../style.css"></style>
+<style scoped></style>

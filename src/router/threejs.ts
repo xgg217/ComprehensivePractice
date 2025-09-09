@@ -82,24 +82,24 @@ const ROW: RouteRecordRaw = {
             imgSrc: "Texture/Texture.gif",
           },
         },
-        {
-          path: "texture2",
-          name: "Texture2",
-          component: () => import("@/views/ThreeJS/Customs/Texture2/index.vue"),
-          meta: {
-            title: "纹理2",
-            imgSrc: "Texture2/Texture.gif",
-          },
-        },
-        {
-          path: "texture3",
-          name: "Texture3",
-          component: () => import("@/views/ThreeJS/Customs/Texture3/index.vue"),
-          meta: {
-            title: "纹理之批量加载回调",
-            imgSrc: "Texture3/Texture.gif",
-          },
-        },
+        // {
+        //   path: "texture2",
+        //   name: "Texture2",
+        //   component: () => import("@/views/ThreeJS/Customs/Texture2/index.vue"),
+        //   meta: {
+        //     title: "纹理2",
+        //     imgSrc: "Texture2/Texture.gif",
+        //   },
+        // },
+        // {
+        //   path: "texture3",
+        //   name: "Texture3",
+        //   component: () => import("@/views/ThreeJS/Customs/Texture3/index.vue"),
+        //   meta: {
+        //     title: "纹理之批量加载回调",
+        //     imgSrc: "Texture3/Texture.gif",
+        //   },
+        // },
         {
           path: "cameraSetScissorTest",
           name: "CameraSetScissorTest",
@@ -225,6 +225,15 @@ const ROW: RouteRecordRaw = {
           meta: {
             title: "法向量",
             // imgSrc: "BufferGeometry4/BufferGeometry4.png",
+          },
+        },
+        {
+          path: "CubeTextureLoader1",
+          name: "CubeTextureLoader1",
+          component: () => import("@/views/ThreeJS/Customs/CubeTextureLoader1/index.vue"),
+          meta: {
+            title: "环境贴图",
+            imgSrc: "CubeTextureLoader1/CubeTextureLoader1.png",
           },
         },
       ],
