@@ -78,28 +78,10 @@ const ROW: RouteRecordRaw = {
           name: "Texture",
           component: () => import("@/views/ThreeJS/Customs/Texture/index.vue"),
           meta: {
-            title: "纹理",
+            title: "纹理+批量加载",
             imgSrc: "Texture/Texture.gif",
           },
         },
-        // {
-        //   path: "texture2",
-        //   name: "Texture2",
-        //   component: () => import("@/views/ThreeJS/Customs/Texture2/index.vue"),
-        //   meta: {
-        //     title: "纹理2",
-        //     imgSrc: "Texture2/Texture.gif",
-        //   },
-        // },
-        // {
-        //   path: "texture3",
-        //   name: "Texture3",
-        //   component: () => import("@/views/ThreeJS/Customs/Texture3/index.vue"),
-        //   meta: {
-        //     title: "纹理之批量加载回调",
-        //     imgSrc: "Texture3/Texture.gif",
-        //   },
-        // },
         {
           path: "cameraSetScissorTest",
           name: "CameraSetScissorTest",
