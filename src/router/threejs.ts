@@ -73,6 +73,27 @@ const ROW: RouteRecordRaw = {
             imgSrc: "SceneSolarSystem/SceneSolarSystem.png",
           },
         },
+
+        {
+          path: "Camera1",
+          name: "Camera1",
+          component: () => import("@/views/ThreeJS/Customs/Camera1/index.vue"),
+          meta: {
+            title: "相机之相机属性",
+            imgSrc: "Camera1/Camera1.jpg",
+          },
+        },
+
+        {
+          path: "Camera2",
+          name: "Camera2",
+          component: () => import("@/views/ThreeJS/Customs/Camera2/index.vue"),
+          meta: {
+            title: "相机之局部渲染",
+            imgSrc: "Camera2/Camera2.png",
+          },
+        },
+
         {
           path: "texture",
           name: "Texture",
@@ -91,15 +112,7 @@ const ROW: RouteRecordRaw = {
             imgSrc: "CubeTextureLoader1/CubeTextureLoader1.png",
           },
         },
-        {
-          path: "cameraSetScissorTest",
-          name: "CameraSetScissorTest",
-          component: () => import("@/views/ThreeJS/Customs/CameraSetScissorTest/index.vue"),
-          meta: {
-            title: "相机之局部渲染",
-            imgSrc: "CameraSetScissorTest/CameraSetScissorTest.png",
-          },
-        },
+
         {
           path: "shadowMapsSimulatedShadow",
           name: "ShadowMapsSimulatedShadow",
@@ -109,6 +122,7 @@ const ROW: RouteRecordRaw = {
             imgSrc: "ShadowMapsSimulatedShadow/ShadowMapsSimulatedShadow.png",
           },
         },
+
         {
           path: "shadowMapsPointLight",
           name: "ShadowMapsPointLight",
