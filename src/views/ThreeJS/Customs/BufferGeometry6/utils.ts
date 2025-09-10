@@ -1,12 +1,13 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GUI } from "three/addons/libs/lil-gui.module.min.js";
+import { randomInt } from "es-toolkit";
 
 export class Test1 {
   scene: THREE.Scene;
   camera: THREE.PerspectiveCamera;
   renderer: THREE.WebGLRenderer;
   group: THREE.Group;
-  textureCube: THREE.CubeTexture;
 
   constructor(private dom: HTMLElement) {
     // 获取宽高
@@ -20,20 +21,6 @@ export class Test1 {
 
     this.group = new THREE.Group();
 
-    // 环境贴图
-    {
-      const urls = [
-        new URL("./images/1.png", import.meta.url).href,
-        new URL("./images/2.png", import.meta.url).href,
-        new URL("./images/3.png", import.meta.url).href,
-        new URL("./images/4.png", import.meta.url).href,
-        new URL("./images/5.png", import.meta.url).href,
-        new URL("./images/6.png", import.meta.url).href,
-      ];
-
-      this.textureCube = new THREE.CubeTextureLoader().load(urls);
-    }
-
     // 场景
     {
       const scene = new THREE.Scene();
@@ -41,24 +28,20 @@ export class Test1 {
       //辅助观察的坐标系
       const axesHelper = new THREE.AxesHelper(100);
       scene.add(axesHelper);
-
-      // 设置背景
-      scene.background = this.textureCube;
-
       this.scene = scene;
     }
 
-    // 光源
-    // {
-    //   const light = new THREE.AmbientLight(0xffffff, 10000000); // 环境光
-    //   this.scene.add(light);
-    // }
+    // 灯光
+    {
+      const ambient = new THREE.AmbientLight(0xffffff, 1000);
+      this.scene.add(ambient);
+    }
 
     // 创建相机
     {
       const camera = new THREE.PerspectiveCamera(60, ASPECT_RATIO, 1, 10000);
       // this.camera = camera;
-      camera.position.set(200, 200, 200);
+      camera.position.set(3000, 3000, 3000);
       camera.lookAt(0, 0, 0);
       this.camera = camera;
     }
@@ -67,8 +50,6 @@ export class Test1 {
     {
       const renderer = new THREE.WebGLRenderer({
         antialias: true, // 抗锯齿
-        alpha: true,
-        logarithmicDepthBuffer: true,
       });
       renderer.setSize(width, height);
       renderer.setAnimationLoop(() => this.animate());
@@ -81,8 +62,20 @@ export class Test1 {
 
     // 物体
     const mesh = this.cereateMesh();
-    // this.group.add(mesh);
     this.group.add(mesh);
+
+    // GUI
+    {
+      const gui = new GUI();
+      dom.append(gui.domElement);
+
+      const box = mesh.getObjectByName("box");
+      console.log(box);
+
+      if (box instanceof THREE.Mesh) {
+        gui.add(box.material, "wireframe");
+      }
+    }
 
     this.scene.add(this.group);
   }
@@ -126,26 +119,61 @@ export class Test1 {
   cereateMesh() {
     const group = new THREE.Group();
 
-    const mesh = cereateBox(this.textureCube);
-    group.add(mesh);
+    {
+      const geometry = new THREE.BufferGeometry();
+      const { positionArr, colorArr } = createBox();
+
+      // 位置
+      {
+        const vertices = new Uint16Array(positionArr);
+        const attribue = new THREE.BufferAttribute(vertices, 3);
+        geometry.setAttribute("position", attribue);
+      }
+
+      // 颜色
+      {
+        const colors = new Float32Array(colorArr);
+        const attribue2 = new THREE.BufferAttribute(colors, 3);
+        geometry.setAttribute("color", attribue2);
+      }
+
+      const material = new THREE.LineBasicMaterial({
+        // color: 0x00ff00,
+        // side: THREE.DoubleSide,
+        // wireframe: true,
+        vertexColors: true,
+      });
+
+      const box = new THREE.Line(geometry, material);
+
+      box.name = "box";
+
+      group.add(box);
+    }
 
     return group;
   }
 }
 
-const cereateBox = (textureCube: THREE.CubeTexture) => {
-  const geometry = new THREE.BoxGeometry(100, 100, 100);
+// 创建
+const createBox = () => {
+  const positionArr: number[] = [];
+  const colorArr: number[] = [];
 
-  // 材质
-  const material = new THREE.MeshStandardMaterial({
-    metalness: 1.0,
-    roughness: 0,
-    color: 0xffffff,
-    envMap: textureCube, // 设置材质环境贴图
-    // envMapIntensity: 0.5, // 设置环境贴图对模型表面的影响程度
-  });
+  const D = 800 * 2; // 直径
 
-  const mesh = new THREE.Mesh(geometry, material);
+  for (let j = 0; j < 10000; j++) {
+    const x = randomInt(0, D);
+    const y = randomInt(0, D);
+    const z = randomInt(0, D);
 
-  return mesh;
+    positionArr.push(x, y, z);
+
+    const r1 = x / D;
+    const g1 = y / D;
+    const b1 = z / D;
+    colorArr.push(r1, g1, b1);
+  }
+
+  return { positionArr, colorArr };
 };

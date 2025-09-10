@@ -83,6 +83,15 @@ const ROW: RouteRecordRaw = {
           },
         },
         {
+          path: "CubeTextureLoader1",
+          name: "CubeTextureLoader1",
+          component: () => import("@/views/ThreeJS/Customs/CubeTextureLoader1/index.vue"),
+          meta: {
+            title: "环境贴图",
+            imgSrc: "CubeTextureLoader1/CubeTextureLoader1.png",
+          },
+        },
+        {
           path: "cameraSetScissorTest",
           name: "CameraSetScissorTest",
           component: () => import("@/views/ThreeJS/Customs/CameraSetScissorTest/index.vue"),
@@ -155,15 +164,7 @@ const ROW: RouteRecordRaw = {
             imgSrc: "Box3/Box3.png",
           },
         },
-        {
-          path: "Ray",
-          name: "Ray",
-          component: () => import("@/views/ThreeJS/Customs/Ray/index.vue"),
-          meta: {
-            title: "射线 Ray",
-            // imgSrc: "Box3/Box3.png",
-          },
-        },
+
         {
           path: "BufferGeometry1",
           name: "BufferGeometry1",
@@ -201,6 +202,24 @@ const ROW: RouteRecordRaw = {
           },
         },
         {
+          path: "BufferGeometry5",
+          name: "BufferGeometry5",
+          component: () => import("@/views/ThreeJS/Customs/BufferGeometry5/index.vue"),
+          meta: {
+            title: "缓冲模型 BufferGeometry之索引",
+            imgSrc: "BufferGeometry5/BufferGeometry5.jpg",
+          },
+        },
+        {
+          path: "BufferGeometry6",
+          name: "BufferGeometry6",
+          component: () => import("@/views/ThreeJS/Customs/BufferGeometry6/index.vue"),
+          meta: {
+            title: "缓冲模型 BufferGeometry之线",
+            imgSrc: "BufferGeometry6/BufferGeometry6.jpg",
+          },
+        },
+        {
           path: "Normal",
           name: "Normal",
           component: () => import("@/views/ThreeJS/Customs/Normal/index.vue"),
@@ -210,12 +229,12 @@ const ROW: RouteRecordRaw = {
           },
         },
         {
-          path: "CubeTextureLoader1",
-          name: "CubeTextureLoader1",
-          component: () => import("@/views/ThreeJS/Customs/CubeTextureLoader1/index.vue"),
+          path: "Ray",
+          name: "Ray",
+          component: () => import("@/views/ThreeJS/Customs/Ray/index.vue"),
           meta: {
-            title: "环境贴图",
-            imgSrc: "CubeTextureLoader1/CubeTextureLoader1.png",
+            title: "射线 Ray",
+            // imgSrc: "Box3/Box3.png",
           },
         },
       ],

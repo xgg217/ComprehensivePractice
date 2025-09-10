@@ -3,8 +3,6 @@ import { Test1 } from "./utils";
 
 const Test1Ref = ref<Test1>();
 
-// 参考  https://threehub.cn/#/codeMirror?navigation=ThreeJS&classify=basic&id=skyAndEnv
-
 onMounted(() => {
   setTimeout(() => {
     const boxDom = document.querySelector(".box")! as HTMLElement;
@@ -13,7 +11,7 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  Test1Ref.value?.destroy();
+  Test1Ref.value.destroy();
 });
 </script>
 

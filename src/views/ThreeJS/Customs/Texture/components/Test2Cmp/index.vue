@@ -15,7 +15,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="box2">22</div>
+  <div class="box2"></div>
 </template>
 
 <style scoped src="../style.css"></style>
