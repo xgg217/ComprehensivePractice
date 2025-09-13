@@ -80,7 +80,7 @@ export class Test1 {
       gui.add(this.camera, "filmGauge", 3).name("胶片尺寸");
       gui.add(this.camera.position, "x").name("相机位置x");
       gui.add(this.camera.position, "y").name("相机位置y");
-      gui.add(this.camera.position, "z").name("相机位置Z");
+      gui.add(this.camera.position, "z").name("相机位置Z").listen();
     }
 
     this.scene.add(this.group);
