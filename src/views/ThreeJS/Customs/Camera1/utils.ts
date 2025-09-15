@@ -72,14 +72,14 @@ export class Test1 {
 
       const onChange = () => this.camera.updateProjectionMatrix();
 
-      gui.add(this.camera, "fov").min(0).name("视角").onChange(onChange);
-      gui.add(this.camera, "near").min(0.0001).name("近视角");
-      gui.add(this.camera, "far").min(0).name("远视角");
-      gui.add(this.camera, "zoom", 3).min(0).name("缩放");
-      gui.add(this.camera, "filmOffset", 3).name("胶片偏移");
-      gui.add(this.camera, "filmGauge", 3).name("胶片尺寸");
-      gui.add(this.camera.position, "x").name("相机位置x");
-      gui.add(this.camera.position, "y").name("相机位置y");
+      // gui.add(this.camera, "fov").min(0).name("视角").onChange(onChange);
+      // gui.add(this.camera, "near").min(0.0001).name("近视角");
+      // gui.add(this.camera, "far").min(0).name("远视角");
+      // gui.add(this.camera, "zoom", 3).min(0).name("缩放");
+      // gui.add(this.camera, "filmOffset", 3).name("胶片偏移");
+      // gui.add(this.camera, "filmGauge", 3).name("胶片尺寸");
+      gui.add(this.camera.position, "x").name("相机位置x").listen();
+      gui.add(this.camera.position, "y").name("相机位置y").listen();
       gui.add(this.camera.position, "z").name("相机位置Z").listen();
     }
 
