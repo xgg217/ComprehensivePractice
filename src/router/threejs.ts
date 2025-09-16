@@ -95,6 +95,16 @@ const ROW: RouteRecordRaw = {
         },
 
         {
+          path: "Camera3",
+          name: "Camera3",
+          component: () => import("@/views/ThreeJS/Customs/Camera3/index.vue"),
+          meta: {
+            title: "双屏渲染",
+            imgSrc: "Camera3/Camera3.jpg",
+          },
+        },
+
+        {
           path: "texture",
           name: "Texture",
           component: () => import("@/views/ThreeJS/Customs/Texture/index.vue"),

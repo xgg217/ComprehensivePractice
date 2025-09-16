@@ -11,7 +11,7 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  Test1Ref.value.destroy();
+  Test1Ref.value!.destroy();
 });
 </script>
 
