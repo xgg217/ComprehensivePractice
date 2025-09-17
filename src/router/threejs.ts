@@ -10,6 +10,7 @@ const ROW: RouteRecordRaw = {
     isCardList: true,
     pathName: "ThreejsList",
   },
+
   children: [
     {
       path: "",
@@ -30,6 +31,7 @@ const ROW: RouteRecordRaw = {
         imgSrc: "",
         remark: "平时自己练习的示例",
       },
+      redirect: { name: "ThreejsExamplesIndex" },
 
       children: [
         {
@@ -99,8 +101,17 @@ const ROW: RouteRecordRaw = {
           name: "Camera3",
           component: () => import("@/views/ThreeJS/Customs/Camera3/index.vue"),
           meta: {
-            title: "双屏渲染",
+            title: "双屏渲染 StereoEffect ",
             imgSrc: "Camera3/Camera3.jpg",
+          },
+        },
+        {
+          path: "Camera4",
+          name: "Camera4",
+          component: () => import("@/views/ThreeJS/Customs/Camera4/index.vue"),
+          meta: {
+            title: "立方相机",
+            imgSrc: "Camera4/Camera4.jpg",
           },
         },
 

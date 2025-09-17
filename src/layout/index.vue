@@ -7,6 +7,8 @@ import NavItemCmp from "./NavItemCmp.vue";
 const route = useRoute();
 const router = useRouter();
 
+// console.log(route);
+
 // 左侧导航栏
 const { title, routeList, avcRouteName, getRouterArr, onPage } = (() => {
   const title = ref("");
@@ -107,6 +109,8 @@ const { title, routeList, avcRouteName, getRouterArr, onPage } = (() => {
 
 onMounted(() => {
   routeList.value = getRouterArr();
+
+  avcRouteName.value = (route.name as string) || "";
 });
 </script>
 

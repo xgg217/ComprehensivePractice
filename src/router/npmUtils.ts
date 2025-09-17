@@ -31,6 +31,7 @@ const row: RouteRecordRaw = {
         imgSrc: "",
         remark: "补间动画",
       },
+      redirect: { name: "NpmUtilsTweenJSIndex" },
 
       children: [
         {
@@ -192,6 +193,7 @@ const row: RouteRecordRaw = {
         imgSrc: "",
         remark: "animejs动画",
       },
+      redirect: { name: "AnimejsIndex" },
       children: [
         {
           path: "index",
@@ -279,6 +281,7 @@ const row: RouteRecordRaw = {
         imgSrc: "",
         remark: "GSAP",
       },
+      redirect: { name: "GSAPIndex" },
       children: [
         {
           path: "index",
@@ -346,6 +349,8 @@ const row: RouteRecordRaw = {
         imgSrc: "",
         remark: "图表",
       },
+      redirect: { name: "EChartsIndex" },
+
       children: [
         {
           path: "index",
