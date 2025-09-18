@@ -5,9 +5,7 @@ import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 export class Test1 {
   scene: THREE.Scene;
   camera: THREE.PerspectiveCamera;
-  cubeCamera: THREE.CubeCamera;
   renderer: THREE.WebGLRenderer;
-  cubeRenderTarget: THREE.WebGLCubeRenderTarget;
   controls: OrbitControls;
   group: THREE.Group;
 
@@ -33,6 +31,13 @@ export class Test1 {
       this.scene = scene;
     }
 
+    // 环境贴图
+    {
+      // 加载环境贴图
+      const textureCube = this.crreateLoader();
+      this.scene.background = textureCube;
+    }
+
     // 渲染器1
     {
       const renderer = new THREE.WebGLRenderer({
@@ -44,20 +49,6 @@ export class Test1 {
       this.renderer = renderer;
     }
 
-    // 渲染器2
-    {
-      const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(256);
-      cubeRenderTarget.texture.type = THREE.HalfFloatType;
-
-      this.cubeRenderTarget = cubeRenderTarget;
-    }
-
-    // 灯光
-    // {
-    //   const ambient = new THREE.AmbientLight(0xffffff, 1000);
-    //   this.scene.add(ambient);
-    // }
-
     // 创建相机
     {
       const camera = new THREE.PerspectiveCamera(60, ASPECT_RATIO, 1, 10000);
@@ -67,15 +58,8 @@ export class Test1 {
       this.camera = camera;
     }
 
-    // 相机2
-    this.cubeCamera = new THREE.CubeCamera(1, 1000, this.cubeRenderTarget);
-
     // 轨道
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    this.controls.autoRotate = true;
-
-    // 加载环境贴图
-    this.crreateLoader();
 
     // 物体
     const mesh = this.cereateMesh();
@@ -86,7 +70,6 @@ export class Test1 {
 
   animate() {
     this.renderer.render(this.scene, this.camera);
-    this.cubeCamera.update(this.renderer, this.scene);
     this.controls.update();
   }
 
@@ -125,47 +108,27 @@ export class Test1 {
   cereateMesh() {
     const group = new THREE.Group();
 
-    // 中间光亮的球体
-    {
-      const material = new THREE.MeshStandardMaterial({
-        envMap: this.cubeRenderTarget.texture,
-        roughness: 0.05,
-        metalness: 1,
-      });
-      const sphere = new THREE.Mesh(new THREE.SphereGeometry(20, 32, 32), material);
-      group.add(sphere);
-    }
-
-    const material2 = new THREE.MeshStandardMaterial({
-      roughness: 0.1,
-      metalness: 0,
-    });
-
-    const cube = new THREE.Mesh(new THREE.BoxGeometry(15, 15, 15), material2);
-    cube.position.set(70, 0, 0);
-    group.add(cube);
-
-    const torus = new THREE.Mesh(new THREE.TorusKnotGeometry(8, 3, 128, 16), material2);
-    torus.position.set(0, 0, 70);
-    group.add(torus);
-
     return group;
   }
 
   // 加载
   crreateLoader() {
-    const url = new URL("./quarry_01_1k.hdr", import.meta.url).href;
-    const rgbeLoader = new RGBELoader();
-    rgbeLoader
-      .loadAsync(url)
-      .then(texture => {
-        texture.mapping = THREE.EquirectangularReflectionMapping;
-        this.scene.background = texture;
-        this.scene.environment = texture;
-        texture.dispose();
-      })
-      .catch(err => {
-        console.error(err);
-      });
+    const urls = [
+      new URL("./images/px.png", import.meta.url).href,
+      new URL("./images/nx.png", import.meta.url).href,
+      new URL("./images/py.png", import.meta.url).href,
+      new URL("./images/ny.png", import.meta.url).href,
+      new URL("./images/pz.png", import.meta.url).href,
+      new URL("./images/nz.png", import.meta.url).href,
+    ];
+
+    console.log(new URL("./images", import.meta.url).href);
+
+    const textureCube = new THREE.CubeTextureLoader()
+      .setPath(new URL("./images", import.meta.url).href)
+      .load(["/px.png", "/py.png", "/pz.png", "/nx.png", "/ny.png", "/nz.png"]);
+
+    // const textureCube = new THREE.CubeTextureLoader().load(urls);
+    return textureCube;
   }
 }

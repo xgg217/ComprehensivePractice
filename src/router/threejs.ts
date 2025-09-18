@@ -101,7 +101,7 @@ const ROW: RouteRecordRaw = {
           name: "Camera3",
           component: () => import("@/views/ThreeJS/Customs/Camera3/index.vue"),
           meta: {
-            title: "双屏渲染 StereoEffect ",
+            title: "待定 双屏渲染 StereoEffect ",
             imgSrc: "Camera3/Camera3.jpg",
           },
         },
@@ -110,8 +110,27 @@ const ROW: RouteRecordRaw = {
           name: "Camera4",
           component: () => import("@/views/ThreeJS/Customs/Camera4/index.vue"),
           meta: {
-            title: "立方相机",
+            title: "StereoCamera 立方相机",
             imgSrc: "Camera4/Camera4.jpg",
+          },
+        },
+        {
+          path: "Camera5",
+          name: "Camera5",
+          component: () => import("@/views/ThreeJS/Customs/Camera5/index.vue"),
+          meta: {
+            title: "StereoCamera 之 3D立体影像",
+            imgSrc: "Camera5/Camera5.jpg",
+          },
+        },
+
+        {
+          path: "Camera6",
+          name: "Camera6",
+          component: () => import("@/views/ThreeJS/Customs/Camera6/index.vue"),
+          meta: {
+            title: "待定",
+            imgSrc: "Camera6/Camera6.jpg",
           },
         },
 
