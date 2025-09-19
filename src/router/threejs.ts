@@ -291,6 +291,24 @@ const ROW: RouteRecordRaw = {
             // imgSrc: "Box3/Box3.png",
           },
         },
+        {
+          path: "OrbitControls",
+          name: "OrbitControls",
+          component: () => import("@/views/ThreeJS/Customs/OrbitControls/index.vue"),
+          meta: {
+            title: "OrbitControls轨道控制器",
+            imgSrc: "OrbitControls/OrbitControls.jpg",
+          },
+        },
+        {
+          path: "DRACOLoader",
+          name: "DRACOLoader",
+          component: () => import("@/views/ThreeJS/Customs/DRACOLoader/index.vue"),
+          meta: {
+            title: "加载器之解压加载器 DRACOLoader",
+            imgSrc: "DRACOLoader/DRACOLoader.jpg",
+          },
+        },
       ],
     },
   ],
