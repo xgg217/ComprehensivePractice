@@ -426,6 +426,39 @@ const row: RouteRecordRaw = {
         },
       ],
     },
+    {
+      path: "Zod",
+      name: "NpmUtilsZod",
+      // component: aa,
+      component: layout,
+      // redirect: "/GSAP/index",
+      meta: {
+        title: "Zod",
+        imgSrc: "",
+        remark: "类型检验",
+      },
+      redirect: { name: "ZodIndex" },
+      children: [
+        {
+          path: "index",
+          name: "ZodIndex",
+          component: () => import("@/views/NpmUtils/Zod/index.vue"),
+          meta: {
+            title: "占位图",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "ZodForm",
+          name: "GSAPApiDemo",
+          component: () => import("@/views/NpmUtils/Zod/Form/index.vue"),
+          meta: {
+            title: "form表单",
+            imgSrc: "",
+          },
+        },
+      ],
+    },
   ],
 };
 
