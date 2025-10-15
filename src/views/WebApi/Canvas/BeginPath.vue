@@ -13,6 +13,8 @@ onMounted(() => {
   ctx.fillStyle = "red";
   ctx.rect(20, 200, 100, 100);
   ctx.fill();
+
+  ctx.beginPath();
 });
 </script>
 
