@@ -126,6 +126,33 @@ const row: RouteRecordRaw = {
             imgSrc: "",
           },
         },
+        {
+          path: "Image",
+          name: "WebGraphicsCanvasCloseImage",
+          component: () => import("@/views/WebGraphics/Canvas/Image.vue"),
+          meta: {
+            title: "图片",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "ImagesAndAnimations",
+          name: "WebGraphicsCanvasCloseImagesAndAnimations",
+          component: () => import("@/views/WebGraphics/Canvas/ImagesAndAnimations.vue"),
+          meta: {
+            title: "图像与动画",
+            imgSrc: "ImagesAndAnimations.webp",
+          },
+        },
+        {
+          path: "CreatePattern",
+          name: "WebGraphicsCanvasCloseCreatePattern",
+          component: () => import("@/views/WebGraphics/Canvas/CreatePattern.vue"),
+          meta: {
+            title: "图像填充",
+            imgSrc: "",
+          },
+        },
       ],
     },
     // #endregion
