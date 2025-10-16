@@ -21,6 +21,8 @@ const row: RouteRecordRaw = {
         remark: "第三方插件使用 学习",
       },
     },
+
+    // #region TweenJS
     {
       path: "TweenJS",
       name: "NpmUtilsTweenJS",
@@ -183,6 +185,9 @@ const row: RouteRecordRaw = {
         },
       ],
     },
+    // #endregion
+
+    // #region Animejs
     {
       path: "Animejs",
       name: "NpmUtilsAnimejs",
@@ -270,6 +275,9 @@ const row: RouteRecordRaw = {
         },
       ],
     },
+    // #endregion
+
+    // #region GSAP
     {
       path: "GSAP",
       name: "NpmUtilsGSAP",
@@ -339,6 +347,9 @@ const row: RouteRecordRaw = {
         },
       ],
     },
+    // #endregion
+
+    // #region ECharts
     {
       path: "ECharts",
       name: "NpmUtilsECharts",
@@ -426,6 +437,9 @@ const row: RouteRecordRaw = {
         },
       ],
     },
+    // #endregion
+
+    // #region Zod
     {
       path: "Zod",
       name: "NpmUtilsZod",
@@ -459,6 +473,7 @@ const row: RouteRecordRaw = {
         },
       ],
     },
+    // #endregion
   ],
 };
 

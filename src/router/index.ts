@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
 import vue3 from "./vue3";
-import threejs from "./threejs";
 import npmUtils from "./npmUtils";
 import custom from "./custom";
 import webApi from "./webApi";
+import webGraphics from "./webGraphics";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,11 +15,11 @@ const router = createRouter({
       component: HomeView,
     },
 
+    // web api
+    webApi,
+
     // vue3 综合练习
     vue3,
-
-    // threejs
-    threejs,
 
     // 第三方插件
     npmUtils,
@@ -27,8 +27,8 @@ const router = createRouter({
     // 小项目
     custom,
 
-    // web api
-    webApi,
+    // web 图像
+    webGraphics,
 
     {
       path: "/404",
