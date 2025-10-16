@@ -90,6 +90,42 @@ const row: RouteRecordRaw = {
             imgSrc: "",
           },
         },
+        {
+          path: "clearRect",
+          name: "WebGraphicsCanvasClearRect",
+          component: () => import("@/views/WebGraphics/Canvas/ClearRect.vue"),
+          meta: {
+            title: "清除画布clearRect",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "Grid",
+          name: "WebGraphicsCanvasGrid",
+          component: () => import("@/views/WebGraphics/Canvas/Grid.vue"),
+          meta: {
+            title: "网格线",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "ClosePath",
+          name: "WebGraphicsCanvasClosePath",
+          component: () => import("@/views/WebGraphics/Canvas/ClosePath.vue"),
+          meta: {
+            title: "ClosePath 线条填充与闭合",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "Text",
+          name: "WebGraphicsCanvasCloseText",
+          component: () => import("@/views/WebGraphics/Canvas/Text.vue"),
+          meta: {
+            title: "文本",
+            imgSrc: "",
+          },
+        },
       ],
     },
     // #endregion
