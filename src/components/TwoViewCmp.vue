@@ -1,5 +1,4 @@
 <!-- 二级页面 -->
-
 <script setup lang="ts">
 import CardListCmp from "@/components/CardListCmp.vue";
 import type { ICardItem } from "@/types/index";

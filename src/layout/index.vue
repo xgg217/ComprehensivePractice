@@ -56,6 +56,7 @@ const { title, routeList, avcRouteName, getRouterArr, onPage } = (() => {
     if (!row2 || !row2.children) {
       return [];
     }
+    console.log(twoRoute);
 
     title.value = (row2.meta?.title || "") as string;
 

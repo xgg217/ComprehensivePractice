@@ -122,7 +122,7 @@ const row: RouteRecordRaw = {
 
     // #region Three.js 官网例子
     {
-      path: "Customs",
+      path: "ThreeJSCustoms",
       name: "WebGraphicsThreeJSCustoms",
       // component: aa,
       component: layout,
@@ -364,7 +364,7 @@ const row: RouteRecordRaw = {
         {
           path: "Ray",
           name: "WebGraphicsThreeJSCustomsRay",
-          component: () => import("@/views/ThreeJS/Customs/Ray/index.vue"),
+          component: () => import("@/views/WebGraphics/ThreeJSCustoms/Ray/index.vue"),
           meta: {
             title: "射线 Ray",
             // imgSrc: "Box3/Box3.png",
@@ -373,7 +373,7 @@ const row: RouteRecordRaw = {
         {
           path: "OrbitControls",
           name: "WebGraphicsThreeJSCustomsOrbitControls",
-          component: () => import("@/views/ThreeJS/Customs/OrbitControls/index.vue"),
+          component: () => import("@/views/WebGraphics/ThreeJSCustoms/OrbitControls/index.vue"),
           meta: {
             title: "OrbitControls轨道控制器",
             imgSrc: "OrbitControls/OrbitControls.jpg",
@@ -382,7 +382,7 @@ const row: RouteRecordRaw = {
         {
           path: "DRACOLoader",
           name: "WebGraphicsThreeJSCustomsDRACOLoader",
-          component: () => import("@/views/ThreeJS/Customs/DRACOLoader/index.vue"),
+          component: () => import("@/views/WebGraphics/ThreeJSCustoms/DRACOLoader/index.vue"),
           meta: {
             title: "加载器之解压加载器 DRACOLoader",
             imgSrc: "DRACOLoader/DRACOLoader.jpg",
