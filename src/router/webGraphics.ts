@@ -119,7 +119,7 @@ const row: RouteRecordRaw = {
         },
         {
           path: "Text",
-          name: "WebGraphicsCanvasCloseText",
+          name: "WebGraphicsCanvasText",
           component: () => import("@/views/WebGraphics/Canvas/Text.vue"),
           meta: {
             title: "文本",
@@ -128,7 +128,7 @@ const row: RouteRecordRaw = {
         },
         {
           path: "Image",
-          name: "WebGraphicsCanvasCloseImage",
+          name: "WebGraphicsCanvasImage",
           component: () => import("@/views/WebGraphics/Canvas/Image.vue"),
           meta: {
             title: "图片",
@@ -137,7 +137,7 @@ const row: RouteRecordRaw = {
         },
         {
           path: "ImagesAndAnimations",
-          name: "WebGraphicsCanvasCloseImagesAndAnimations",
+          name: "WebGraphicsCanvasImagesAndAnimations",
           component: () => import("@/views/WebGraphics/Canvas/ImagesAndAnimations.vue"),
           meta: {
             title: "图像与动画",
@@ -146,10 +146,19 @@ const row: RouteRecordRaw = {
         },
         {
           path: "CreatePattern",
-          name: "WebGraphicsCanvasCloseCreatePattern",
+          name: "WebGraphicsCanvasCreatePattern",
           component: () => import("@/views/WebGraphics/Canvas/CreatePattern.vue"),
           meta: {
             title: "图像填充",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "Clip",
+          name: "WebGraphicsCanvasClip",
+          component: () => import("@/views/WebGraphics/Canvas/Clip.vue"),
+          meta: {
+            title: "裁剪",
             imgSrc: "",
           },
         },
