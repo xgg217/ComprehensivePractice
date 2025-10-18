@@ -180,6 +180,15 @@ const row: RouteRecordRaw = {
             imgSrc: "",
           },
         },
+        {
+          path: "DynamicClock",
+          name: "WebGraphicsCanvasDynamicClock",
+          component: () => import("@/views/WebGraphics/Canvas/DynamicClock/index.vue"),
+          meta: {
+            title: "动态时钟",
+            imgSrc: "",
+          },
+        },
       ],
     },
     // #endregion
