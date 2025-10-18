@@ -162,6 +162,24 @@ const row: RouteRecordRaw = {
             imgSrc: "",
           },
         },
+        {
+          path: "GuaGuaLe",
+          name: "WebGraphicsCanvasGuaGuaLe",
+          component: () => import("@/views/WebGraphics/Canvas/GuaGuaLe.vue"),
+          meta: {
+            title: "刮刮乐",
+            imgSrc: "GuaGuaLe.png",
+          },
+        },
+        {
+          path: "AvatarCroppingAndUploading",
+          name: "WebGraphicsCanvasAvatarCroppingAndUploading",
+          component: () => import("@/views/WebGraphics/Canvas/AvatarCroppingAndUploading.vue"),
+          meta: {
+            title: "头像裁剪上传",
+            imgSrc: "",
+          },
+        },
       ],
     },
     // #endregion
