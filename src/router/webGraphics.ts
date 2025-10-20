@@ -109,6 +109,15 @@ const row: RouteRecordRaw = {
           },
         },
         {
+          path: "CoordinateSystem",
+          name: "WebGraphicsCanvasCoordinateSystem",
+          component: () => import("@/views/WebGraphics/Canvas/CoordinateSystem.vue"),
+          meta: {
+            title: "坐标系",
+            imgSrc: "",
+          },
+        },
+        {
           path: "ClosePath",
           name: "WebGraphicsCanvasClosePath",
           component: () => import("@/views/WebGraphics/Canvas/ClosePath.vue"),
@@ -169,6 +178,33 @@ const row: RouteRecordRaw = {
           meta: {
             title: "刮刮乐",
             imgSrc: "GuaGuaLe.png",
+          },
+        },
+        {
+          path: "Translate",
+          name: "WebGraphicsCanvasTranslate",
+          component: () => import("@/views/WebGraphics/Canvas/Translate.vue"),
+          meta: {
+            title: "图像变换之移动",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "Scale",
+          name: "WebGraphicsCanvasScale",
+          component: () => import("@/views/WebGraphics/Canvas/Scale.vue"),
+          meta: {
+            title: "图像变换之缩放",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "SaveRestore",
+          name: "WebGraphicsCanvasSaveRestore",
+          component: () => import("@/views/WebGraphics/Canvas/SaveRestore.vue"),
+          meta: {
+            title: "保存、重置",
+            imgSrc: "",
           },
         },
         {
