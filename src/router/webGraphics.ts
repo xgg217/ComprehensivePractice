@@ -111,7 +111,8 @@ const row: RouteRecordRaw = {
         {
           path: "CoordinateSystem",
           name: "WebGraphicsCanvasCoordinateSystem",
-          component: () => import("@/views/WebGraphics/Canvas/CoordinateSystem.vue"),
+          component: () =>
+            import("@/views/WebGraphics/Canvas/CoordinateSystem.vue"),
           meta: {
             title: "坐标系",
             imgSrc: "",
@@ -147,7 +148,8 @@ const row: RouteRecordRaw = {
         {
           path: "ImagesAndAnimations",
           name: "WebGraphicsCanvasImagesAndAnimations",
-          component: () => import("@/views/WebGraphics/Canvas/ImagesAndAnimations.vue"),
+          component: () =>
+            import("@/views/WebGraphics/Canvas/ImagesAndAnimations.vue"),
           meta: {
             title: "图像与动画",
             imgSrc: "ImagesAndAnimations.webp",
@@ -156,7 +158,8 @@ const row: RouteRecordRaw = {
         {
           path: "CreatePattern",
           name: "WebGraphicsCanvasCreatePattern",
-          component: () => import("@/views/WebGraphics/Canvas/CreatePattern.vue"),
+          component: () =>
+            import("@/views/WebGraphics/Canvas/CreatePattern.vue"),
           meta: {
             title: "图像填充",
             imgSrc: "",
@@ -210,7 +213,8 @@ const row: RouteRecordRaw = {
         {
           path: "AvatarCroppingAndUploading",
           name: "WebGraphicsCanvasAvatarCroppingAndUploading",
-          component: () => import("@/views/WebGraphics/Canvas/AvatarCroppingAndUploading.vue"),
+          component: () =>
+            import("@/views/WebGraphics/Canvas/AvatarCroppingAndUploading.vue"),
           meta: {
             title: "头像裁剪上传",
             imgSrc: "",
@@ -219,9 +223,20 @@ const row: RouteRecordRaw = {
         {
           path: "DynamicClock",
           name: "WebGraphicsCanvasDynamicClock",
-          component: () => import("@/views/WebGraphics/Canvas/DynamicClock/index.vue"),
+          component: () =>
+            import("@/views/WebGraphics/Canvas/DynamicClock/index.vue"),
           meta: {
             title: "动态时钟",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "DrawingBoard",
+          name: "WebGraphicsCanvasDrawingBoard",
+          component: () =>
+            import("@/views/WebGraphics/Canvas/DrawingBoard/index.vue"),
+          meta: {
+            title: "画板",
             imgSrc: "",
           },
         },
@@ -245,7 +260,8 @@ const row: RouteRecordRaw = {
         {
           path: "index",
           name: "WebGraphicsThreeJSExamplesIndex",
-          component: () => import("@/views/WebGraphics/ThreeJSExamples/index.vue"),
+          component: () =>
+            import("@/views/WebGraphics/ThreeJSExamples/index.vue"),
           meta: {
             title: "占位图",
             imgSrc: "",
@@ -271,7 +287,8 @@ const row: RouteRecordRaw = {
         {
           path: "index",
           name: "WebGraphicsThreeJSCustomsIndex",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/index.vue"),
+          component: () =>
+            import("@/views/WebGraphics/ThreeJSCustoms/index.vue"),
           meta: {
             title: "占位图",
             imgSrc: "",
@@ -280,7 +297,10 @@ const row: RouteRecordRaw = {
         {
           path: "CustomsSceneSolarSystem",
           name: "WebGraphicsThreeJSCustomsCustomsSceneSolarSystem",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/SceneSolarSystem/index.vue"),
+          component: () =>
+            import(
+              "@/views/WebGraphics/ThreeJSCustoms/SceneSolarSystem/index.vue"
+            ),
           meta: {
             title: "场景之太阳系、太阳、地球、月亮",
             imgSrc: "SceneSolarSystem/SceneSolarSystem.png",
@@ -289,7 +309,8 @@ const row: RouteRecordRaw = {
         {
           path: "Camera1",
           name: "WebGraphicsThreeJSCustomsCamera1",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/Camera1/index.vue"),
+          component: () =>
+            import("@/views/WebGraphics/ThreeJSCustoms/Camera1/index.vue"),
           meta: {
             title: "相机之相机属性",
             imgSrc: "Camera1/Camera1.jpg",
@@ -299,7 +320,8 @@ const row: RouteRecordRaw = {
         {
           path: "Camera2",
           name: "WebGraphicsThreeJSCustomsCamera2",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/Camera2/index.vue"),
+          component: () =>
+            import("@/views/WebGraphics/ThreeJSCustoms/Camera2/index.vue"),
           meta: {
             title: "相机之局部渲染",
             imgSrc: "Camera2/Camera2.png",
@@ -309,7 +331,8 @@ const row: RouteRecordRaw = {
         {
           path: "Camera3",
           name: "WebGraphicsThreeJSCustomsCamera3",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/Camera3/index.vue"),
+          component: () =>
+            import("@/views/WebGraphics/ThreeJSCustoms/Camera3/index.vue"),
           meta: {
             title: "待定 双屏渲染 StereoEffect ",
             imgSrc: "Camera3/Camera3.jpg",
@@ -318,7 +341,8 @@ const row: RouteRecordRaw = {
         {
           path: "Camera4",
           name: "WebGraphicsThreeJSCustomsCamera4",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/Camera4/index.vue"),
+          component: () =>
+            import("@/views/WebGraphics/ThreeJSCustoms/Camera4/index.vue"),
           meta: {
             title: "StereoCamera 立方相机",
             imgSrc: "Camera4/Camera4.jpg",
@@ -327,7 +351,8 @@ const row: RouteRecordRaw = {
         {
           path: "Camera5",
           name: "WebGraphicsThreeJSCustomsCamera5",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/Camera5/index.vue"),
+          component: () =>
+            import("@/views/WebGraphics/ThreeJSCustoms/Camera5/index.vue"),
           meta: {
             title: "StereoCamera 之 3D立体影像",
             imgSrc: "Camera5/Camera5.jpg",
@@ -337,7 +362,8 @@ const row: RouteRecordRaw = {
         {
           path: "Camera6",
           name: "WebGraphicsThreeJSCustomsCamera6",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/Camera6/index.vue"),
+          component: () =>
+            import("@/views/WebGraphics/ThreeJSCustoms/Camera6/index.vue"),
           meta: {
             title: "待定",
             imgSrc: "Camera6/Camera6.jpg",
@@ -347,7 +373,8 @@ const row: RouteRecordRaw = {
         {
           path: "texture",
           name: "WebGraphicsThreeJSCustomsTexture",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/Texture/index.vue"),
+          component: () =>
+            import("@/views/WebGraphics/ThreeJSCustoms/Texture/index.vue"),
           meta: {
             title: "纹理+批量加载",
             imgSrc: "Texture/Texture.gif",
@@ -357,7 +384,9 @@ const row: RouteRecordRaw = {
           path: "CubeTextureLoader1",
           name: "WebGraphicsThreeJSCustomsCubeTextureLoader1",
           component: () =>
-            import("@/views/WebGraphics/ThreeJSCustoms/CubeTextureLoader1/index.vue"),
+            import(
+              "@/views/WebGraphics/ThreeJSCustoms/CubeTextureLoader1/index.vue"
+            ),
           meta: {
             title: "环境贴图",
             imgSrc: "CubeTextureLoader1/CubeTextureLoader1.png",
@@ -368,7 +397,9 @@ const row: RouteRecordRaw = {
           path: "shadowMapsSimulatedShadow",
           name: "WebGraphicsThreeJSCustomsShadowMapsSimulatedShadow",
           component: () =>
-            import("@/views/WebGraphics/ThreeJSCustoms/ShadowMapsSimulatedShadow/index.vue"),
+            import(
+              "@/views/WebGraphics/ThreeJSCustoms/ShadowMapsSimulatedShadow/index.vue"
+            ),
           meta: {
             title: "阴影之假阴影",
             imgSrc: "ShadowMapsSimulatedShadow/ShadowMapsSimulatedShadow.png",
@@ -379,7 +410,9 @@ const row: RouteRecordRaw = {
           path: "shadowMapsPointLight",
           name: "WebGraphicsThreeJSCustomsShadowMapsPointLight",
           component: () =>
-            import("@/views/WebGraphics/ThreeJSCustoms/ShadowMapsPointLight/index.vue"),
+            import(
+              "@/views/WebGraphics/ThreeJSCustoms/ShadowMapsPointLight/index.vue"
+            ),
           meta: {
             title: "阴影之聚光灯",
             imgSrc: "ShadowMapsPointLight/ShadowMapsPointLight.png",
@@ -388,7 +421,8 @@ const row: RouteRecordRaw = {
         {
           path: "fog",
           name: "WebGraphicsThreeJSCustomsFog",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/Fog/index.vue"),
+          component: () =>
+            import("@/views/WebGraphics/ThreeJSCustoms/Fog/index.vue"),
           meta: {
             title: "雾",
             imgSrc: "Fog/Fog.gif",
@@ -398,7 +432,9 @@ const row: RouteRecordRaw = {
           path: "GenerateMountainTerrain",
           name: "WebGraphicsThreeJSCustomsGenerateMountainTerrain",
           component: () =>
-            import("@/views/WebGraphics/ThreeJSCustoms/GenerateMountainTerrain/index.vue"),
+            import(
+              "@/views/WebGraphics/ThreeJSCustoms/GenerateMountainTerrain/index.vue"
+            ),
           meta: {
             title: "生成山脉地形",
             imgSrc: "GenerateMountainTerrain/生成山脉地形.gif",
@@ -408,7 +444,10 @@ const row: RouteRecordRaw = {
         {
           path: "EdgesGeometry",
           name: "WebGraphicsThreeJSCustomsEdgesGeometry",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/EdgesGeometry/index.vue"),
+          component: () =>
+            import(
+              "@/views/WebGraphics/ThreeJSCustoms/EdgesGeometry/index.vue"
+            ),
           meta: {
             title: "虚线线框几何体",
             imgSrc: "EdgesGeometry/EdgesGeometry.png",
@@ -417,7 +456,10 @@ const row: RouteRecordRaw = {
         {
           path: "TunnelShuttle",
           name: "WebGraphicsThreeJSCustomsTunnelShuttle",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/TunnelShuttle/index.vue"),
+          component: () =>
+            import(
+              "@/views/WebGraphics/ThreeJSCustoms/TunnelShuttle/index.vue"
+            ),
           meta: {
             title: "隧道穿梭",
             imgSrc: "TunnelShuttle/TunnelShuttle.png",
@@ -426,7 +468,8 @@ const row: RouteRecordRaw = {
         {
           path: "Box3",
           name: "WebGraphicsThreeJSCustomsBox3",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/Box3/index.vue"),
+          component: () =>
+            import("@/views/WebGraphics/ThreeJSCustoms/Box3/index.vue"),
           meta: {
             title: "包围盒 Box3",
             imgSrc: "Box3/Box3.png",
@@ -436,7 +479,10 @@ const row: RouteRecordRaw = {
         {
           path: "BufferGeometry1",
           name: "WebGraphicsThreeJSCustomsBufferGeometry1",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/BufferGeometry1/index.vue"),
+          component: () =>
+            import(
+              "@/views/WebGraphics/ThreeJSCustoms/BufferGeometry1/index.vue"
+            ),
           meta: {
             title: "缓冲模型 BufferGeometry之三角形绘制",
             imgSrc: "BufferGeometry1/BufferGeometry1.png",
@@ -445,7 +491,10 @@ const row: RouteRecordRaw = {
         {
           path: "BufferGeometry2",
           name: "WebGraphicsThreeJSCustomsBufferGeometry2",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/BufferGeometry2/index.vue"),
+          component: () =>
+            import(
+              "@/views/WebGraphics/ThreeJSCustoms/BufferGeometry2/index.vue"
+            ),
           meta: {
             title: "缓冲模型 BufferGeometry之points点绘制",
             // imgSrc: "Box3/Box3.png",
@@ -454,7 +503,10 @@ const row: RouteRecordRaw = {
         {
           path: "BufferGeometry3",
           name: "WebGraphicsThreeJSCustomsBufferGeometry3",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/BufferGeometry3/index.vue"),
+          component: () =>
+            import(
+              "@/views/WebGraphics/ThreeJSCustoms/BufferGeometry3/index.vue"
+            ),
           meta: {
             title: "缓冲模型 BufferGeometry之自定义颜色",
             imgSrc: "BufferGeometry3/BufferGeometry3.png",
@@ -463,7 +515,10 @@ const row: RouteRecordRaw = {
         {
           path: "BufferGeometry4",
           name: "WebGraphicsThreeJSCustomsBufferGeometry4",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/BufferGeometry4/index.vue"),
+          component: () =>
+            import(
+              "@/views/WebGraphics/ThreeJSCustoms/BufferGeometry4/index.vue"
+            ),
           meta: {
             title: "缓冲模型 BufferGeometry之颜色渐变柱状图",
             imgSrc: "BufferGeometry4/BufferGeometry4.png",
@@ -472,7 +527,10 @@ const row: RouteRecordRaw = {
         {
           path: "BufferGeometry5",
           name: "BufferGeometry5",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/BufferGeometry5/index.vue"),
+          component: () =>
+            import(
+              "@/views/WebGraphics/ThreeJSCustoms/BufferGeometry5/index.vue"
+            ),
           meta: {
             title: "缓冲模型 BufferGeometry之索引",
             imgSrc: "BufferGeometry5/BufferGeometry5.jpg",
@@ -481,7 +539,10 @@ const row: RouteRecordRaw = {
         {
           path: "BufferGeometry6",
           name: "WebGraphicsThreeJSCustomsBufferGeometry6",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/BufferGeometry6/index.vue"),
+          component: () =>
+            import(
+              "@/views/WebGraphics/ThreeJSCustoms/BufferGeometry6/index.vue"
+            ),
           meta: {
             title: "缓冲模型 BufferGeometry之线",
             imgSrc: "BufferGeometry6/BufferGeometry6.jpg",
@@ -490,7 +551,8 @@ const row: RouteRecordRaw = {
         {
           path: "Normal",
           name: "WebGraphicsThreeJSCustomsNormal",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/Normal/index.vue"),
+          component: () =>
+            import("@/views/WebGraphics/ThreeJSCustoms/Normal/index.vue"),
           meta: {
             title: "法向量",
             // imgSrc: "BufferGeometry4/BufferGeometry4.png",
@@ -499,7 +561,8 @@ const row: RouteRecordRaw = {
         {
           path: "Ray",
           name: "WebGraphicsThreeJSCustomsRay",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/Ray/index.vue"),
+          component: () =>
+            import("@/views/WebGraphics/ThreeJSCustoms/Ray/index.vue"),
           meta: {
             title: "射线 Ray",
             // imgSrc: "Box3/Box3.png",
@@ -508,7 +571,10 @@ const row: RouteRecordRaw = {
         {
           path: "OrbitControls",
           name: "WebGraphicsThreeJSCustomsOrbitControls",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/OrbitControls/index.vue"),
+          component: () =>
+            import(
+              "@/views/WebGraphics/ThreeJSCustoms/OrbitControls/index.vue"
+            ),
           meta: {
             title: "OrbitControls轨道控制器",
             imgSrc: "OrbitControls/OrbitControls.jpg",
@@ -517,7 +583,8 @@ const row: RouteRecordRaw = {
         {
           path: "DRACOLoader",
           name: "WebGraphicsThreeJSCustomsDRACOLoader",
-          component: () => import("@/views/WebGraphics/ThreeJSCustoms/DRACOLoader/index.vue"),
+          component: () =>
+            import("@/views/WebGraphics/ThreeJSCustoms/DRACOLoader/index.vue"),
           meta: {
             title: "加载器之解压加载器 DRACOLoader",
             imgSrc: "DRACOLoader/DRACOLoader.jpg",
