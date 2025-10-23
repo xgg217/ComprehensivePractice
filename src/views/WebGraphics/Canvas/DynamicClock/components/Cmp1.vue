@@ -90,6 +90,70 @@ const dialInit = () => {
     }
     ctx.restore();
   }
+
+  // 时针
+  {
+    ctx.save();
+
+    // 先旋转秒针
+    //ctx.rotate(((Math.PI * 2) / 12) * h); // 方式1：每过60分钟才跳动一下
+    ctx.rotate(((Math.PI * 2) / (60 * 60 * 12)) * (h * 3600 + m * 60 + s)); // 方式2：更加精细，会随着当前分针的位置，动态变化
+    ctx.strokeStyle = "#000";
+    ctx.lineWidth = 10;
+    ctx.beginPath();
+    ctx.moveTo(0, 5);
+    ctx.lineTo(0, -110);
+    ctx.stroke();
+    // ctx.rotate((Math.PI * 2) / 3); // 每次旋转30°
+    ctx.restore();
+  }
+
+  // 分针
+  {
+    ctx.save();
+
+    // 先旋转分针
+    // ctx.rotate(((Math.PI * 2) / 60) * m); // 方式1：每过一分钟才跳动一下
+
+    ctx.rotate(((Math.PI * 2) / 3600) * (m * 60 + s)); // 方式2：更加精细，会随着当前秒针的位置，动态变化
+
+    ctx.strokeStyle = "#ccc";
+    ctx.lineWidth = 6;
+
+    ctx.beginPath();
+    ctx.moveTo(0, 20);
+    ctx.lineTo(0, -170);
+    ctx.stroke();
+    // ctx.rotate((Math.PI * 2) / 12); // 每次旋转30°
+    ctx.restore();
+  }
+
+  // 秒针
+  {
+    ctx.save();
+
+    // 先旋转秒针
+    ctx.rotate(((Math.PI * 2) / 60) * s);
+
+    ctx.strokeStyle = "#f00";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(0, 30);
+    ctx.lineTo(0, -190);
+    ctx.stroke();
+    // ctx.rotate((Math.PI * 2) / 12); // 每次旋转30°
+    ctx.restore();
+  }
+
+  // 圆心点
+  {
+    ctx.save();
+
+    ctx.beginPath();
+    ctx.arc(0, 0, 6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
 };
 
 const move = () => {

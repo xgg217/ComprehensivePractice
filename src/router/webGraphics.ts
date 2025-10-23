@@ -220,6 +220,7 @@ const row: RouteRecordRaw = {
             imgSrc: "",
           },
         },
+
         {
           path: "DynamicClock",
           name: "WebGraphicsCanvasDynamicClock",
@@ -227,6 +228,16 @@ const row: RouteRecordRaw = {
             import("@/views/WebGraphics/Canvas/DynamicClock/index.vue"),
           meta: {
             title: "动态时钟",
+            imgSrc: "DynamicClock/DynamicClock.gif",
+          },
+        },
+        {
+          path: "Fireworks",
+          name: "WebGraphicsCanvasFireworks",
+          component: () =>
+            import("@/views/WebGraphics/Canvas/Fireworks/index.vue"),
+          meta: {
+            title: "粒子烟花",
             imgSrc: "",
           },
         },
