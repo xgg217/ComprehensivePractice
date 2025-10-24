@@ -1,13 +1,12 @@
 import type { RouteRecordRaw } from "vue-router";
 import layout from "@/layout/index.vue";
-// import aa from "@/views/ThreeJS/Examples/aa.vue";
 
 const row: RouteRecordRaw = {
   path: "/WebGraphics",
   name: "WebGraphics",
   meta: {
     title: "web 图形技术",
-    remark: "SVG Canvas webGL Three.js",
+    remark: "SVG、Canvas、webGL、Three.js",
     isCardList: true,
     pathName: "WebGraphicsList",
   },

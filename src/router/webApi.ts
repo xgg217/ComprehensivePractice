@@ -7,7 +7,7 @@ const row: RouteRecordRaw = {
   name: "WebApi",
   meta: {
     title: "web Api",
-    remark: "第web Api 学习",
+    remark: "WebWorker、",
     isCardList: true,
     pathName: "WebApiList",
   },

@@ -1,13 +1,12 @@
 import type { RouteRecordRaw } from "vue-router";
 import layout from "@/layout/index.vue";
-// import aa from "@/views/ThreeJS/Examples/aa.vue";
 
 const row: RouteRecordRaw = {
   path: "/NpmUtils",
   name: "NpmUtils",
   meta: {
     title: "第三方插件",
-    remark: "第三方插件 练习",
+    remark: "TweenJS、animejs、GSAP、ECharts、Zod",
     isCardList: true,
     pathName: "NpmUtilsList",
   },
@@ -48,7 +47,8 @@ const row: RouteRecordRaw = {
         {
           path: "TweenJSIndex",
           name: "TweenJSIndex",
-          component: () => import("@/views/NpmUtils/TweenJS/HelloWorld/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/TweenJS/HelloWorld/index.vue"),
           meta: {
             title: "HelloWorld",
             imgSrc: "HelloWorld/HelloWorld.png",
@@ -57,7 +57,8 @@ const row: RouteRecordRaw = {
         {
           path: "BlackAndRed",
           name: "BlackAndRed",
-          component: () => import("@/views/NpmUtils/TweenJS/BlackAndRed/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/TweenJS/BlackAndRed/index.vue"),
           meta: {
             title: "黑与红",
             imgSrc: "BlackAndRed/BlackAndRed.png",
@@ -84,7 +85,8 @@ const row: RouteRecordRaw = {
         {
           path: "Simplest",
           name: "Simplest",
-          component: () => import("@/views/NpmUtils/TweenJS/Simplest/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/TweenJS/Simplest/index.vue"),
           meta: {
             title: "补间动画",
             imgSrc: "Simplest/Simplest.png",
@@ -93,7 +95,8 @@ const row: RouteRecordRaw = {
         {
           path: "VideoAndTime",
           name: "VideoAndTime",
-          component: () => import("@/views/NpmUtils/TweenJS/VideoAndTime/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/TweenJS/VideoAndTime/index.vue"),
           meta: {
             title: "播放视频，同步渐变",
             imgSrc: "VideoAndTime/VideoAndTime.png",
@@ -102,7 +105,8 @@ const row: RouteRecordRaw = {
         {
           path: "DynamicToObject",
           name: "DynamicToObject",
-          component: () => import("@/views/NpmUtils/TweenJS/DynamicToObject/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/TweenJS/DynamicToObject/index.vue"),
           meta: {
             title: "Dynamic to, object",
             imgSrc: "DynamicToObject/DynamicToObject.png",
@@ -112,10 +116,14 @@ const row: RouteRecordRaw = {
         {
           path: "DynamicToInterpolationArray",
           name: "DynamicToInterpolationArray",
-          component: () => import("@/views/NpmUtils/TweenJS/DynamicToInterpolationArray/index.vue"),
+          component: () =>
+            import(
+              "@/views/NpmUtils/TweenJS/DynamicToInterpolationArray/index.vue"
+            ),
           meta: {
             title: "Dynamic to, interpolation array",
-            imgSrc: "DynamicToInterpolationArray/DynamicToInterpolationArray.png",
+            imgSrc:
+              "DynamicToInterpolationArray/DynamicToInterpolationArray.png",
           },
         },
         {
@@ -130,7 +138,8 @@ const row: RouteRecordRaw = {
         {
           path: "RelativeValues",
           name: "RelativeValues",
-          component: () => import("@/views/NpmUtils/TweenJS/RelativeValues/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/TweenJS/RelativeValues/index.vue"),
           meta: {
             title: "渐变到相对值，使用repeat",
             imgSrc: "RelativeValues/RelativeValues.png",
@@ -148,7 +157,8 @@ const row: RouteRecordRaw = {
         {
           path: "StopAllChainedTweens",
           name: "StopAllChainedTweens",
-          component: () => import("@/views/NpmUtils/TweenJS/StopAllChainedTweens/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/TweenJS/StopAllChainedTweens/index.vue"),
           meta: {
             title: "StopAllChainedTweens",
             imgSrc: "StopAllChainedTweens/StopAllChainedTweens.png",
@@ -158,7 +168,8 @@ const row: RouteRecordRaw = {
         {
           path: "PauseTween",
           name: "PauseTween",
-          component: () => import("@/views/NpmUtils/TweenJS/PauseTween/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/TweenJS/PauseTween/index.vue"),
           meta: {
             title: "PauseTween",
             imgSrc: "PauseTween/PauseTween.png",
@@ -167,7 +178,8 @@ const row: RouteRecordRaw = {
         {
           path: "ComplexProperties",
           name: "ComplexProperties",
-          component: () => import("@/views/NpmUtils/TweenJS/ComplexProperties/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/TweenJS/ComplexProperties/index.vue"),
           meta: {
             title: "嵌套对象",
             imgSrc: "ComplexProperties/ComplexProperties.png",
@@ -177,7 +189,8 @@ const row: RouteRecordRaw = {
         {
           path: "AnimateAnArrayOfValues",
           name: "AnimateAnArrayOfValues",
-          component: () => import("@/views/NpmUtils/TweenJS/AnimateAnArrayOfValues/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/TweenJS/AnimateAnArrayOfValues/index.vue"),
           meta: {
             title: "翻转",
             imgSrc: "AnimateAnArrayOfValues/AnimateAnArrayOfValues.png",
@@ -212,7 +225,8 @@ const row: RouteRecordRaw = {
         {
           path: "movingLetters",
           name: "MovingLetters",
-          component: () => import("@/views/NpmUtils/Animejs/MovingLetters/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/Animejs/MovingLetters/index.vue"),
           meta: {
             title: "移动的字母",
             imgSrc: "MovingLetters/MovingLetters.gif",
@@ -221,7 +235,8 @@ const row: RouteRecordRaw = {
         {
           path: "oneTargetAndAttribute",
           name: "OneTargetAndAttribute",
-          component: () => import("@/views/NpmUtils/Animejs/OneTargetAndAttribute/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/Animejs/OneTargetAndAttribute/index.vue"),
           meta: {
             title: "第一部分 目标与属性",
             imgSrc: "",
@@ -230,7 +245,8 @@ const row: RouteRecordRaw = {
         {
           path: "oneAnimationAttribute",
           name: "oneAnimationAttribute",
-          component: () => import("@/views/NpmUtils/Animejs/OneAnimationAttribute/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/Animejs/OneAnimationAttribute/index.vue"),
           meta: {
             title: "第一部分 动画属性",
             imgSrc: "",
@@ -239,7 +255,8 @@ const row: RouteRecordRaw = {
         {
           path: "twoAttributeParameter",
           name: "twoAttributeParameter",
-          component: () => import("@/views/NpmUtils/Animejs/TwoAttributeParameter/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/Animejs/TwoAttributeParameter/index.vue"),
           meta: {
             title: "第二部分 属性参数",
             imgSrc: "",
@@ -249,7 +266,9 @@ const row: RouteRecordRaw = {
           path: "twoParametersBasedOnFunctions",
           name: "TwoParametersBasedOnFunctions",
           component: () =>
-            import("@/views/NpmUtils/Animejs/TwoParametersBasedOnFunctions/index.vue"),
+            import(
+              "@/views/NpmUtils/Animejs/TwoParametersBasedOnFunctions/index.vue"
+            ),
           meta: {
             title: "第二部分 基于函数的参数",
             imgSrc: "",
@@ -330,7 +349,8 @@ const row: RouteRecordRaw = {
         {
           path: "GSDevTools",
           name: "GSDevTools",
-          component: () => import("@/views/NpmUtils/GSAP/RegisterPlugin/GSDevTools.vue"),
+          component: () =>
+            import("@/views/NpmUtils/GSAP/RegisterPlugin/GSDevTools.vue"),
           meta: {
             title: "插件之GSDevTools",
             imgSrc: "",
@@ -339,7 +359,8 @@ const row: RouteRecordRaw = {
         {
           path: "ScrollTrigger",
           name: "ScrollTrigger",
-          component: () => import("@/views/NpmUtils/GSAP/RegisterPlugin/ScrollTrigger.vue"),
+          component: () =>
+            import("@/views/NpmUtils/GSAP/RegisterPlugin/ScrollTrigger.vue"),
           meta: {
             title: "插件之ScrollTrigger",
             imgSrc: "",
@@ -375,7 +396,8 @@ const row: RouteRecordRaw = {
         {
           path: "setOption",
           name: "EChartsSetOption",
-          component: () => import("@/views/NpmUtils/ECharts/SetOption/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/ECharts/SetOption/index.vue"),
           meta: {
             title: "setOption 示例",
             imgSrc: "",
@@ -384,7 +406,8 @@ const row: RouteRecordRaw = {
         {
           path: "setOptionAxis",
           name: "EChartsSetOptionAxis",
-          component: () => import("@/views/NpmUtils/ECharts/SetOptionAxis/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/ECharts/SetOptionAxis/index.vue"),
           meta: {
             title: "setOption 轴体",
             imgSrc: "",
@@ -393,7 +416,8 @@ const row: RouteRecordRaw = {
         {
           path: "setOptionDataZoom",
           name: "SetOptionDataZoom",
-          component: () => import("@/views/NpmUtils/ECharts/SetOptionDataZoom/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/ECharts/SetOptionDataZoom/index.vue"),
           meta: {
             title: "DataZoom 区域缩放",
             imgSrc: "",
@@ -402,7 +426,8 @@ const row: RouteRecordRaw = {
         {
           path: "setOptionTooltiop",
           name: "SetOptionTooltiop",
-          component: () => import("@/views/NpmUtils/ECharts/SetOptionTooltiop/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/ECharts/SetOptionTooltiop/index.vue"),
           meta: {
             title: "tooltiop 提示框",
             imgSrc: "",
@@ -420,7 +445,8 @@ const row: RouteRecordRaw = {
         {
           path: "visualMap",
           name: "visualMap",
-          component: () => import("@/views/NpmUtils/ECharts/visualMap/index.vue"),
+          component: () =>
+            import("@/views/NpmUtils/ECharts/visualMap/index.vue"),
           meta: {
             title: "视觉映射组件",
             imgSrc: "",
