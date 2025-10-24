@@ -1,23 +1,23 @@
 <script setup lang="ts">
+import { Drawing, TYPE, type TType, type TOptions } from "./utils";
+
 const inputRef1 = useTemplateRef("canvasRef1");
+const drawingClass = ref<Drawing>();
+
+const radio1 = ref<TType>(TYPE.LINE);
+const color1 = ref("#000000"); // 颜色
+const size = ref(8);
+
+const onRadio1 = (e: TType) => {};
 
 onMounted(() => {
-  // const ctr = inputRef.value?.getContext("2d");
-  // console.log(ctr);
+  const options: TOptions = {
+    color: color1.value,
+    size: size.value,
+  };
+
+  drawingClass.value = new Drawing(inputRef1.value!, radio1.value, options);
 });
-
-const radio1 = ref("");
-const radio2 = ref("");
-const color1 = ref("#000000"); // 颜色
-const num = ref(8);
-
-const onRadio1 = (e: string) => {
-  radio2.value = "";
-};
-
-const onRadio2 = (e: string) => {
-  radio1.value = "";
-};
 </script>
 
 <template>
@@ -25,19 +25,16 @@ const onRadio2 = (e: string) => {
     参考 window 的画板功能（简化版）
     <div class="head">
       <el-radio-group v-model="radio1" size="large" @change="onRadio1">
-        <el-radio-button label="线条" value="LINE" />
-        <el-radio-button label="矩形" value="RECT" />
-        <el-radio-button label="圆" value="ARC" />
-      </el-radio-group>
-
-      <el-radio-group v-model="radio2" size="large" @change="onRadio2">
-        <el-radio-button label="填充" value="LINE" />
-        <el-radio-button label="橡皮擦" value="RECT" />
+        <el-radio-button label="线条" :value="TYPE.LINE" />
+        <el-radio-button label="矩形" :value="TYPE.RECT" />
+        <el-radio-button label="圆" :value="TYPE.ARC" />
+        <el-radio-button label="填充" :value="TYPE.FILL" />
+        <el-radio-button label="橡皮擦" :value="TYPE.CLEAR" />
       </el-radio-group>
 
       <!-- 粗细 -->
       <el-input-number
-        v-model="num"
+        v-model="size"
         :min="1"
         :max="20"
         :precision="0"
@@ -48,22 +45,41 @@ const onRadio2 = (e: string) => {
 
       <el-button>清空</el-button>
 
-      <el-button type="info">另存为图片</el-button>
+      <el-button type="info" @click="() => drawingClass?.onDownload()"
+        >另存为图片</el-button
+      >
     </div>
-    <canvas ref="canvasRef1" width="800" height="800"></canvas>
+    <div class="can">
+      <canvas ref="canvasRef1" width="800" height="800" class="can1"></canvas>
+    </div>
   </div>
 </template>
 
 <style scoped>
-canvas {
-  border: 1px solid red;
-}
-
 .head {
   width: 800px;
   padding: 10px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.can {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 800px;
+  height: 800px;
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: crosshair;
+  }
+
+  .can1 {
+    border: 1px solid red;
+  }
 }
 </style>

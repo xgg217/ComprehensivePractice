@@ -174,15 +174,7 @@ const row: RouteRecordRaw = {
             imgSrc: "",
           },
         },
-        {
-          path: "GuaGuaLe",
-          name: "WebGraphicsCanvasGuaGuaLe",
-          component: () => import("@/views/WebGraphics/Canvas/GuaGuaLe.vue"),
-          meta: {
-            title: "刮刮乐",
-            imgSrc: "GuaGuaLe.png",
-          },
-        },
+
         {
           path: "Translate",
           name: "WebGraphicsCanvasTranslate",
@@ -218,6 +210,38 @@ const row: RouteRecordRaw = {
           meta: {
             title: "头像裁剪上传",
             imgSrc: "",
+          },
+        },
+        {
+          path: "GlobalCompositeOperation",
+          name: "WebGraphicsCanvasGlobalCompositeOperation",
+          component: () =>
+            import("@/views/WebGraphics/Canvas/GlobalCompositeOperation.vue"),
+          meta: {
+            title: "图形合成之路径合成",
+            imgSrc: "",
+          },
+        },
+
+        {
+          path: "GlobalCompositeOperationColor",
+          name: "WebGraphicsCanvasGlobalCompositeOperationColor",
+          component: () =>
+            import(
+              "@/views/WebGraphics/Canvas/GlobalCompositeOperationColor.vue"
+            ),
+          meta: {
+            title: "图形合成之颜色合成",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "GuaGuaLe",
+          name: "WebGraphicsCanvasGuaGuaLe",
+          component: () => import("@/views/WebGraphics/Canvas/GuaGuaLe.vue"),
+          meta: {
+            title: "刮刮乐",
+            imgSrc: "GuaGuaLe.png",
           },
         },
 
