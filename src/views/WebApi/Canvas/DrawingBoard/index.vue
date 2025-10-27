@@ -6,7 +6,7 @@ const canvasRef2 = useTemplateRef("canvasRef2");
 let ctx1: CanvasRenderingContext2D;
 let ctx2: CanvasRenderingContext2D;
 
-const radio1 = ref<TType>(TYPE.LINE);
+const radio1 = ref<TType>(TYPE.RECT);
 const color1 = ref("#000000"); // 颜色
 const size = ref(8);
 
@@ -53,17 +53,14 @@ const onMousedown = (e: MouseEvent) => {
 
   // 直线
   if (radio1.value === TYPE.LINE) {
-    shapeBClass = new ShapeB(
-      radio1.value,
-      x,
-      y,
-      ref2.width,
-      ref2.height,
-      ctx2,
-      options.value,
-    );
+    shapeBClass = new ShapeB(radio1.value, x, y, ref2.width, ref2.height, ctx2, options.value);
 
     shapeBClass.lineStart();
+  }
+
+  // 矩形
+  if (radio1.value === TYPE.RECT) {
+    shapeBClass = new ShapeB(radio1.value, x, y, ref2.width, ref2.height, ctx2, options.value);
   }
 
   // 鼠标在元素上移动时触发
@@ -108,6 +105,7 @@ const onMousemove = (e: MouseEvent) => {
   // 矩形
   if (radioVal === TYPE.RECT) {
     // this.drawRect();
+    shapeBClass.rectStart(ex, ey);
     return;
   }
 
@@ -134,28 +132,62 @@ const onMousemove = (e: MouseEvent) => {
 const onMouseup = () => {
   console.log("鼠标抬起");
   const ref2 = canvasRef2.value!;
+
+  const radioVal = radio1.value;
+  // console.log(shapeBClass);
+
+  const shapeClass = new Shape(radio1.value, startRow.x, startRow.y, ctx1, options.value);
+
+  // 线条
+  if (radioVal === TYPE.LINE) {
+    shapeBClass.lineEnd();
+
+    // 将数据绘制到画布1
+    // shapeClass.points = shapeBClass.points;
+
+    shapeClass.drawLine(shapeBClass.points);
+  }
+
+  // 线条
+  if (radioVal === TYPE.RECT) {
+    let x = 0;
+    let y = 0;
+    let width = 0;
+    let height = 0;
+    console.log(shapeBClass.e);
+
+    if (shapeBClass.ex > startRow.x) {
+      x = startRow.x;
+      width = shapeBClass.ex - startRow.x;
+    } else {
+      x = shapeBClass.ex;
+      width = startRow.x - shapeBClass.ex;
+    }
+
+    if (shapeBClass.ey > startRow.y) {
+      y = startRow.y;
+      height = shapeBClass.ey - startRow.y;
+    } else {
+      y = shapeBClass.ey;
+      height = startRow.y - shapeBClass.ey;
+    }
+
+    // shapeBClass.rectEnd();
+
+    // shapeClass.x = shapeBClass.x;
+    // shapeClass.y = shapeBClass.y;
+    // shapeClass.ex = shapeBClass.ex;
+    // shapeClass.ey = shapeBClass.ey;
+    // console.log(shapeBClass);
+    // console.log(x, y, width, height);
+
+    // shapeClass.drawRect();
+  }
+
   ref2.removeEventListener("mousemove", onMousemove);
   ref2.removeEventListener("mouseup", onMouseup);
   ref2.removeEventListener("mouseover", onMouseup);
   ref2.removeEventListener("mouseout", onMouseup);
-
-  shapeBClass.lineEnd();
-  // console.log(shapeBClass);
-
-  // 将数据绘制到画布1
-  const shapeClass = new Shape(
-    radio1.value,
-    startRow.x,
-    startRow.y,
-    ctx1,
-    options.value,
-  );
-  shapeClass.points = shapeBClass.points;
-  shapeClass.draw();
-  // ctx2.clearRect(0, 0, ref2.width, ref2.height);
-
-  // // 恢复状态
-  // ctx2.restore();
 };
 
 // 清空
@@ -185,13 +217,7 @@ onMounted(() => {
       </el-radio-group>
 
       <!-- 粗细 -->
-      <el-input-number
-        v-model="size"
-        :min="1"
-        :max="20"
-        :precision="0"
-        :step="1"
-      />
+      <el-input-number v-model="size" :min="1" :max="20" :precision="0" :step="1" />
 
       <el-color-picker v-model="color1" />
 
@@ -204,13 +230,7 @@ onMounted(() => {
       <canvas ref="canvasRef1" width="400" height="400" class="can1" />
 
       <!-- 画布2：画笔真正绘制的画布 -->
-      <canvas
-        ref="canvasRef2"
-        width="400"
-        height="400"
-        class="can1"
-        @mousedown="onMousedown"
-      />
+      <canvas ref="canvasRef2" width="400" height="400" class="can1" @mousedown="onMousedown" />
     </div>
   </div>
 </template>
