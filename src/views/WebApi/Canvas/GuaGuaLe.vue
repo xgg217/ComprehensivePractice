@@ -31,6 +31,7 @@ const onMousedown = (e: MouseEvent) => {
 
   // 鼠标抬起
   canvasRef.value?.addEventListener("mouseup", onMouseup);
+
   // 鼠标进入
   canvasRef.value?.addEventListener("mouseover", onMouseup);
 };
@@ -53,7 +54,12 @@ const onMouseup = () => {
 
 <template>
   <div class="box">
-    <canvas ref="canvasRef" width="400" height="400" @mousedown="onMousedown"></canvas>
+    <canvas
+      ref="canvasRef"
+      width="400"
+      height="400"
+      @mousedown="onMousedown"
+    ></canvas>
     <div>一等奖</div>
   </div>
 </template>

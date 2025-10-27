@@ -76,23 +76,25 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-card style="width: 680px">
-    <template #header>
-      <div class="card-header">
-        <span>原地运动</span>
-      </div>
-    </template>
-    <canvas ref="canvasRef1" width="400" height="400"></canvas>
-  </el-card>
+  <div class="box">
+    <el-card style="width: 600px">
+      <template #header>
+        <div class="card-header">
+          <span>原地运动</span>
+        </div>
+      </template>
+      <canvas ref="canvasRef1" width="400" height="400"></canvas>
+    </el-card>
 
-  <el-card style="width: 680px">
-    <template #header>
-      <div class="card-header">
-        <span>前进</span>
-      </div>
-    </template>
-    <canvas ref="canvasRef2" width="400" height="400"></canvas>
-  </el-card>
+    <el-card style="width: 600px">
+      <template #header>
+        <div class="card-header">
+          <span>前进</span>
+        </div>
+      </template>
+      <canvas ref="canvasRef2" width="400" height="400"></canvas>
+    </el-card>
+  </div>
 </template>
 
 <style scoped>

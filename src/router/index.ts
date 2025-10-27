@@ -4,7 +4,6 @@ import vue3 from "./vue3";
 import npmUtils from "./npmUtils";
 import custom from "./custom";
 import webApi from "./webApi";
-import webGraphics from "./webGraphics";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,9 +25,6 @@ const router = createRouter({
 
     // 小项目
     custom,
-
-    // web 图像
-    webGraphics,
 
     {
       path: "/404",
