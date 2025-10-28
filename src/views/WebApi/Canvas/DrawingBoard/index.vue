@@ -6,9 +6,9 @@ const canvasRef2 = useTemplateRef("canvasRef2");
 let ctx1: CanvasRenderingContext2D;
 let ctx2: CanvasRenderingContext2D;
 
-const radio1 = ref<TType>(TYPE.RECT);
+const radio1 = ref<TType>(TYPE.ARC);
 const color1 = ref("#000000"); // 颜色
-const size = ref(8);
+const size = ref(2);
 
 let shapeBClass: ShapeB;
 
@@ -50,17 +50,24 @@ const onMousedown = (e: MouseEvent) => {
   const ref2 = canvasRef2.value!;
 
   //
+  shapeBClass = new ShapeB(
+    radio1.value,
+    x,
+    y,
+    ref2.width,
+    ref2.height,
+    ctx2,
+    options.value,
+  );
 
   // 直线
   if (radio1.value === TYPE.LINE) {
-    shapeBClass = new ShapeB(radio1.value, x, y, ref2.width, ref2.height, ctx2, options.value);
-
     shapeBClass.lineStart();
   }
 
-  // 矩形
-  if (radio1.value === TYPE.RECT) {
-    shapeBClass = new ShapeB(radio1.value, x, y, ref2.width, ref2.height, ctx2, options.value);
+  // 橡皮檫
+  if (radio1.value === TYPE.CLEAR) {
+    shapeBClass.clearRecStart();
   }
 
   // 鼠标在元素上移动时触发
@@ -112,6 +119,7 @@ const onMousemove = (e: MouseEvent) => {
   // 圆
   if (radioVal === TYPE.ARC) {
     // this.drawArc();
+    shapeBClass.arcStart(ex, ey);
     return;
   }
 
@@ -124,6 +132,7 @@ const onMousemove = (e: MouseEvent) => {
   // 橡皮檫
   if (radioVal === TYPE.CLEAR) {
     // this.drawClearReact();
+    shapeBClass.clearRec(ex, ey);
     return;
   }
 };
@@ -136,7 +145,13 @@ const onMouseup = () => {
   const radioVal = radio1.value;
   // console.log(shapeBClass);
 
-  const shapeClass = new Shape(radio1.value, startRow.x, startRow.y, ctx1, options.value);
+  const shapeClass = new Shape(
+    radio1.value,
+    startRow.x,
+    startRow.y,
+    ctx1,
+    options.value,
+  );
 
   // 线条
   if (radioVal === TYPE.LINE) {
@@ -148,40 +163,42 @@ const onMouseup = () => {
     shapeClass.drawLine(shapeBClass.points);
   }
 
-  // 线条
+  // 矩形
   if (radioVal === TYPE.RECT) {
-    let x = 0;
-    let y = 0;
-    let width = 0;
-    let height = 0;
-    console.log(shapeBClass.e);
+    const { points } = shapeBClass;
 
-    if (shapeBClass.ex > startRow.x) {
-      x = startRow.x;
-      width = shapeBClass.ex - startRow.x;
-    } else {
-      x = shapeBClass.ex;
-      width = startRow.x - shapeBClass.ex;
-    }
+    const x = points[0].x;
+    const y = points[0].y;
+    const widht = points[1].x - x;
+    const height = points[1].y - y;
+    // console.log("实际", shapeBClass.points);
 
-    if (shapeBClass.ey > startRow.y) {
-      y = startRow.y;
-      height = shapeBClass.ey - startRow.y;
-    } else {
-      y = shapeBClass.ey;
-      height = startRow.y - shapeBClass.ey;
-    }
+    shapeClass.drawRect(x, y, widht, height);
+    shapeBClass.rectEnd();
+  }
 
-    // shapeBClass.rectEnd();
+  // 圆
+  if (radioVal === TYPE.ARC) {
+    const { points } = shapeBClass;
 
-    // shapeClass.x = shapeBClass.x;
-    // shapeClass.y = shapeBClass.y;
-    // shapeClass.ex = shapeBClass.ex;
-    // shapeClass.ey = shapeBClass.ey;
-    // console.log(shapeBClass);
-    // console.log(x, y, width, height);
+    const x = points[0].x;
+    const y = points[0].y;
+    const rx = points[1].x;
+    const ry = points[1].y;
+    // console.log("实际", shapeBClass.points);
 
-    // shapeClass.drawRect();
+    shapeClass.drawArc(x, y, rx, ry);
+    shapeBClass.rectEnd();
+  }
+
+  // 橡皮檫
+  if (radioVal === TYPE.CLEAR) {
+    shapeBClass.clearRecEnd();
+
+    // 将数据绘制到画布1
+    // shapeClass.points = shapeBClass.points;
+
+    shapeClass.drawClearReact(shapeBClass.points);
   }
 
   ref2.removeEventListener("mousemove", onMousemove);
@@ -196,6 +213,15 @@ const onClear = () => {
   const ref2 = canvasRef2.value!;
   ctx1.clearRect(0, 0, ref1.width, ref1.height);
   ctx2.clearRect(0, 0, ref2.width, ref2.height);
+};
+
+// 下载
+const onDownload = () => {
+  const url = canvasRef1.value!.toDataURL();
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "canvas画布";
+  a.click();
 };
 
 onMounted(() => {
@@ -217,20 +243,32 @@ onMounted(() => {
       </el-radio-group>
 
       <!-- 粗细 -->
-      <el-input-number v-model="size" :min="1" :max="20" :precision="0" :step="1" />
+      <el-input-number
+        v-model="size"
+        :min="1"
+        :max="20"
+        :precision="0"
+        :step="1"
+      />
 
       <el-color-picker v-model="color1" />
 
       <el-button @click="onClear">清空</el-button>
 
-      <el-button type="info" @click="">另存为图片</el-button>
+      <el-button type="info" @click="onDownload">另存为图片</el-button>
     </div>
     <div class="can">
       <!-- 画布1：将画布2放置到画布1上，显示画布2的内容 -->
       <canvas ref="canvasRef1" width="400" height="400" class="can1" />
 
       <!-- 画布2：画笔真正绘制的画布 -->
-      <canvas ref="canvasRef2" width="400" height="400" class="can1" @mousedown="onMousedown" />
+      <canvas
+        ref="canvasRef2"
+        width="400"
+        height="400"
+        class="can1"
+        @mousedown="onMousedown"
+      />
     </div>
   </div>
 </template>

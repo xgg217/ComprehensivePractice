@@ -58,34 +58,30 @@ export class Shape {
   // 绘制
   draw() {
     // 线条
-    if (this.type === TYPE.LINE) {
-      this.drawLine();
-      return;
-    }
-
-    // 矩形
-    if (this.type === TYPE.RECT) {
-      this.drawRect();
-      return;
-    }
-
-    // 圆
-    if (this.type === TYPE.ARC) {
-      this.drawArc();
-      return;
-    }
-
-    // 填充
-    if (this.type === TYPE.FILL) {
-      this.drawFill();
-      return;
-    }
-
-    // 橡皮檫
-    if (this.type === TYPE.CLEAR) {
-      this.drawClearReact();
-      return;
-    }
+    // if (this.type === TYPE.LINE) {
+    //   this.drawLine();
+    //   return;
+    // }
+    // // 矩形
+    // if (this.type === TYPE.RECT) {
+    //   this.drawRect();
+    //   return;
+    // }
+    // // 圆
+    // if (this.type === TYPE.ARC) {
+    //   this.drawArc();
+    //   return;
+    // }
+    // // 填充
+    // if (this.type === TYPE.FILL) {
+    //   this.drawFill();
+    //   return;
+    // }
+    // // 橡皮檫
+    // if (this.type === TYPE.CLEAR) {
+    //   this.drawClearReact();
+    //   return;
+    // }
   }
 
   // 绘制线
@@ -104,7 +100,7 @@ export class Shape {
   }
 
   // 绘制矩形
-  private drawRect(x: number, y: number, width: number, height: number) {
+  drawRect(x: number, y: number, width: number, height: number) {
     const { size, color } = this.options;
     this.ctx.save();
     this.ctx.beginPath();
@@ -121,13 +117,39 @@ export class Shape {
   }
 
   // 绘制圆
-  private drawArc() {}
+  drawArc(x: number, y: number, rx: number, ry: number) {
+    const { size, color } = this.options;
+    this.ctx.save();
+    this.ctx.beginPath();
+    this.ctx.lineWidth = size;
+    this.ctx.strokeStyle = color;
+
+    // const width = ex - this.x;
+    // const height = ey - this.y;
+    // console.log(this.x, this.y, width, height);
+
+    this.ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2);
+    this.ctx.stroke(); // 描边
+    this.ctx.restore();
+  }
 
   // 填充
   private drawFill() {}
 
   // 橡皮檫
-  private drawClearReact() {}
+  drawClearReact(points: TPoints[]) {
+    const { size, color } = this.options;
+    this.ctx.save();
+    this.ctx.beginPath();
+    this.ctx.lineWidth = size;
+    this.ctx.strokeStyle = "#fff";
+    this.ctx.moveTo(this.x, this.y);
+    points.forEach(item => {
+      this.ctx.lineTo(item.x, item.y);
+    });
+    this.ctx.stroke();
+    this.ctx.restore();
+  }
 }
 
 // 预绘制
@@ -164,6 +186,11 @@ export class ShapeB {
     this.options = options;
   }
 
+  // 清空画布
+  onClear() {
+    this.ctx.clearRect(0, 0, this.width, this.height);
+  }
+
   // 画线开始
   lineStart() {
     const { size, color } = this.options;
@@ -173,9 +200,9 @@ export class ShapeB {
     this.ctx.strokeStyle = color;
     this.ctx.moveTo(this.x, this.y);
   }
-  // 画线过程
+
   /**
-   *
+   * 画线过程
    * @param ex 终点 x
    * @param ey 终点 y
    */
@@ -186,47 +213,56 @@ export class ShapeB {
   }
   // 画线结束
   lineEnd() {
-    this.ctx.clearRect(0, 0, this.width, this.height);
+    this.onClear();
     this.ctx.restore();
   }
 
   // 矩形开始
   rectStart(ex: number, ey: number) {
     const { size, color } = this.options;
-    // this.ctx.clearRect(0, 0, this.width, this.height);
+    this.ctx.clearRect(0, 0, this.width, this.height);
     this.ctx.save();
     this.ctx.beginPath();
-    let x = 0;
-    let y = 0;
-    let width = 0;
-    let height = 0;
+    const x = Math.min(this.x, ex);
+    const y = Math.min(this.y, ey);
+    const width = Math.abs(this.x - ex);
+    const height = Math.abs(this.y - ey);
 
-    if (ex > this.x) {
-      // 从左向右滑动
-      x = this.x;
-      width = ex - this.x;
-    } else {
-      // 从右向左滑动
-      x = ex;
-      width = this.x - ex;
-    }
+    // if (ex > this.x) {
+    //   // 从左向右滑动
+    //   x = this.x;
+    //   // width = ex - this.x;
+    // } else {
+    //   // 从右向左滑动
+    //   x = ex;
+    //   // width = this.x - ex;
+    // }
 
-    if (ey > this.y) {
-      y = this.y;
-      height = ey - this.y;
-    } else {
-      y = ey;
-      height = this.y - ey;
-    }
+    // if (ey > this.y) {
+    //   y = this.y;
+    //   // height = ey - this.y;
+    // } else {
+    //   y = ey;
+    //   // height = this.y - ey;
+    // }
 
-    // this.x = x;
-    // this.y = y;
     this.ex = x + width;
     this.ey = y + height;
     this.ctx.lineWidth = size;
     this.ctx.strokeStyle = color;
     console.log(x, y, width, height);
-
+    this.points = [
+      // 开始
+      {
+        x,
+        y,
+      },
+      // 结束
+      {
+        x: x + width,
+        y: y + height,
+      },
+    ];
     this.ctx.strokeRect(x, y, width, height);
     // this.ctx.stroke(); // 描边
     this.ctx.restore();
@@ -234,6 +270,72 @@ export class ShapeB {
 
   // 矩形结束
   rectEnd() {
-    // this.ctx.clearRect(0, 0, this.width, this.height);
+    this.onClear();
+  }
+
+  // 圆开始
+  arcStart(ex: number, ey: number) {
+    const { size, color } = this.options;
+    this.ctx.clearRect(0, 0, this.width, this.height);
+    this.ctx.save();
+    this.ctx.beginPath();
+    this.ctx.lineWidth = size;
+    this.ctx.strokeStyle = color;
+    // console.log(this);
+
+    const rx = Math.abs(ex - this.x) / 2; // x轴半径
+    const ry = Math.abs(ey - this.y) / 2; // x轴半径
+
+    // 圆点坐标
+    const x = Math.min(ex, this.x) + rx;
+    const y = Math.min(ey, this.y) + ry;
+
+    this.points = [
+      // 开始
+      {
+        x,
+        y,
+      },
+      // 结束
+      {
+        x: rx,
+        y: ry,
+      },
+    ];
+
+    this.ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2);
+    this.ctx.stroke(); // 描边
+    this.ctx.restore();
+  }
+
+  // 圆结束
+  arcEnd() {
+    this.onClear();
+  }
+
+  // 橡皮檫 开始
+  clearRecStart() {
+    const { size } = this.options;
+    this.ctx.save();
+    this.ctx.beginPath();
+    this.ctx.lineWidth = size;
+    this.ctx.strokeStyle = "red";
+    this.ctx.moveTo(this.x, this.y);
+  }
+
+  /**
+   * 画线过程
+   * @param ex 终点 x
+   * @param ey 终点 y
+   */
+  clearRec(ex: number, ey: number) {
+    this.ctx.lineTo(ex, ey);
+    this.ctx.stroke();
+    this.points.push({ x: ex, y: ey });
+  }
+  // 画线结束
+  clearRecEnd() {
+    this.onClear();
+    this.ctx.restore();
   }
 }
