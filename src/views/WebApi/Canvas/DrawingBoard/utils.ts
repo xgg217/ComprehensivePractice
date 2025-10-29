@@ -18,6 +18,8 @@ type TPoints = {
 export type TOptions = {
   color: string;
   size: number;
+  width: number;
+  height: number;
 };
 
 // 图形类
@@ -28,7 +30,7 @@ export class Shape {
   ex: number; // 终点x
   ey: number; // 终点y
   // points: TPoints[]; // 线条 = 多个点组成
-  private ctx: CanvasRenderingContext2D;
+  ctx: CanvasRenderingContext2D;
   private options: TOptions;
 
   /**
@@ -53,35 +55,6 @@ export class Shape {
     this.ctx = ctx;
     // this.points = [];
     this.options = options;
-  }
-
-  // 绘制
-  draw() {
-    // 线条
-    // if (this.type === TYPE.LINE) {
-    //   this.drawLine();
-    //   return;
-    // }
-    // // 矩形
-    // if (this.type === TYPE.RECT) {
-    //   this.drawRect();
-    //   return;
-    // }
-    // // 圆
-    // if (this.type === TYPE.ARC) {
-    //   this.drawArc();
-    //   return;
-    // }
-    // // 填充
-    // if (this.type === TYPE.FILL) {
-    //   this.drawFill();
-    //   return;
-    // }
-    // // 橡皮檫
-    // if (this.type === TYPE.CLEAR) {
-    //   this.drawClearReact();
-    //   return;
-    // }
   }
 
   // 绘制线
@@ -134,20 +107,40 @@ export class Shape {
   }
 
   // 填充
-  private drawFill() {}
+  onDrawFill() {
+    // 获取当前点的rgb值
+    const baseImageData = this.ctx.getImageData(this.x, this.y, 1, 1);
+    // 获取是有点
+    const imageData = this.ctx.getImageData(0, 0, this);
+  }
 
-  // 橡皮檫
-  drawClearReact(points: TPoints[]) {
+  // 橡皮檫 开始
+  onEraserStart() {
     const { size, color } = this.options;
     this.ctx.save();
+
     this.ctx.beginPath();
     this.ctx.lineWidth = size;
-    this.ctx.strokeStyle = "#fff";
     this.ctx.moveTo(this.x, this.y);
-    points.forEach(item => {
-      this.ctx.lineTo(item.x, item.y);
-    });
+    // this.ctx.strokeStyle = "#fff";
+    // this.ctx.moveTo(this.x, this.y);
+    // points.forEach(item => {
+    //   this.ctx.lineTo(item.x, item.y);
+    // });
+    // this.ctx.stroke();
+    // this.ctx.restore();
+  }
+
+  // 橡皮檫 划线
+  onEraser(ex: number, ey: number) {
+    // console.log(ex);
+    this.ctx.globalCompositeOperation = "destination-out";
+    this.ctx.lineTo(ex, ey);
     this.ctx.stroke();
+  }
+
+  // 橡皮檫 结束
+  onEraserEnd() {
     this.ctx.restore();
   }
 }
@@ -159,8 +152,6 @@ export class ShapeB {
   y: TPoints["y"]; // 起点y
   ex: TPoints["x"]; // 终点x
   ey: TPoints["y"]; // 终点y
-  private width: number;
-  private height: number;
   points: TPoints[]; // 线条 = 多个点组成
   private ctx: CanvasRenderingContext2D;
   private options: TOptions;
@@ -169,8 +160,6 @@ export class ShapeB {
     type: TType,
     x: number,
     y: number,
-    width: number,
-    height: number,
     ctx: CanvasRenderingContext2D,
     options: TOptions,
   ) {
@@ -179,8 +168,6 @@ export class ShapeB {
     this.y = y;
     this.ex = x;
     this.ey = y;
-    this.width = width;
-    this.height = height;
     this.ctx = ctx;
     this.points = [{ x, y }];
     this.options = options;
@@ -188,7 +175,8 @@ export class ShapeB {
 
   // 清空画布
   onClear() {
-    this.ctx.clearRect(0, 0, this.width, this.height);
+    const { width, height } = this.options;
+    this.ctx.clearRect(0, 0, width, height);
   }
 
   // 画线开始
@@ -219,14 +207,14 @@ export class ShapeB {
 
   // 矩形开始
   rectStart(ex: number, ey: number) {
-    const { size, color } = this.options;
-    this.ctx.clearRect(0, 0, this.width, this.height);
+    const { size, color, width, height } = this.options;
+    this.ctx.clearRect(0, 0, width, height);
     this.ctx.save();
     this.ctx.beginPath();
     const x = Math.min(this.x, ex);
     const y = Math.min(this.y, ey);
-    const width = Math.abs(this.x - ex);
-    const height = Math.abs(this.y - ey);
+    const widthVal = Math.abs(this.x - ex);
+    const heightVal = Math.abs(this.y - ey);
 
     // if (ex > this.x) {
     //   // 从左向右滑动
@@ -246,11 +234,11 @@ export class ShapeB {
     //   // height = this.y - ey;
     // }
 
-    this.ex = x + width;
-    this.ey = y + height;
+    this.ex = x + widthVal;
+    this.ey = y + heightVal;
     this.ctx.lineWidth = size;
     this.ctx.strokeStyle = color;
-    console.log(x, y, width, height);
+    // console.log(x, y, width, height);
     this.points = [
       // 开始
       {
@@ -259,11 +247,11 @@ export class ShapeB {
       },
       // 结束
       {
-        x: x + width,
-        y: y + height,
+        x: x + widthVal,
+        y: y + heightVal,
       },
     ];
-    this.ctx.strokeRect(x, y, width, height);
+    this.ctx.strokeRect(x, y, widthVal, heightVal);
     // this.ctx.stroke(); // 描边
     this.ctx.restore();
   }
@@ -275,8 +263,8 @@ export class ShapeB {
 
   // 圆开始
   arcStart(ex: number, ey: number) {
-    const { size, color } = this.options;
-    this.ctx.clearRect(0, 0, this.width, this.height);
+    const { size, color, width, height } = this.options;
+    this.ctx.clearRect(0, 0, width, height);
     this.ctx.save();
     this.ctx.beginPath();
     this.ctx.lineWidth = size;
@@ -314,28 +302,29 @@ export class ShapeB {
   }
 
   // 橡皮檫 开始
-  clearRecStart() {
-    const { size } = this.options;
-    this.ctx.save();
-    this.ctx.beginPath();
-    this.ctx.lineWidth = size;
-    this.ctx.strokeStyle = "red";
-    this.ctx.moveTo(this.x, this.y);
-  }
+  // clearRecStart() {
+  //   const { size } = this.options;
+  //   this.ctx.save();
+  //   this.ctx.globalCompositeOperation = "destination-out";
+  //   this.ctx.beginPath();
+  //   this.ctx.lineWidth = size;
+  //   this.ctx.strokeStyle = "red";
+  //   this.ctx.moveTo(this.x, this.y);
+  // }
 
   /**
-   * 画线过程
+   * 橡皮檫 画线过程
    * @param ex 终点 x
    * @param ey 终点 y
    */
-  clearRec(ex: number, ey: number) {
-    this.ctx.lineTo(ex, ey);
-    this.ctx.stroke();
-    this.points.push({ x: ex, y: ey });
-  }
-  // 画线结束
-  clearRecEnd() {
-    this.onClear();
-    this.ctx.restore();
-  }
+  // clearRec(ex: number, ey: number) {
+  //   this.ctx.lineTo(ex, ey);
+  //   this.ctx.stroke();
+  //   this.points.push({ x: ex, y: ey });
+  // }
+  // 橡皮檫 结束
+  // clearRecEnd() {
+  //   this.onClear();
+  //   this.ctx.restore();
+  // }
 }
