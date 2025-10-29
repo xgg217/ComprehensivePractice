@@ -7,12 +7,6 @@ import "bpmn-js/dist/assets/diagram-js.css";
 import "bpmn-js/dist/assets/bpmn-js.css";
 import "bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css";
 
-// @ts-ignore 控制面板
-import { BpmnPropertiesPanelModule, BpmnPropertiesProviderModule } from "bpmn-js-properties-panel";
-
-// 加入属性控制面板的样式
-import "@bpmn-io/properties-panel/assets/properties-panel.css";
-
 import { download } from "@/utils/index";
 
 const canvasRef = useTemplateRef("canvasRef");
@@ -50,7 +44,16 @@ const handleNew = () => {
 };
 
 // 导入 xml
-const handleImport = () => {};
+const handleImport = async (e: Event) => {
+  const input = e.target as HTMLInputElement;
+  const file = input.files?.[0];
+  if (!file) return;
+  const text = await file.text();
+  await loadXml(text);
+  const canvas = modeler!.get("canvas") as any;
+  canvas.zoom("fit-viewport");
+  input.value = "";
+};
 
 // 导出 XML
 const handleExportXML = (pretty = true) => {
@@ -94,11 +97,6 @@ onMounted(async () => {
 
   modeler = new Modeler({
     container: canvasRef.value,
-    //添加控制板
-    propertiesPanel: {
-      parent: "#js-properties-panel",
-    },
-    additionalModules: [BpmnPropertiesPanelModule, BpmnPropertiesProviderModule],
   });
 
   await loadXml(xmlStr);
