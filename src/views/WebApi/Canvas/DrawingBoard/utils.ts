@@ -108,10 +108,11 @@ export class Shape {
 
   // 填充
   onDrawFill() {
+    const { width, height } = this.options;
     // 获取当前点的rgb值
     const baseImageData = this.ctx.getImageData(this.x, this.y, 1, 1);
     // 获取是有点
-    const imageData = this.ctx.getImageData(0, 0, this);
+    const imageData = this.ctx.getImageData(0, 0, width, height);
   }
 
   // 橡皮檫 开始
