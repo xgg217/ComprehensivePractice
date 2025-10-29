@@ -20,3 +20,14 @@ export const getWAndH = (className: string) => {
 export const getRandomColor = () => {
   return "#" + Math.random().toString(16).substring(2, 8).padEnd(6, "0");
 };
+
+// 下载辅助
+export const download = (filename: string, data: string, mime: string) => {
+  const blob = new Blob([data], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+};
