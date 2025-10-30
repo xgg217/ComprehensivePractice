@@ -520,7 +520,7 @@ const row: RouteRecordRaw = {
           name: "BPMNIndex4",
           component: () => import("@/views/NpmUtils/BPMN/index4/index.vue"),
           meta: {
-            title: "点击显示控制面板",
+            title: "点击显示属性面板",
             imgSrc: "index4/控制面板.png",
           },
         },
@@ -539,6 +539,15 @@ const row: RouteRecordRaw = {
           component: () => import("@/views/NpmUtils/BPMN/ZH/index.vue"),
           meta: {
             title: "汉化",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "ElementEvent",
+          name: "BPMNElementEvent",
+          component: () => import("@/views/NpmUtils/BPMN/ElementEvent/index.vue"),
+          meta: {
+            title: "监听element并绑定事件",
             imgSrc: "",
           },
         },
