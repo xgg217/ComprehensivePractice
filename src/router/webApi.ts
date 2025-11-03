@@ -295,13 +295,23 @@ const row: RouteRecordRaw = {
           },
         },
         {
+          path: "OnlineSignature",
+          name: "CanvasOnlineSignature",
+          component: () =>
+            import("@/views/WebApi/Canvas/OnlineSignature/index.vue"),
+          meta: {
+            title: "在线签名、在线画板",
+            imgSrc: "",
+          },
+        },
+        {
           path: "DrawingBoard",
           name: "CanvasDrawingBoard",
           component: () =>
             import("@/views/WebApi/Canvas/DrawingBoard/index.vue"),
           meta: {
             title: "画板",
-            imgSrc: "",
+            imgSrc: "DrawingBoard/画板.png",
           },
         },
       ],
