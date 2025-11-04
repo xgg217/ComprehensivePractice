@@ -7,4 +7,9 @@
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+canvas {
+  border: 1px solid red;
+  cursor: pointer;
+}
+</style>

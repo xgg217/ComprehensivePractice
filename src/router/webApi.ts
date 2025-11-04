@@ -286,6 +286,24 @@ const row: RouteRecordRaw = {
           },
         },
         {
+          path: "ZipImage",
+          name: "CanvasZipImage",
+          component: () => import("@/views/WebApi/Canvas/ZipImage.vue"),
+          meta: {
+            title: "图片压缩、上传",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "Screenshot",
+          name: "CanvasScreenshot",
+          component: () => import("@/views/WebApi/Canvas/Screenshot.vue"),
+          meta: {
+            title: "页面截图",
+            imgSrc: "",
+          },
+        },
+        {
           path: "Fireworks",
           name: "CanvasFireworks",
           component: () => import("@/views/WebApi/Canvas/Fireworks/index.vue"),
