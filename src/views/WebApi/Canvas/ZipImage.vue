@@ -21,9 +21,6 @@ const imageLoad = (file: File): Promise<string> => {
   });
 };
 
-// 图片渲染
-const imageRen = (url: string) => {};
-
 const fileChange = (e: Event) => {
   console.log(e);
   // @ts-ignore
