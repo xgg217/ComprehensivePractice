@@ -80,7 +80,7 @@ const { onMousedown, onMousemove, onMouseup, onClose, onSubmit } = (() => {
     <!-- 签名画板 -->
     <canvas
       width="400"
-      height="400"
+      height="200"
       ref="canvasRef"
       @mousedown="onMousedown"
       @mousemove="onMousemove"

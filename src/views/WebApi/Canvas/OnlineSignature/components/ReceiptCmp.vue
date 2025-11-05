@@ -62,20 +62,20 @@ const { onDragstart, onDragover, onDrop } = (() => {
 const onClose = () => {};
 
 // 保存
-const onSave = () => {
-  const ctx = canvasRef.value?.getContext("2d")!;
-  ctx.drawImage(imgRef.value!, leftVal.value, topVal.value, 200, 100);
+// const onSave = () => {
+//   const ctx = canvasRef.value?.getContext("2d")!;
+//   ctx.drawImage(imgRef.value!, leftVal.value, topVal.value, 200, 100);
 
-  const url = canvasRef.value!.toDataURL();
+//   const url = canvasRef.value!.toDataURL();
 
-  // download("signature.png", url, "image/png");
-  saveAs(url, "收集签名.png");
-  // ctx.save();
-  // ctx.beginPath();
-};
+//   // download("signature.png", url, "image/png");
+//   saveAs(url, "收集签名.png");
+//   // ctx.save();
+//   // ctx.beginPath();
+// };
 
 // 创建一个中间画布
-const createCanvas = () => {
+const onSave = () => {
   const canvas = document.createElement("canvas");
   canvas.width = 700;
   canvas.height = 400;
@@ -87,6 +87,11 @@ const createCanvas = () => {
   img.src = url;
   img.onload = () => {
     ctx.drawImage(img, 0, 0, 700, 400);
+
+    ctx.drawImage(imgRef.value!, leftVal.value, topVal.value, 200, 100);
+
+    const url = canvas.toDataURL();
+    saveAs(url, "收集签名.png");
   };
 };
 
@@ -146,6 +151,7 @@ canvas {
   width: 200px;
   height: 100px;
   border: 1px solid red;
+  box-sizing: border-box;
   /* background: rgba(0, 0, 0, 0.5); */
   z-index: 999;
   cursor: pointer;
