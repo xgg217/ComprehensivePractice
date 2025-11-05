@@ -304,13 +304,13 @@ onMounted(() => {
     </div>
     <div class="can">
       <!-- 画布1：将画布2放置到画布1上，显示画布2的内容 -->
-      <canvas ref="canvasRef1" width="400" height="400" class="can1" />
+      <canvas ref="canvasRef1" width="800" height="800" class="can1" />
 
       <!-- 画布2：画笔真正绘制的画布 -->
       <canvas
         ref="canvasRef2"
-        width="400"
-        height="400"
+        width="800"
+        height="800"
         class="can1"
         @mousedown="onMousedown"
       />
