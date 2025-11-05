@@ -51,6 +51,14 @@ const ROW: RouteRecordRaw = {
             imgSrc: "ScanTheCode/ScanTheCode.png",
           },
         },
+        {
+          path: "AJAX",
+          name: "CustomAJAX",
+          component: () => import("@/views/Custom/AJAX/index.vue"),
+          meta: {
+            title: "AJAX",
+          },
+        },
       ],
     },
   ],
