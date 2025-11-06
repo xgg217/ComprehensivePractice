@@ -109,10 +109,91 @@ export class Shape {
   // 填充
   onDrawFill() {
     const { width, height } = this.options;
-    // 获取当前点的rgb值
+    // 获取当前点的rgb值，1个像素有4个颜色值rgba
     const baseImageData = this.ctx.getImageData(this.x, this.y, 1, 1);
-    // 获取是有点
+    // 获取像素点
     const imageData = this.ctx.getImageData(0, 0, width, height);
+
+    // 在操作图形像素时，根据坐标点获取其r通道值的索引
+    const point2Index = (x: number, y: number) => {
+      return imageData.width * 4 * y + x * 4;
+    };
+
+    // 容易造成内存溢出-递归
+    // const change = (x: number, y: number) => {
+    //   // 获得要改变这个点的原始颜色（如何根据坐标点获得其 imageData 中的显色位置）
+    //   const i = point2Index(x, y);
+
+    //   // 判断这个原始和基准颜色是否相同，相同就改，不相同就结束
+    //   {
+    //     const r = baseImageData.data[0] === imageData.data[i];
+    //     const g = baseImageData.data[1] === imageData.data[i + 1];
+    //     const b = baseImageData.data[2] === imageData.data[i + 2];
+    //     const a = baseImageData.data[3] === imageData.data[i + 3];
+
+    //     if (r && g && b && a) {
+    //       // 相等 这个位置颜色可以改变
+    //       imageData.data[i] = 255;
+    //       imageData.data[i + 1] = 0;
+    //       imageData.data[i + 2] = 0;
+    //       imageData.data[i + 3] = 255;
+
+    //       // 继续发散，再检查其四周
+    //       change(x - 1, y); // 左边
+    //       change(x + 1, y); // 右边
+    //       change(x, y - 1); // 上边
+    //       change(x, y + 1); // 下边
+    //     } else {
+    //       return;
+    //     }
+    //   }
+    // };
+
+    // 循环
+    const change = (x: number, y: number) => {
+      const stack: [number, number][] = [[x, y]];
+
+      // 循环 处理stack中的每一个点，判断是否需要填充
+      while (stack.length > 0) {
+        // 本次循环，处理stack中的每一个点
+        const [x, y] = stack.shift()!;
+        if (x < 0 || y < 0 || x > width || y > height) {
+          continue;
+        }
+        // 代码至此，说明这个点存在
+
+        // 判断这点是否需要填充
+        const i = point2Index(x, y);
+        {
+          const r = baseImageData.data[0] === imageData.data[i];
+          const g = baseImageData.data[1] === imageData.data[i + 1];
+          const b = baseImageData.data[2] === imageData.data[i + 2];
+          const a = baseImageData.data[3] === imageData.data[i + 3];
+
+          if (r && g && b && a) {
+            // 相等 这个位置颜色可以改变
+            imageData.data[i] = 255;
+            imageData.data[i + 1] = 0;
+            imageData.data[i + 2] = 0;
+            imageData.data[i + 3] = 255;
+
+            // 继续发散，再检查其四周
+            stack.push([x - 1, y], [x + 1, y], [x, y - 1], [x, y + 1]);
+            // change(x - 1, y); // 左边
+            // change(x + 1, y); // 右边
+            // change(x, y - 1); // 上边
+            // change(x, y + 1); // 下边
+          } else {
+            // 不相等，到达边界
+            continue;
+          }
+        }
+      }
+    };
+
+    change(this.x, this.y);
+
+    this.ctx.putImageData(imageData, 0, 0);
   }
 
   // 橡皮檫 开始
