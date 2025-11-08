@@ -4,7 +4,6 @@ import SignatureCmp from "./components/SignatureCmp.vue";
 
 const url = ref("");
 const submit = (data: string) => {
-  // console.log(data);
   url.value = data;
 };
 </script>

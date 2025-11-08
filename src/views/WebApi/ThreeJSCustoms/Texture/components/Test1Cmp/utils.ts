@@ -82,8 +82,6 @@ export class Textures {
 
   // 渲染器
   createRenderer(width: number, height: number) {
-    // console.log(width, height);
-
     const renderer = new THREE.WebGLRenderer({
       antialias: true, // 锯齿模糊
       logarithmicDepthBuffer: true,

@@ -55,7 +55,12 @@ const { setTriangles, setColors } = (() => {
    * @param depthVal
    * @param step 三角形的间距
    */
-  const setTriangles = (width: number, height: number, depth: number, step: number) => {
+  const setTriangles = (
+    width: number,
+    height: number,
+    depth: number,
+    step: number,
+  ) => {
     // const triangles: TTriangle[] = [];
     const widthVal = Math.floor(width / step);
     const heightVal = Math.floor(height / step);
@@ -223,10 +228,7 @@ export class Test1 {
 
       // 自定义颜色（渐变颜色）
       {
-        // console.log(attribue.count);
-
         const list = setColors(arr.length);
-        // console.log(list);
         const colors = new Uint16Array(list);
         geometry.attributes.color = new THREE.BufferAttribute(colors, 4);
       }

@@ -79,7 +79,6 @@ const onMousedown = (e: MouseEvent) => {
   }
   const x = e.offsetX;
   const y = e.offsetY;
-  // console.log(x, y);
   startRow.x = x;
   startRow.y = y;
 
@@ -105,7 +104,6 @@ const onMousedown = (e: MouseEvent) => {
   if (radio1.value === TYPE.CLEAR) {
     // shapeBClass.clearRecStart();
     // 直接在原图上操作3
-    // console.log(1111);
     // shapeClass = new Shape(TYPE.CLEAR, x, y, ctx1, options.value);
     // shapeClass.ctx = ctx1;
     shapeClass.onEraserStart();
@@ -131,13 +129,11 @@ const onMousemove = (e: MouseEvent) => {
   // ctx.value!.stroke();
   const ex = e.offsetX;
   const ey = e.offsetY;
-  // console.log(ex, ey);
   const radioVal = radio1.value;
 
   // ctx2.save();
   // ctx2.lineWidth = size.value; // 线宽
   // ctx2.strokeStyle = color1.value; // 颜色
-  // console.log(ex, radioVal);
 
   // 线条
   if (radioVal === TYPE.LINE) {
@@ -174,7 +170,6 @@ const onMousemove = (e: MouseEvent) => {
   // 橡皮檫
   if (radioVal === TYPE.CLEAR) {
     // this.drawClearReact();
-    // console.log(11);
     shapeClass.onEraser(ex, ey);
     return;
   }
@@ -186,7 +181,6 @@ const onMouseup = () => {
   const ref2 = canvasRef2.value!;
 
   const radioVal = radio1.value;
-  // console.log(shapeBClass);
 
   // const shapeClass = new Shape(
   //   radio1.value,
@@ -214,7 +208,6 @@ const onMouseup = () => {
     const y = points[0].y;
     const widht = points[1].x - x;
     const height = points[1].y - y;
-    // console.log("实际", shapeBClass.points);
 
     shapeClass.drawRect(x, y, widht, height);
     shapeBClass.rectEnd();
@@ -228,7 +221,6 @@ const onMouseup = () => {
     const y = points[0].y;
     const rx = points[1].x;
     const ry = points[1].y;
-    // console.log("实际", shapeBClass.points);
 
     shapeClass.drawArc(x, y, rx, ry);
     shapeBClass.rectEnd();

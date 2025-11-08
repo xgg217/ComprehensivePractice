@@ -89,7 +89,6 @@ onMounted(() => {
   // });
 
   // const boxs = gsap.utils.toArray("p")!;
-  // console.log(boxs);
 
   // boxs.forEach(item => {
   //   gsap.to(item, {

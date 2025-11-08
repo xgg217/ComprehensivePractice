@@ -10,7 +10,11 @@ const ruleForm: Player = reactive({
 });
 const rules = {
   name: [
-    { required: true, message: "Please fill in the activity name", trigger: "blur" },
+    {
+      required: true,
+      message: "Please fill in the activity name",
+      trigger: "blur",
+    },
     { min: 3, max: 5, message: "Length should be 3 to 5", trigger: "blur" },
   ],
 };
@@ -21,7 +25,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
     if (valid) {
       console.log("submit!");
     } else {
-      console.log("error submit!", fields);
+      // console.log("error submit!", fields);
     }
   });
 };
@@ -31,7 +35,12 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   <div>
     form 表单
 
-    <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="auto">
+    <el-form
+      ref="ruleFormRef"
+      :model="ruleForm"
+      :rules="rules"
+      label-width="auto"
+    >
       <el-form-item label="Activity name" prop="name">
         <el-input v-model="ruleForm.name" />
       </el-form-item>
@@ -41,7 +50,9 @@ const submitForm = async (formEl: FormInstance | undefined) => {
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="submitForm(ruleFormRef)"> Create </el-button>
+        <el-button type="primary" @click="submitForm(ruleFormRef)">
+          Create
+        </el-button>
         <!-- <el-button @click="resetForm(ruleFormRef)">Reset</el-button> -->
       </el-form-item>
     </el-form>

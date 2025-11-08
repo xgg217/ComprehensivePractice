@@ -4,7 +4,6 @@ const inputRef2 = useTemplateRef("canvasRef2");
 
 onMounted(() => {
   // const ctr = inputRef.value?.getContext("2d");
-  // console.log(ctr);
   {
     const ctx = inputRef1.value?.getContext("2d")!;
 
@@ -22,8 +21,6 @@ onMounted(() => {
     ctx.strokeStyle = "blue";
     ctx.setLineDash([200]);
     ctx.lineDashOffset = 200;
-
-    console.log(ctx.lineDashOffset);
 
     let i = 0;
     const move = () => {

@@ -5,7 +5,6 @@ const inputRef3 = useTemplateRef("canvasRef3");
 
 onMounted(() => {
   // const ctr = inputRef.value?.getContext("2d");
-  // console.log(ctr);
 });
 </script>
 

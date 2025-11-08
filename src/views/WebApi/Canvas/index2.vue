@@ -3,7 +3,6 @@ const divRef = useTemplateRef("divRef")!;
 
 onMounted(() => {
   // const ctr = inputRef.value?.getContext("2d");
-  // console.log(ctr);
 
   const canvas = document.createElement("canvas");
   divRef.value?.append(canvas);

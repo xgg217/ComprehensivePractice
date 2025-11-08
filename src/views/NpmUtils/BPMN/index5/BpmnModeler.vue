@@ -66,7 +66,6 @@ const handleExportXML = (pretty = true) => {
     .then(res => {
       const { xml } = res;
 
-      // console.log(res);
       download("diagram.bpmn", xml as string, "application/xml");
     })
     .catch(err => {
@@ -129,10 +128,17 @@ onBeforeUnmount(() => {
       >
         导入 XML
       </span>
-      <input type="file" accept=".bpmn,.xml" style="display: none" @change="handleImport" />
+      <input
+        type="file"
+        accept=".bpmn,.xml"
+        style="display: none"
+        @change="handleImport"
+      />
     </label>
 
-    <el-button type="primary" @click="() => handleExportXML(true)">导出 XML</el-button>
+    <el-button type="primary" @click="() => handleExportXML(true)"
+      >导出 XML</el-button
+    >
     <el-button type="primary" @click="handleExportSVG">导出 SVG</el-button>
 
     <div class="containers">

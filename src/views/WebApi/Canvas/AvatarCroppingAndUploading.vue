@@ -6,16 +6,12 @@ const TempImg = new URL("./images/解析.png", import.meta.url).href;
 
 // 1. 头像本地预览
 const handleChange = (e: Event) => {
-  // console.log(e);
-
   // @ts-ignore
   const file = e!.target.files[0] as File;
 
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = (e: ProgressEvent) => {
-    console.log(e);
-
     // @ts-ignore
     src.value = e.target.result;
   };
@@ -60,7 +56,6 @@ const cut = () => {
     const file = new File([blob!], "cut.png", {
       type: "image/png",
     });
-    console.log(file);
   });
 };
 </script>

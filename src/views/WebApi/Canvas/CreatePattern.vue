@@ -21,7 +21,6 @@ onMounted(() => {
 
   // 填充
   {
-    // console.log(ctx);
     const ctx = inputRef2.value!.getContext("2d")!;
     const pattern2 = ctx.createPattern(inputRef1.value!, null);
     ctx.fillStyle = pattern2!;

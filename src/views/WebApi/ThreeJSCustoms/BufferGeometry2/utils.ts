@@ -122,7 +122,11 @@ export class Points {
       const geometry = new THREE.BufferGeometry();
 
       // 生成点坐标、颜色
-      const { positionArr, colorArr } = setPoints(WIDTH_VAL, HEIGHT_VAL, DEPTH_VAL);
+      const { positionArr, colorArr } = setPoints(
+        WIDTH_VAL,
+        HEIGHT_VAL,
+        DEPTH_VAL,
+      );
 
       // 坐标
       {
@@ -142,7 +146,10 @@ export class Points {
         geometry.setAttribute("color", attribue);
       }
 
-      const material = new THREE.PointsMaterial({ size: 5, vertexColors: true });
+      const material = new THREE.PointsMaterial({
+        size: 5,
+        vertexColors: true,
+      });
 
       const points = new THREE.Points(geometry, material);
       group.add(points);
@@ -182,6 +189,5 @@ const setPoints = (width: number, height: number, depth: number) => {
     }
   }
 
-  console.log(colorArr);
   return { positionArr, colorArr };
 };

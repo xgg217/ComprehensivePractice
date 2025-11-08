@@ -122,8 +122,6 @@ export class Test1 {
       new URL("./images/nz.png", import.meta.url).href,
     ];
 
-    console.log(new URL("./images", import.meta.url).href);
-
     const textureCube = new THREE.CubeTextureLoader()
       .setPath(new URL("./images", import.meta.url).href)
       .load(["/px.png", "/py.png", "/pz.png", "/nx.png", "/ny.png", "/nz.png"]);

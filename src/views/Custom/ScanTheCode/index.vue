@@ -28,7 +28,6 @@ async function getImageFromLocal(e: Event) {
     ctx.fillStyle = "black";
     for (let i = 0; i < 5; i++) {
       const result = await scan(temCanvas);
-      console.log("result", result);
       if (!result?.rect || !result.text) continue;
       resultMap.set(result.text, result.rect);
       const { x, y, height, width } = result.rect;
@@ -61,9 +60,7 @@ function draw() {
     dom.style.borderRightStyle = "solid";
     dom.style.borderWidth = "3px";
     dom.style.animation = "scale-animation 2s infinite";
-    dom.addEventListener("click", () => {
-      console.log(link);
-    });
+    dom.addEventListener("click", () => {});
     imgWrapper.value.appendChild(dom);
   });
 }

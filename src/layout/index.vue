@@ -7,8 +7,6 @@ import NavItemCmp from "./NavItemCmp.vue";
 const route = useRoute();
 const router = useRouter();
 
-// console.log(route);
-
 // 左侧导航栏
 const { title, routeList, avcRouteName, getRouterArr, onPage } = (() => {
   const title = ref("");
@@ -56,7 +54,6 @@ const { title, routeList, avcRouteName, getRouterArr, onPage } = (() => {
     if (!row2 || !row2.children) {
       return [];
     }
-    console.log(twoRoute);
 
     title.value = (row2.meta?.title || "") as string;
 
@@ -122,7 +119,11 @@ onMounted(() => {
       <h2>{{ title }}</h2>
       <ul>
         <li v-for="item of routeList" :key="item.path">
-          <NavItemCmp :row="item" @click="onPage" :is-avc="avcRouteName === item.name" />
+          <NavItemCmp
+            :row="item"
+            @click="onPage"
+            :is-avc="avcRouteName === item.name"
+          />
         </li>
       </ul>
     </nav>

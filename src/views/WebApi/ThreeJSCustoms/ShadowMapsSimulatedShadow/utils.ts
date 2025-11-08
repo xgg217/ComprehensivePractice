@@ -74,7 +74,11 @@ export class SimulatedShadow {
         const skyColor = 0xb1e1ff; // 天空的颜色
         const groundColor = 0xb97a20; // 地面的颜色
         const intensity = 2;
-        const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
+        const light = new THREE.HemisphereLight(
+          skyColor,
+          groundColor,
+          intensity,
+        );
         this.scene.add(light);
       }
 
@@ -185,7 +189,6 @@ export class SimulatedShadow {
   }
 
   animate() {
-    // console.log("time");
     this.renderer.render(this.scene, this.camera);
 
     // 两帧渲染时间间隔

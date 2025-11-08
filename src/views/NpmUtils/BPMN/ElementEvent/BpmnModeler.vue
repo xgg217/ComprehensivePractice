@@ -83,7 +83,6 @@ function eventBusListener() {
 
       const elementRegistry = modeler?.get<ElementRegistry>("elementRegistry");
       const shape = e.element ? elementRegistry?.get(e.element.id) : e.element;
-      console.log(shape);
     });
   });
 }

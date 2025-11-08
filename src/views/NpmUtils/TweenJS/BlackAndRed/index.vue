@@ -1,7 +1,12 @@
 <template>
   <div class="box">
     <ul class="tr" v-for="(item, index) in arr" :key="index">
-      <li class="td" v-for="key in item" :key="key.id" :style="{ backgroundColor: key.bgc }"></li>
+      <li
+        class="td"
+        v-for="key in item"
+        :key="key.id"
+        :style="{ backgroundColor: key.bgc }"
+      ></li>
     </ul>
   </div>
 </template>
@@ -73,8 +78,6 @@ const { arr, init, animate } = (() => {
   };
 
   const animate = (time: number) => {
-    // console.log(1);
-
     requestAnimationFrame(animate);
 
     group.update(time);

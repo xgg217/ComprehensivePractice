@@ -9,8 +9,6 @@ const imageLoad = (file: File): Promise<string> => {
     fr.readAsDataURL(file);
 
     fr.onload = (e: ProgressEvent) => {
-      // console.log(e);
-
       const url = (e!.target as FileReader).result as string;
       res(url);
     };
@@ -22,10 +20,8 @@ const imageLoad = (file: File): Promise<string> => {
 };
 
 const fileChange = (e: Event) => {
-  console.log(e);
   // @ts-ignore
   const file = (e!.target as HTMLInputElement)!.files[0] as File;
-  console.log(file);
 
   // 预览图片
 

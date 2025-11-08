@@ -62,15 +62,17 @@ const add = async () => {
         data.dictValueEn = item;
         data.dictValueCn = item;
 
-        // console.log(item);
-        return await fetch("https://adminhom.brtfk.com/admin/system/dicData/add", {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: {
-            batoken: "5acd4bab-622f-42dc-9798-a53d9a757d09",
-            "content-type": "application/json",
+        return await fetch(
+          "https://adminhom.brtfk.com/admin/system/dicData/add",
+          {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+              batoken: "5acd4bab-622f-42dc-9798-a53d9a757d09",
+              "content-type": "application/json",
+            },
           },
-        });
+        );
       } finally {
         semaphore.release();
       }

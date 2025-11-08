@@ -41,7 +41,6 @@ const { onDragstart, onDragover, onDrop } = (() => {
       // leftVal.value = newX;
       xVal = newX;
       yVal = newY;
-      // console.log(newX, newY);
     }
   };
   // 放开

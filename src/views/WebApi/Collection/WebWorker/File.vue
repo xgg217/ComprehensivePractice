@@ -4,7 +4,6 @@ const CHUNK_SIZE = 1024; // 每块1kb
 
 const fileChange = (e: any) => {
   const file = e.target.files[0];
-  // console.log(file);
 
   const chunklength = Math.ceil(file.size / CHUNK_SIZE);
   const rusule = [];

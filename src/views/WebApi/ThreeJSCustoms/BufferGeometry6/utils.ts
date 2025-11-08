@@ -70,7 +70,6 @@ export class Test1 {
       dom.append(gui.domElement);
 
       const box = mesh.getObjectByName("box");
-      console.log(box);
 
       if (box instanceof THREE.Mesh) {
         gui.add(box.material, "wireframe");

@@ -44,7 +44,6 @@ const init = () => {
       // loop: true,
       // },
       // update: function () {
-      //   console.log(row);
       //   x.value = row.x;
       //   y.value = row.y;
     },
@@ -71,7 +70,6 @@ const init = () => {
     });
 
   // animeRow.start.update = function (anim) {
-  //   console.log(anim);
 
   //   // update.value++;
   //   // progress.value = Math.round(anim.progress)
@@ -87,7 +85,6 @@ const onStart = () => {
 const onReset = () => {
   // Object.values(timeline).forEach(item => item?.seek(0));
   timeline.seek(0);
-  // console.log();
 };
 
 onMounted(() => {

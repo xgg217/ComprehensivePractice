@@ -110,7 +110,6 @@ export default class SolarSystem {
           .to({ angle: -Math.PI * 2 }, 10000)
           .repeat(Infinity)
           .onUpdate(obj => {
-            // console.log(obj);
             earthMesh.rotateY(0.02);
             earthMesh.position.x = R * Math.cos(obj.angle);
             earthMesh.position.z = R * Math.sin(obj.angle);

@@ -42,7 +42,6 @@ onMounted(() => {
         console.error(err);
       })
       .finally(() => {
-        // console.log();
         // loadingInstance!.close();
         loading.value = false;
         // loadingInstance!.close();

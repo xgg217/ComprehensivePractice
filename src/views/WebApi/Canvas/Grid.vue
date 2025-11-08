@@ -6,11 +6,9 @@ const gridSpacing = 10;
 
 onMounted(() => {
   // const ctr = inputRef.value?.getContext("2d");
-  // console.log(ctr);
   {
     const canvas = inputRef1.value!;
     const ctx = canvas.getContext("2d")!;
-    console.log(ctx);
 
     // 绘制网格线
     for (let x = 0; x < canvas.width; x += gridSpacing) {

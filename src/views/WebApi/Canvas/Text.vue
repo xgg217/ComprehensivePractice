@@ -11,8 +11,6 @@ onMounted(() => {
     // ctx.fillText("aaaa", 100, 100);
     ctx.strokeText("aaaa", 200, 200, 500);
     // ctx.fill();
-
-    console.log(ctx.measureText("aaaa"));
   }
 });
 </script>

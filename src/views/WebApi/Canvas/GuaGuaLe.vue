@@ -22,7 +22,7 @@ onMounted(() => {
 });
 
 const onMousedown = (e: MouseEvent) => {
-  console.log("鼠标按下");
+  // console.log("鼠标按下");
   ctx.value!.beginPath();
   ctx.value!.moveTo(e.offsetX, e.offsetY);
 
@@ -38,14 +38,14 @@ const onMousedown = (e: MouseEvent) => {
 
 // 鼠标在元素上移动时触发
 const onMousemove = (e: MouseEvent) => {
-  console.log("鼠标在元素上移动时触发");
+  // console.log("鼠标在元素上移动时触发");
   ctx.value!.lineTo(e.offsetX, e.offsetY);
   ctx.value!.stroke();
 };
 
 // 鼠标抬起
 const onMouseup = () => {
-  console.log("鼠标抬起");
+  // console.log("鼠标抬起");
   canvasRef.value?.removeEventListener("mousemove", onMousemove);
   canvasRef.value?.removeEventListener("mouseup", onMouseup);
   canvasRef.value?.removeEventListener("mouseover", onMouseup);

@@ -8,7 +8,6 @@ onMounted(() => {
   // console.log(ctr);
   {
     const ctx = inputRef1.value?.getContext("2d")!;
-    console.log(ctx);
 
     ctx.beginPath();
     ctx.moveTo(10, 10);

@@ -41,8 +41,6 @@ const hex2rgb = (str: string) => {
   return arr3;
 };
 
-console.log(hex2rgb("#ff0404"));
-
 // 图形类
 export class Shape {
   private type: TType; // 当前事件类型
@@ -240,7 +238,6 @@ export class Shape {
 
   // 橡皮檫 划线
   onEraser(ex: number, ey: number) {
-    // console.log(ex);
     this.ctx.globalCompositeOperation = "destination-out";
     this.ctx.lineTo(ex, ey);
     this.ctx.stroke();
@@ -345,7 +342,6 @@ export class ShapeB {
     this.ey = y + heightVal;
     this.ctx.lineWidth = size;
     this.ctx.strokeStyle = color;
-    // console.log(x, y, width, height);
     this.points = [
       // 开始
       {
@@ -376,7 +372,6 @@ export class ShapeB {
     this.ctx.beginPath();
     this.ctx.lineWidth = size;
     this.ctx.strokeStyle = color;
-    // console.log(this);
 
     const rx = Math.abs(ex - this.x) / 2; // x轴半径
     const ry = Math.abs(ey - this.y) / 2; // x轴半径
