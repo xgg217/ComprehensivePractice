@@ -22,6 +22,27 @@ export type TOptions = {
   height: number;
 };
 
+// 16进制转rgba
+const hex2rgb = (str: string) => {
+  // #aabbcc -> aabbcc -> [aa,bb,cc]
+
+  // #aabbcc - aabbcc
+  const str1 = str.split("#")[1];
+
+  // aabbcc -> [aa,bb,cc]
+  const arr = str1.split("");
+  const arr2 = [arr[0] + arr[1], arr[2] + arr[3], arr[4] + arr[5]];
+
+  // 将16进制转成10进制
+  const arr3 = arr2.map(item => {
+    return parseInt(item, 16);
+  });
+
+  return arr3;
+};
+
+console.log(hex2rgb("#ff0404"));
+
 // 图形类
 export class Shape {
   private type: TType; // 当前事件类型
@@ -108,7 +129,7 @@ export class Shape {
 
   // 填充
   onDrawFill() {
-    const { width, height } = this.options;
+    const { width, height, color } = this.options;
     // 获取当前点的rgb值，1个像素有4个颜色值rgba
     const baseImageData = this.ctx.getImageData(this.x, this.y, 1, 1);
     // 获取像素点
@@ -172,9 +193,13 @@ export class Shape {
 
           if (r && g && b && a) {
             // 相等 这个位置颜色可以改变
-            imageData.data[i] = 255;
-            imageData.data[i + 1] = 0;
-            imageData.data[i + 2] = 0;
+
+            // 将颜色转成10进制
+            const arr = hex2rgb(color);
+
+            imageData.data[i] = arr[0];
+            imageData.data[i + 1] = arr[1];
+            imageData.data[i + 2] = arr[2];
             imageData.data[i + 3] = 255;
 
             // 继续发散，再检查其四周
