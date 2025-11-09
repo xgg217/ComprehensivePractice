@@ -71,6 +71,24 @@ const row: RouteRecordRaw = {
           },
         },
         {
+          path: "WebAnimations2",
+          name: "WebApiCollectionWebAnimations2",
+          component: () => import("@/views/WebApi/Collection/WebAnimations/index2.vue"),
+          meta: {
+            title: "Web Animations API 操控",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "WebAnimations3",
+          name: "WebApiCollectionWebAnimations3",
+          component: () => import("@/views/WebApi/Collection/WebAnimations/index3.vue"),
+          meta: {
+            title: "动画之文字雨动画",
+            imgSrc: "",
+          },
+        },
+        {
           path: "IntersectionObserver1",
           name: "WebApiCollectionIntersectionObserver1",
           component: () => import("@/views/WebApi/Collection/IntersectionObserver/index.vue"),
