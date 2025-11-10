@@ -7,7 +7,9 @@ import "bpmn-js/dist/assets/diagram-js.css";
 import "bpmn-js/dist/assets/bpmn-js.css";
 import "bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css";
 
+// @ts-ignore
 import type ElementRegistry from "diagram-js/lib/core/ElementRegistry";
+// @ts-ignore
 import type EventBus from "diagram-js/lib/core/EventBus";
 
 const canvasRef = useTemplateRef("canvasRef");
