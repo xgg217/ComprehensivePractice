@@ -1,28 +1,81 @@
 <script setup lang="ts">
-const cardRef = useTemplateRef("cardRef");
+const cloudRef = useTemplateRef("cloudRef");
 
-let animate: Animation;
+// let animate: Animation;
 
-const onClick = () => {
-  animate.play();
+function getRandom(min: number, max: number) {
+  return Math.random() * (max - min) + min;
+}
+
+function getRandomAlpha() {
+  // 0-9, a-z;
+  // 传统：0-9,a-z 加入数组，随机位置返回
+  // @ts-ignore 取巧：36 0~35 转换成36进制
+  return parseInt(getRandom(0, 36)).toString(36);
+}
+
+function getRandomChinese() {
+  // @ts-ignore
+  return String.fromCharCode(parseInt(getRandom(0x4e00, 0x9fff)));
+}
+
+const run = () => {
+  // 生成元素
+  const textEle = document.createElement("div");
+  textEle.className = "t";
+  textEle.style.position = "absolute";
+  textEle.style.top = "40px";
+  textEle.style.height = "20px";
+  textEle.style.lineHeight = "20px";
+  textEle.style.textTransform = "uppercase";
+  textEle.style.color = "#fff";
+  textEle.style.textShadow = `
+    0 0 5px var(--primary-color),
+    0 0 15px var(--primary-color),
+    0 0 30px var(--primary-color);`;
+  textEle.style.transformOrigin = "bottom";
+
+  cloudRef.value!.appendChild(textEle);
+
+  // 生成随机的文字呢（汉语）
+  textEle.innerText = getRandomChinese();
+
+  // 元素初始水平偏移位置
+  const dx = getRandom(0, 310);
+
+  // 完成动画
+  const animate = textEle.animate(
+    [
+      { transform: `translateX(${dx}px)`, offset: 0 },
+      { transform: `translate(${dx}px, 290px)`, offset: 0.7 },
+      { transform: `translate(${dx}px, 290px)`, offset: 1 },
+    ],
+    {
+      duration: getRandom(1600, 3000),
+      easing: "linear",
+      fill: "forwards",
+    },
+  );
+
+  animate.onfinish = function () {
+    textEle.remove();
+  };
+
+  requestAnimationFrame(run);
 };
 
 onMounted(() => {
-  animate = cardRef.value!.animate(
-    [
-      { backgroundColor: "#0ff", offset: 0.5 },
-      { backgroundColor: "#0f0", offset: 1 },
-    ],
-    {
-      duration: 2000,
-    },
-  );
+  setTimeout(() => {
+    run();
+  }, 1000);
 });
 </script>
 
 <template>
-  <div class="container">
-    <div class="cloud"></div>
+  <div class="warpp">
+    <div class="container">
+      <div class="cloud" ref="cloudRef"></div>
+    </div>
   </div>
 </template>
 
@@ -30,24 +83,24 @@ onMounted(() => {
 /*google-fonts*/
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
 
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+} */
 
-:root {
+.warpp {
   --body-color: #181c1f;
   --primary-color: #ffffff;
-}
 
-body {
   font-family: "Poppins", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
   background-color: var(--body-color);
+  box-sizing: border-box;
 }
 
 .container {
@@ -64,6 +117,7 @@ body {
   position: relative;
   top: 50px;
   z-index: 100;
+  /* border: 1px solid red; */
 
   /* 横向云朵 */
   width: 320px;
@@ -86,7 +140,7 @@ body {
   box-shadow: 90px 0 0 30px var(--primary-color);
 }
 
-.cloud .text {
+.t {
   position: absolute;
   top: 40px;
   height: 20px;

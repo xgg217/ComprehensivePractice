@@ -32,6 +32,7 @@ const onReverse = () => {
 // 时间线
 const onTimeChange = (e: Event) => {
   console.log(e);
+  // @ts-ignore
   animate.currentTime = e.target!.value;
 };
 

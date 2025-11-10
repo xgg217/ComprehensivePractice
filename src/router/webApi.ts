@@ -97,6 +97,16 @@ const row: RouteRecordRaw = {
             imgSrc: "",
           },
         },
+        {
+          path: "IntersectionObserver2",
+          name: "WebApiCollectionIntersectionObserver2",
+          component: () =>
+            import("@/views/WebApi/Collection/IntersectionObserver/index2/index.vue"),
+          meta: {
+            title: "IntersectionObserver 图片懒加载",
+            imgSrc: "",
+          },
+        },
       ],
     },
     // #endregion
