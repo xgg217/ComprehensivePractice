@@ -5,8 +5,8 @@ const row: RouteRecordRaw = {
   path: "/WebApi",
   name: "WebApi",
   meta: {
-    title: "web Api",
-    remark: "WebWorker、SVG、Canvas、webGL、Three.js",
+    title: "CSS + web Api",
+    remark: "CSS、WebWorker、SVG、Canvas、webGL、Three.js",
     isCardList: true,
     pathName: "WebApiList",
   },
@@ -16,10 +16,45 @@ const row: RouteRecordRaw = {
       name: "WebApiList",
       component: () => import("@/views/WebApi/list.vue"),
       meta: {
-        title: "web Api",
+        title: "CSS+ web Api",
         remark: "web Api 学习",
       },
     },
+
+    // #region CSS
+    {
+      path: "CSS",
+      name: "WebApiCSS",
+      // component: aa,
+      component: layout,
+      meta: {
+        title: "CSS",
+        imgSrc: "",
+        remark: "CSS",
+      },
+      redirect: { name: "CSSIndex" },
+      children: [
+        {
+          path: "index",
+          name: "CSSIndex",
+          component: () => import("@/views/WebApi/CSS/index.vue"),
+          meta: {
+            title: "CSS",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "Mask1",
+          name: "CSSMask1",
+          component: () => import("@/views/WebApi/CSS/Mask/index.vue"),
+          meta: {
+            title: "Mask 遮罩",
+            imgSrc: "",
+          },
+        },
+      ],
+    },
+    // #endregion
 
     // #region API 集合
     {
