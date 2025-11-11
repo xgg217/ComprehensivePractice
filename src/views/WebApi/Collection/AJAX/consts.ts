@@ -1,6 +1,6 @@
 export const arr = [
-  "Adidas",
-  "Alexander McQueen",
+  // "Adidas",
+  // "Alexander McQueen",
   "Aliexpress (marketplace)",
   "Emporio Armani",
   "Giorgio Armani",

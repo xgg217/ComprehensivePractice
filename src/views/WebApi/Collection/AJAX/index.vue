@@ -53,31 +53,32 @@ const add = async () => {
     dictValueCn: "",
   };
 
-  Promise.all(
-    arr.map(async (item, index) => {
-      await semaphore.acquire();
-      try {
-        data.dictCode = index + 1;
-        data.dictValuePt = item;
-        data.dictValueEn = item;
-        data.dictValueCn = item;
+  // Promise.all(
+  //   arr.map(async (item, index) => {
+  //     await semaphore.acquire();
+  //     try {
+  //       data.dictCode = index + 3;
+  //       data.dictValuePt = item;
+  //       data.dictValueEn = item;
+  //       data.dictValueCn = item;
 
-        return await fetch(
-          "https://adminhom.brtfk.com/admin/system/dicData/add",
-          {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-              batoken: "5acd4bab-622f-42dc-9798-a53d9a757d09",
-              "content-type": "application/json",
-            },
-          },
-        );
-      } finally {
-        semaphore.release();
-      }
-    }),
-  );
+  //       return await fetch(
+  //         // "https://adminhom.brtfk.com/admin/system/dicData/add",
+  //         "https://admin.brtfk.com/admin/system/dicData/add",
+  //         {
+  //           method: "POST",
+  //           body: JSON.stringify(data),
+  //           headers: {
+  //             batoken: "ccb3acd3-6824-4934-8de7-fb41f52bf807",
+  //             "content-type": "application/json",
+  //           },
+  //         },
+  //       );
+  //     } finally {
+  //       semaphore.release();
+  //     }
+  //   }),
+  // );
 
   // for (const item of arr) {
   // await semaphore.acquire();
@@ -131,7 +132,7 @@ const add = async () => {
 
 <template>
   <div>
-    <!-- <button type="button" @click="add">请求</button> -->
+    <button type="button" @click="add">请求</button>
   </div>
 </template>
 
