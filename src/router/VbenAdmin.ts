@@ -38,7 +38,16 @@ const ROW: RouteRecordRaw = {
           name: "VbenAdminPage",
           component: () => import("@/views/VbenAdmin/Page/index.vue"),
           meta: {
-            title: "布局组件之Page 页面",
+            title: "布局组件之Page 页面 待定",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "Watermark",
+          name: "VbenAdminWatermark",
+          component: () => import("@/views/VbenAdmin/Watermark/index.vue"),
+          meta: {
+            title: "全局水印",
             imgSrc: "",
           },
         },
