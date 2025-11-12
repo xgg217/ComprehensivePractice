@@ -30,6 +30,10 @@ main > aside > .box {
   /* border: 1px solid #000; */
 }
 
+ul {
+  padding-left: 0;
+}
+
 li {
   list-style: none;
 }
