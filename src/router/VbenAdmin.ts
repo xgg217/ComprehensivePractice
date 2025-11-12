@@ -47,7 +47,7 @@ const ROW: RouteRecordRaw = {
           name: "VbenAdminWatermark",
           component: () => import("@/views/VbenAdmin/Watermark/index.vue"),
           meta: {
-            title: "全局水印",
+            title: "全局水印 + 局部水印",
             imgSrc: "",
           },
         },
