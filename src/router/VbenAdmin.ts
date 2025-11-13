@@ -51,6 +51,24 @@ const ROW: RouteRecordRaw = {
             imgSrc: "",
           },
         },
+        {
+          path: "FullScreen",
+          name: "VbenAdminFullScreen",
+          component: () => import("@/views/VbenAdmin/FullScreen/index.vue"),
+          meta: {
+            title: "全屏",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "FileDownload",
+          name: "VbenAdminFileDownload",
+          component: () => import("@/views/VbenAdmin/FileDownload/index.vue"),
+          meta: {
+            title: "文件下载",
+            imgSrc: "",
+          },
+        },
       ],
     },
   ],

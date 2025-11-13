@@ -4,6 +4,7 @@ import LocalCmp from "./components/LocalCmp.vue";
 </script>
 
 <template>
+  参考 https://www.vben.pro/#/demos/features/watermark
   <!-- 全局水印 -->
   <FullScreenCmp />
 
