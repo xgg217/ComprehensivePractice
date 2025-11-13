@@ -23,6 +23,7 @@ onMounted(() => {
           </div>
         </template>
         <ul>
+          <li>Tailwind CSS</li>
           <li>Canvas</li>
           <li>国际化 i18</li>
           <li>GSAP 动画</li>

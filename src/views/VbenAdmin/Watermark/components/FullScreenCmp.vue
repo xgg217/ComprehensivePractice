@@ -9,9 +9,10 @@ const op: TProps = {
   fontSize: 40,
   gap: 80,
   parent,
+  isFull: true,
 };
 
-const WatermarkClass = new Watermark(op);
+let WatermarkClass = new Watermark(op);
 
 // 创建水印
 const onCreate = () => {
@@ -19,11 +20,17 @@ const onCreate = () => {
   WatermarkClass.create();
 };
 
-const str = ref("水印");
+// const str = ref("水印");
 
 // 更新水印
 const onUpdate = () => {
-  str.value = str.value + 1;
+  // str.value = str.value + 1;
+  op.text = op.text + 1;
+
+  WatermarkClass.destroy();
+  // WatermarkClass.create();
+  WatermarkClass = new Watermark(op);
+  WatermarkClass.create();
 };
 
 // 移除水印
@@ -43,14 +50,6 @@ const onDel = () => {
     <el-button @click="onCreate">创建水印</el-button>
     <el-button type="primary" @click="onUpdate">更新水印</el-button>
     <el-button type="danger" @click="onDel">移除水印</el-button>
-
-    <!-- <WatermarkCmp
-      ref="watermarkRef"
-      :text="str"
-      :fontSize="40"
-      :gap="80"
-      :parent="parent"
-    /> -->
   </el-card>
 </template>
 
