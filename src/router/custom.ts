@@ -51,6 +51,15 @@ const ROW: RouteRecordRaw = {
             imgSrc: "ScanTheCode/ScanTheCode.png",
           },
         },
+        {
+          path: "index2",
+          name: "CustomIndex2",
+          component: () => import("@/views/Custom/index2/index.vue"),
+          meta: {
+            title: "点击外部关闭弹出框",
+            imgSrc: "",
+          },
+        },
       ],
     },
   ],
