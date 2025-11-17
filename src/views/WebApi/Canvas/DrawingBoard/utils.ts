@@ -402,31 +402,7 @@ export class ShapeB {
   arcEnd() {
     this.onClear();
   }
-
-  // 橡皮檫 开始
-  // clearRecStart() {
-  //   const { size } = this.options;
-  //   this.ctx.save();
-  //   this.ctx.globalCompositeOperation = "destination-out";
-  //   this.ctx.beginPath();
-  //   this.ctx.lineWidth = size;
-  //   this.ctx.strokeStyle = "red";
-  //   this.ctx.moveTo(this.x, this.y);
-  // }
-
-  /**
-   * 橡皮檫 画线过程
-   * @param ex 终点 x
-   * @param ey 终点 y
-   */
-  // clearRec(ex: number, ey: number) {
-  //   this.ctx.lineTo(ex, ey);
-  //   this.ctx.stroke();
-  //   this.points.push({ x: ex, y: ey });
-  // }
-  // 橡皮檫 结束
-  // clearRecEnd() {
-  //   this.onClear();
-  //   this.ctx.restore();
-  // }
 }
+
+type AllExtend<T, U> = T extends U ? true : "a";
+type a = AllExtend<"cat" | 42, string>; // false
