@@ -403,6 +403,3 @@ export class ShapeB {
     this.onClear();
   }
 }
-
-type AllExtend<T, U> = T extends U ? true : "a";
-type a = AllExtend<"cat" | 42, string>; // false
