@@ -10,23 +10,25 @@ const arrLen = ref(arr.length); // 所有数量
 const idleVal = ref(0); // 完成的数量
 
 const { start, pause, pausestart, stop, pauseCancel } = (() => {
-  let abortArr: AbortController[] = []; // 取消集合
-  const asyncApi = (index: number, signal: AbortSignal) => {
-    console.log(signal);
+  const abortArr: AbortController[] = []; // 取消集合
+  // let abortVal: AbortController;
+  const asyncApi = (index: number) => {
+    // console.log(signal);
+    const controller = new AbortController();
+    abortArr.push(controller);
 
     // 每隔3个 添加一个错误
-    if (index % 3 === 0) {
-      return axios.post("http://jsonplaceholder.typicode.com/posts44564564546", {
-        data: { id: index },
-        id: index,
-        signal: signal,
-      });
-    }
+    // if (index % 3 === 0) {
+    //   return axios.post("http://jsonplaceholder.typicode.com/posts44564564546", {
+    //     data: { id: index },
+    //     id: index,
+    //     signal: signal,
+    //   });
+    // }
 
-    return axios.post("http://jsonplaceholder.typicode.com/posts", {
+    return axios.get("http://jsonplaceholder.typicode.com/posts", {
       data: { id: index },
-      id: index,
-      signal,
+      signal: controller.signal,
     });
   };
 
@@ -38,30 +40,17 @@ const { start, pause, pausestart, stop, pauseCancel } = (() => {
     idleVal.value += 1;
   });
 
+  queue.on("error", err => {
+    // idleVal.value += 1;
+    console.log(err);
+
+    // 可以把取消内容添加到后续队列中继续执行
+  });
+
   // 开始所有任务
   const start = () => {
-    const controller = new AbortController();
-    abortArr[0] = controller;
     arr.forEach(item => {
-      return queue.add(
-        async ({ signal }) => {
-          const p = asyncApi(item, signal!);
-          signal.addEventListener("abort", () => {
-            p.cancel();
-          });
-
-          try {
-            return await p;
-          } catch (error) {
-            console.log(error);
-
-            // if (!(error instanceof CancelError)) {
-            //   throw error;
-            // }
-          }
-        },
-        { signal: controller.signal },
-      );
+      queue.add(() => asyncApi(item));
     });
   };
 
@@ -79,7 +68,12 @@ const { start, pause, pausestart, stop, pauseCancel } = (() => {
   const pauseCancel = () => {
     // queue.pause();
     // queue.clear();
+    console.log(abortArr);
+
     abortArr.forEach(item => item.abort());
+    // console.log(abortVal);
+
+    // abortVal.abort();
     queue.pause();
   };
 
