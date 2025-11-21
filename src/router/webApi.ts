@@ -158,6 +158,14 @@ const row: RouteRecordRaw = {
             title: "fetch 批量 取消",
           },
         },
+        {
+          path: "fetch3",
+          name: "WebApiCollectionFetch3",
+          component: () => import("@/views/WebApi/Collection/AJAX/index3.vue"),
+          meta: {
+            title: "请求队列",
+          },
+        },
       ],
     },
     // #endregion
