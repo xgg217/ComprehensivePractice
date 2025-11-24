@@ -4,7 +4,9 @@ import { ElConfigProvider } from "element-plus";
 
 <template>
   <ElConfigProvider>
-    <RouterView />
+    <transition name="el-zoom-in-center">
+      <RouterView />
+    </transition>
   </ElConfigProvider>
 </template>
 

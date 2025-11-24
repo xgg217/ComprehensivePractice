@@ -119,11 +119,7 @@ onMounted(() => {
       <h2>{{ title }}</h2>
       <ul>
         <li v-for="item of routeList" :key="item.path">
-          <NavItemCmp
-            :row="item"
-            @click="onPage"
-            :is-avc="avcRouteName === item.name"
-          />
+          <NavItemCmp :row="item" @click="onPage" :is-avc="avcRouteName === item.name" />
         </li>
       </ul>
     </nav>

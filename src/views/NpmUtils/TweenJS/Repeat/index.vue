@@ -60,8 +60,8 @@ onMounted(() => {
 
 <style scoped>
 div {
-  // display: flex;
-  // align-items: center;
+  /* display: flex; */
+  /* align-items: center; */
   justify-content: space-around;
 }
 </style>
