@@ -443,6 +443,59 @@ const row: RouteRecordRaw = {
     },
     // #endregion
 
+    // #region SVG
+    {
+      path: "SVG",
+      name: "WebApiSVG",
+      // component: aa,
+      component: layout,
+      meta: {
+        title: "SVG",
+        imgSrc: "",
+        remark: "SVG",
+      },
+      redirect: { name: "WebApiSVGIndex" },
+      children: [
+        {
+          path: "index",
+          name: "WebApiSVGIndex",
+          component: () => import("@/views/WebApi/SVG/index.vue"),
+          meta: {
+            title: "占位图",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "Filter1",
+          name: "WebApiSVGFilter1",
+          component: () => import("@/views/WebApi/SVG/Filter/Filter1.vue"),
+          meta: {
+            title: "滤镜1",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "FilterShadow",
+          name: "WebApiSVGFilterShadow",
+          component: () => import("@/views/WebApi/SVG/Filter/Shadow.vue"),
+          meta: {
+            title: "shadow 阴影滤镜",
+            imgSrc: "Filter/Shadow.png",
+          },
+        },
+        {
+          path: "FilterBlur",
+          name: "WebApiSVGFilterBlur",
+          component: () => import("@/views/WebApi/SVG/Filter/Blur.vue"),
+          meta: {
+            title: "blur 模糊滤镜",
+            imgSrc: "Filter/Blur.png",
+          },
+        },
+      ],
+    },
+    // #endregion
+
     // #region Three.js 自定义
     {
       path: "Examples",
