@@ -1,9 +1,9 @@
 <template>
-  <router-view v-slot="{ Component }">
-    <transition name="fade">
-      <component :is="Component" />
-    </transition>
-  </router-view>
+  <RouterView v-slot="{ Component }">
+    <Transition name="el-zoom-in-center" mode="out-in">
+      <component :is="Component" :key="$route.path" />
+    </Transition>
+  </RouterView>
 </template>
 
 <script setup lang="ts"></script>

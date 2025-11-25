@@ -492,6 +492,24 @@ const row: RouteRecordRaw = {
             imgSrc: "Filter/Blur.png",
           },
         },
+        {
+          path: "FilterOffset",
+          name: "WebApiSVGFilterOffset",
+          component: () => import("@/views/WebApi/SVG/Filter/Offset.vue"),
+          meta: {
+            title: "offset 位移滤镜",
+            imgSrc: "Filter/Offset.png",
+          },
+        },
+        {
+          path: "snapsvg",
+          name: "WebApiSVGSnapsvg",
+          component: () => import("@/views/WebApi/SVG/snapsvg/index.vue"),
+          meta: {
+            title: "snapsvg第三方库",
+            imgSrc: "",
+          },
+        },
       ],
     },
     // #endregion

@@ -4,9 +4,11 @@ import { ElConfigProvider } from "element-plus";
 
 <template>
   <ElConfigProvider>
-    <transition name="el-zoom-in-center">
-      <RouterView />
-    </transition>
+    <RouterView v-slot="{ Component }">
+      <Transition name="el-zoom-in-center" mode="out-in">
+        <component :is="Component" />
+      </Transition>
+    </RouterView>
   </ElConfigProvider>
 </template>
 

@@ -1,8 +1,5 @@
 <template>
   <ul class="moving">
-    <!-- <li v-for="item in myComponentsList" :key="item">
-      <component :is="item" />
-    </li> -->
     <li>
       <ThursdayCmp></ThursdayCmp>
     </li>

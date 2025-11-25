@@ -2,7 +2,7 @@
   <div class="card">
     <ul v-if="props.arr.length !== 0">
       <li v-for="item in props.arr" :key="item">
-        <component :is="item" />
+        <component :is="item" :key="item" />
       </li>
     </ul>
     <el-empty class="empty" v-else description="暂无组件" />

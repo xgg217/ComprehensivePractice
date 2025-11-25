@@ -89,7 +89,7 @@ const { title, routeList, avcRouteName, getRouterArr, onPage } = (() => {
 
     if (isBool) {
       avcRouteName.value = name;
-      router.push({ name });
+      router.replace({ name });
       return;
     }
     console.error("当前路由不存在");
@@ -125,11 +125,11 @@ onMounted(() => {
     </nav>
     <!-- 内容区 -->
     <aside>
-      <router-view v-slot="{ Component }">
-        <transition name="fade">
-          <component :is="Component" />
-        </transition>
-      </router-view>
+      <RouterView v-slot="{ Component }">
+        <Transition name="el-zoom-in-center" mode="out-in">
+          <component :is="Component" :key="$route.path" />
+        </Transition>
+      </RouterView>
     </aside>
   </main>
 </template>
