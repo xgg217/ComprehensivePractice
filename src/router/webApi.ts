@@ -52,6 +52,15 @@ const row: RouteRecordRaw = {
             imgSrc: "",
           },
         },
+        {
+          path: "BackgroundRepeat",
+          name: "CSSBackgroundRepeat",
+          component: () => import("@/views/WebApi/CSS/Background/BackgroundRepeat.vue"),
+          meta: {
+            title: "background-repeat 重复方式",
+            imgSrc: "",
+          },
+        },
       ],
     },
     // #endregion
