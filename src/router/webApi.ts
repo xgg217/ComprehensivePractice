@@ -168,6 +168,14 @@ const row: RouteRecordRaw = {
           },
         },
         {
+          path: "fetch4",
+          name: "WebApiCollectionFetch4",
+          component: () => import("@/views/WebApi/Collection/AJAX/index4.vue"),
+          meta: {
+            title: "class版 fetch 批量 取消",
+          },
+        },
+        {
           path: "fetch3",
           name: "WebApiCollectionFetch3",
           component: () => import("@/views/WebApi/Collection/AJAX/index3.vue"),
