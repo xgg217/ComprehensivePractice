@@ -4,7 +4,6 @@ import vue3 from "./vue3";
 import npmUtils from "./npmUtils";
 import custom from "./custom";
 import webApi from "./webApi";
-import VbenAdmin from "./VbenAdmin";
 import DesignPatternsAndAlgorithms from "./DesignPatternsAndAlgorithms";
 import { ElLoading } from "element-plus";
 
@@ -31,9 +30,6 @@ const router = createRouter({
 
     // 设计模式 算法 数据结构
     DesignPatternsAndAlgorithms,
-
-    // VbenAdmin
-    VbenAdmin,
 
     {
       path: "/404",
