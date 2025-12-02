@@ -6,19 +6,7 @@ const arr: number[] = [
   28, 29,
 ];
 
-const IndexClass = new Index4(arr);
-
-console.log(IndexClass.len);
-
-type TRow = {
-  len: Index4["len"];
-  ind: Index4["ind"];
-};
-
-const row: TRow = reactive({
-  len: IndexClass.len,
-  ind: IndexClass.ind,
-});
+const IndexClass = reactive(new Index4(arr));
 
 // 开始
 const start = () => {
@@ -34,8 +22,8 @@ const restart = () => {};
 
 <template>
   <div>
-    <p>全部数量：{{ row.len }}</p>
-    <p>已完成的数量：{{ row.ind }}</p>
+    <p>全部数量：{{ IndexClass.len }}</p>
+    <p>已完成的数量：{{ IndexClass.ind }}</p>
     <p>失败的数量：</p>
     <el-button type="success" @click="start">开始</el-button>
     <el-button type="primary" @click="stop">暂停</el-button>

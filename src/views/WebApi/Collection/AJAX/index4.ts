@@ -2,12 +2,12 @@ import { chunk, cloneDeep } from "es-toolkit";
 import axios from "axios";
 
 export class Index4 {
-  ids: number[];
-  newIds: number[]; // 待完成的
-  abortArr: AbortController[] = []; // 取消集合
+  protected ids: number[];
+  protected newIds: number[]; // 待完成的
+  private abortArr: AbortController[] = []; // 取消集合
   ind: number = 0; // 当前完成的数量
   len: number; // 总数量
-  isStart: boolean = false; // 是否暂停
+  protected isStart: boolean = false; // 是否暂停
 
   constructor(ids: number[]) {
     this.ids = ids;
@@ -16,7 +16,7 @@ export class Index4 {
     // this.abortArr = [];
   }
 
-  async asyncAll() {
+  private async asyncAll() {
     const newIds = cloneDeep(this.newIds);
     const chunkList = chunk(newIds, 3);
 
@@ -49,7 +49,7 @@ export class Index4 {
   }
 
   // 发送请求
-  asyncApi(id: number) {
+  private asyncApi(id: number) {
     // const controller = new AbortController();
     console.log(id);
 

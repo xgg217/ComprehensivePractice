@@ -38,10 +38,7 @@ const row: RouteRecordRaw = {
         {
           path: "index",
           name: "DesignPatternIndex",
-          component: () =>
-            import(
-              "@/views/DesignPatternsAndAlgorithms/DesignPattern/index.vue"
-            ),
+          component: () => import("@/views/DesignPatternsAndAlgorithms/DesignPattern/index.vue"),
           meta: {
             title: "占位图",
             imgSrc: "",
@@ -51,11 +48,36 @@ const row: RouteRecordRaw = {
           path: "PublishSubscribe",
           name: "PublishSubscribe",
           component: () =>
-            import(
-              "@/views/DesignPatternsAndAlgorithms/DesignPattern/PublishSubscribe/index.vue"
-            ),
+            import("@/views/DesignPatternsAndAlgorithms/DesignPattern/PublishSubscribe/index.vue"),
           meta: {
             title: "发布订阅模式",
+            imgSrc: "",
+          },
+        },
+      ],
+    },
+    // #endregion
+
+    // #region 算法
+    {
+      path: "Algorithm",
+      name: "Algorithm",
+      // component: aa,
+      component: layout,
+      meta: {
+        title: "算法",
+        imgSrc: "",
+        remark: "算法",
+      },
+      redirect: { name: "AlgorithmIndex" },
+
+      children: [
+        {
+          path: "index",
+          name: "AlgorithmIndex",
+          component: () => import("@/views/DesignPatternsAndAlgorithms/Algorithm/index.vue"),
+          meta: {
+            title: "概述",
             imgSrc: "",
           },
         },
