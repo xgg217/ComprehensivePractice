@@ -6,6 +6,7 @@ const op: TProps = {
   text: "水印",
   fontSize: 40,
   gap: 80,
+  // @ts-ignore
   parent: "",
   isFull: true,
 };

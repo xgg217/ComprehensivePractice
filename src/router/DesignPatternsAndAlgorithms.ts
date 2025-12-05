@@ -5,7 +5,7 @@ const row: RouteRecordRaw = {
   path: "/DesignPatternsAndAlgorithms",
   name: "DesignPatternsAndAlgorithms",
   meta: {
-    title: "设计模式与算法",
+    title: "设计模式、算法、数据结构",
     remark: "设计模式、算法、数据结构",
     isCardList: true,
     pathName: "DesignPatternsAndAlgorithmsList",
@@ -65,9 +65,9 @@ const row: RouteRecordRaw = {
       // component: aa,
       component: layout,
       meta: {
-        title: "算法",
+        title: "算法、数据结构",
         imgSrc: "",
-        remark: "算法",
+        remark: "算法、数据结构",
       },
       redirect: { name: "AlgorithmIndex" },
 
@@ -78,6 +78,16 @@ const row: RouteRecordRaw = {
           component: () => import("@/views/DesignPatternsAndAlgorithms/Algorithm/index.vue"),
           meta: {
             title: "概述",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "ArrayBinarySearch",
+          name: "AlgorithmArrayBinarySearch",
+          component: () =>
+            import("@/views/DesignPatternsAndAlgorithms/Algorithm/Array/BinarySearch.vue"),
+          meta: {
+            title: "数组之二分查找",
             imgSrc: "",
           },
         },
