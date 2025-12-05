@@ -82,12 +82,52 @@ const row: RouteRecordRaw = {
           },
         },
         {
-          path: "ArrayBinarySearch",
+          path: "AlgorithmArrayBinarySearch",
           name: "AlgorithmArrayBinarySearch",
           component: () =>
             import("@/views/DesignPatternsAndAlgorithms/Algorithm/Array/BinarySearch.vue"),
           meta: {
             title: "数组之二分查找",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "AlgorithmArrayInterpolationSearch",
+          name: "AlgorithmArrayInterpolationSearch",
+          component: () =>
+            import("@/views/DesignPatternsAndAlgorithms/Algorithm/Array/InterpolationSearch.vue"),
+          meta: {
+            title: "数组之插值查找",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "AlgorithmArrayBubbleSort",
+          name: "AlgorithmArrayBubbleSort",
+          component: () =>
+            import("@/views/DesignPatternsAndAlgorithms/Algorithm/Array/BubbleSort.vue"),
+          meta: {
+            title: "数组之冒泡排序",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "AlgorithmArraySelectionSort",
+          name: "AlgorithmArraySelectionSort",
+          component: () =>
+            import("@/views/DesignPatternsAndAlgorithms/Algorithm/Array/SelectionSort.vue"),
+          meta: {
+            title: "数组之选择排序",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "AlgorithmArrayInsertionSort",
+          name: "AlgorithmArrayInsertionSort",
+          component: () =>
+            import("@/views/DesignPatternsAndAlgorithms/Algorithm/Array/InsertionSort.vue"),
+          meta: {
+            title: "数组之插入排序",
             imgSrc: "",
           },
         },
