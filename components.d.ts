@@ -11,6 +11,7 @@ declare module 'vue' {
     CardCmp: typeof import('./src/components/CardCmp.vue')['default']
     CardListCmp: typeof import('./src/components/CardListCmp.vue')['default']
     copy: typeof import('./src/components/CardListCmp copy.vue')['default']
+    ElButtom: typeof import('element-plus/es')['ElButtom']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElColorPicker: typeof import('element-plus/es')['ElColorPicker']

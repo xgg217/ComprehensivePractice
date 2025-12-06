@@ -61,6 +61,15 @@ const row: RouteRecordRaw = {
             imgSrc: "",
           },
         },
+        {
+          path: "CSSTransition1",
+          name: "CSSTransition1",
+          component: () => import("@/views/WebApi/CSS/Transition/index1.vue"),
+          meta: {
+            title: "CSS 过渡之平移",
+            imgSrc: "",
+          },
+        },
       ],
     },
     // #endregion
@@ -73,7 +82,7 @@ const row: RouteRecordRaw = {
       meta: {
         title: "Web API 集合",
         imgSrc: "",
-        remark: "Web Worker、Web Animations API",
+        remark: "Web Worker、Web Animations API、Promise",
       },
       redirect: { name: "WebApiCollectionIndex" },
 
@@ -181,6 +190,14 @@ const row: RouteRecordRaw = {
           component: () => import("@/views/WebApi/Collection/AJAX/index3.vue"),
           meta: {
             title: "请求队列",
+          },
+        },
+        {
+          path: "PromiseRunTask",
+          name: "WebApiCollectionPromiseRunTask",
+          component: () => import("@/views/WebApi/Collection/Promise/RunTask.vue"),
+          meta: {
+            title: "RunTask 耗时任务，页面不卡顿",
           },
         },
       ],
